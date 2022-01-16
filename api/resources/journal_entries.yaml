@@ -1,0 +1,45 @@
+get:
+  tags:
+  - journals
+  summary: Tinybeans Journal Entries
+  operationId: journal_entries
+  parameters:
+  - name: journal
+    in: path
+    description: ID of journal to pull entries from
+    required: true
+    schema:
+      type: integer
+      format: int64
+  - name: fetchSize
+    in: query
+    description: How many to fetch
+    required: true
+    schema:
+      type: integer
+      format: int64
+  - name: idsOnly 
+    in: query
+    description: ID's Only?
+    schema:
+      type: integer
+      format: int64
+  - name: last
+    in: query
+    description: Last (timestamp) you viewed [non inclusive]
+    schema:
+      type: integer
+      format: int64
+  - name: since
+    in: query
+    description: Since (timestamp) most recent (timestamp) you know about [inclusive]
+    schema:
+      type: integer
+      format: int64
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../schema/entries.yaml'

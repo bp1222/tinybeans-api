@@ -1,0 +1,8 @@
+type: object
+properties:
+  journals:
+    type: array
+    items:
+      $ref: '../schema/journal.yaml'
+  status:
+    type: string

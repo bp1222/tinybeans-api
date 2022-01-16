@@ -1,0 +1,38 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: integer
+    format: int64
+  dateCreated:
+    type: string
+  lastUpdated:
+    type: string
+  transactionDate:
+    type: string
+  amountInCents:
+    type: integer
+    format: int64
+  amountDisplay:
+    type: string
+  discount:
+    type: integer
+    format: int64
+  userId:
+    type: integer
+    format: int64
+  productId:
+    type: string
+  paymentId:
+    type: string
+  receiptNumber:
+    type: string
+  description:
+    type: string
+  paymentGatewayType:
+    type: string
+  last4:
+    type: string
+  user:
+    $ref: '../schema/user.yaml'

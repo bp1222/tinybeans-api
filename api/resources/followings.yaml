@@ -1,0 +1,12 @@
+get:
+  tags:
+    - followings
+  summary: Tinybeans Followings
+  operationId: followings 
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../schema/followings.yaml'

@@ -1,0 +1,42 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  code:
+    type: string
+  name:
+    type: string
+  description:
+    type: string
+  dateCreated:
+    type: string
+  lastUpdated:
+    type: string
+  productStatus:
+    type: string
+  codeAppStore:
+    type: string
+  codePlayStore:
+    type: string
+  amountInCents:
+    type: integer
+    format: int64
+  amountInDollarsAndCents:
+    type: number
+    format: float
+  price:
+    $ref: '../schema/price.yaml'
+  URL:
+    type: string
+  tier:
+    type: string
+  cycleDuration:
+    type: integer
+    format: int64
+  cycle:
+    $ref: '../schema/cycle.yaml'
+  features: 
+    type: array
+    items:
+      $ref: '../schema/features.yaml'

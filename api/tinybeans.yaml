@@ -1,0 +1,43 @@
+openapi: 3.0.1
+info:
+  description: Reverse Engineered API for Tinybeans.  This is horribly incomplete, and not supported
+  version: 0.0.1
+  title: Tinybeans API - Unofficial
+  contact:
+    email: dave@mudsite.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+tags:
+- name: authenticate
+  description: Authentication
+- name: journals
+  description: Journals
+- name: followings
+  description: Followings
+
+paths:
+  /authenticate:
+    $ref: './resources/authenticate.yaml'
+  /journals:
+    $ref: './resources/journals.yaml'
+  /journals/{journal}/entries:
+    $ref: './resources/journal_entries.yaml'
+  /followings:
+    $ref: './resources/followings.yaml'
+
+servers:
+  - url: https://tinybeans.com/api/1
+
+components:
+  schemas:
+    $ref: './schema/_index.yaml'
+  securitySchemes:
+    Authorization:
+      type: apiKey
+      in: header
+      name: authorization
+
+security:
+  - Authorization: []

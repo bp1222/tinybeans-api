@@ -1,0 +1,10 @@
+type: object
+properties:
+  accessToken:
+    type: string
+  didCreateUser:
+    type: boolean
+  status:
+    type: string
+  user:
+    $ref: '../schema/user.yaml'

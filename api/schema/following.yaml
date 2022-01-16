@@ -1,0 +1,36 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: integer
+    format: int64
+  viewEntries:
+    type: boolean
+  addEntries:
+    type: boolean
+  viewMilestones:
+    type: boolean
+  editMilestones:
+    type: boolean
+  coOwner:
+    type: boolean
+  sortOrder:
+    type: integer
+    format: int64
+  sendFlashback:
+    type: boolean
+  relationship:
+    $ref: '../schema/relationship.yaml'
+  emailFrequencyOnNewEvent:
+    $ref: '../schema/email_frequency.yaml'
+  timestamp:
+    type: integer
+    format: int64
+  journalId:
+    type: integer
+    format: int64
+  journal:
+    $ref: '../schema/journal.yaml'
+  user:
+    $ref: '../schema/user.yaml'

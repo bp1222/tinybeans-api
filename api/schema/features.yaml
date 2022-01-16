@@ -1,0 +1,17 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: number
+    format: int64
+  dateCreated:
+    type: string
+  lastUpdated:
+    type: string
+  name:
+    type: string
+  description:
+    type: string
+  scopeMap:
+    type: string

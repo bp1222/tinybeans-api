@@ -1,0 +1,23 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: integer
+    format: int64
+  dateCreated:
+    type: string
+  amountInCents:
+    type: integer
+    format: int64
+  amountInDollarsAndCents:
+    type: number
+    format: float
+  taxAsPercentage:
+    type: number
+    format: float
+  taxAmountInCents:
+    type: integer
+    format: int64
+  localeTag:
+    type: string

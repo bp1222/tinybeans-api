@@ -1,0 +1,31 @@
+type: object
+properties:
+ URL:
+   type: string
+ id:
+   type: integer
+   format: int64
+ startDate:
+   type: integer
+   format: int64
+ expiryDate:
+   type: integer
+   format: int64
+ startDateDisplay:
+   type: string
+ expiryDateDisplay:
+   type: string
+ status:
+   type: string
+ renewal:
+   type: string
+ subscriptionProductId:
+   type: integer
+   format: int64
+ subscriptionProduct: 
+   $ref: '../schema/subscription_product.yaml'
+ journalId:
+   type: integer
+   format: int64
+ paymentTransaction:
+   $ref: '../schema/payment_transaction.yaml'

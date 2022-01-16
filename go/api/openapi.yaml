@@ -1,0 +1,4975 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: dave@mudsite.com
+  description: Reverse Engineered API for Tinybeans.  This is horribly incomplete,
+    and not supported
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Tinybeans API - Unofficial
+  version: 0.0.1
+servers:
+- url: https://tinybeans.com/api/1
+security:
+- Authorization: []
+tags:
+- description: Authentication
+  name: authenticate
+- description: Journals
+  name: journals
+- description: Followings
+  name: followings
+paths:
+  /authenticate:
+    post:
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticateRequst'
+        description: Login Information
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticateResponse'
+          description: Success
+      summary: Login to Tinybeans
+      tags:
+      - auth
+  /journals:
+    get:
+      operationId: journals
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journals'
+          description: Success
+      summary: Tinybeans Journals
+      tags:
+      - journals
+  /journals/{journal}/entries:
+    get:
+      operationId: journal_entries
+      parameters:
+      - description: ID of journal to pull entries from
+        explode: false
+        in: path
+        name: journal
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - description: How many to fetch
+        explode: true
+        in: query
+        name: fetchSize
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: ID's Only?
+        explode: true
+        in: query
+        name: idsOnly
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Last (timestamp) you viewed [non inclusive]
+        explode: true
+        in: query
+        name: last
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Since (timestamp) most recent (timestamp) you know about [inclusive]
+        explode: true
+        in: query
+        name: since
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entries'
+          description: Success
+      summary: Tinybeans Journal Entries
+      tags:
+      - journals
+  /followings:
+    get:
+      operationId: followings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Followings'
+          description: Success
+      summary: Tinybeans Followings
+      tags:
+      - followings
+components:
+  schemas:
+    AuthenticateRequst:
+      example:
+        inviteToken: inviteToken
+        password: password
+        clientId: clientId
+        rememberMe: true
+        deviceId: deviceId
+        username: username
+      properties:
+        clientId:
+          type: string
+        deviceId:
+          type: string
+        inviteToken:
+          type: string
+        password:
+          type: string
+        rememberMe:
+          type: boolean
+        username:
+          type: string
+      type: object
+    AuthenticateResponse:
+      example:
+        didCreateUser: true
+        accessToken: accessToken
+        user:
+          lastName: lastName
+          timeZoneOffset: 2
+          emailFrequencyOnNewComment:
+            name: name
+            label: label
+          lastEmailOpenTimestamp: 1
+          emailFrequencyOnNewEmotion:
+            name: name
+            label: label
+          emailMarketingOptOut: true
+          URL: URL
+          emailOptOut: true
+          emailAddress: emailAddress
+          referralUrl: referralUrl
+          referralCode: referralCode
+          id: 6
+          publicUsername: publicUsername
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+          lastLoggedInTimestamp: 5
+          timestamp: 7
+          lastUpdatedTimestamp: 5
+          dateStyle:
+            format: format
+            name: name
+            label: label
+          externalProviderRef: externalProviderRef
+          emailWeeklySummary: true
+          facebookId: facebookId
+          fullName: fullName
+          timeZone:
+            name: name
+            label: label
+          firstName: firstName
+          deleted: true
+          instagramUsername: instagramUsername
+          instagramId: instagramId
+          hasMemoriesAccess: true
+          measurementSystem:
+            name: name
+            label: label
+          firstLoggedInTimestamp: 0
+          username: username
+        status: status
+      properties:
+        accessToken:
+          type: string
+        didCreateUser:
+          type: boolean
+        status:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+      type: object
+    Avatars:
+      example:
+        s: s
+        l: l
+        m: m
+        o: o
+      properties:
+        l:
+          type: string
+        m:
+          type: string
+        o:
+          type: string
+        s:
+          type: string
+      type: object
+    Blob:
+      example:
+        p: p
+        o2: o2
+        s: s
+        t: t
+        l: l
+        m: m
+        o: o
+        s2: s2
+      properties:
+        o:
+          type: string
+        o2:
+          type: string
+        t:
+          type: string
+        s:
+          type: string
+        s2:
+          type: string
+        m:
+          type: string
+        l:
+          type: string
+        p:
+          type: string
+      type: object
+    Child:
+      example:
+        firstName: firstName
+        lastName: lastName
+        lastUpdatedTimestamp: 5
+        deleted: true
+        gender: gender
+        dob: dob
+        fullName: fullName
+        id: 1
+        user:
+          lastName: lastName
+          timeZoneOffset: 2
+          emailFrequencyOnNewComment:
+            name: name
+            label: label
+          lastEmailOpenTimestamp: 1
+          emailFrequencyOnNewEmotion:
+            name: name
+            label: label
+          emailMarketingOptOut: true
+          URL: URL
+          emailOptOut: true
+          emailAddress: emailAddress
+          referralUrl: referralUrl
+          referralCode: referralCode
+          id: 6
+          publicUsername: publicUsername
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+          lastLoggedInTimestamp: 5
+          timestamp: 7
+          lastUpdatedTimestamp: 5
+          dateStyle:
+            format: format
+            name: name
+            label: label
+          externalProviderRef: externalProviderRef
+          emailWeeklySummary: true
+          facebookId: facebookId
+          fullName: fullName
+          timeZone:
+            name: name
+            label: label
+          firstName: firstName
+          deleted: true
+          instagramUsername: instagramUsername
+          instagramId: instagramId
+          hasMemoriesAccess: true
+          measurementSystem:
+            name: name
+            label: label
+          firstLoggedInTimestamp: 0
+          username: username
+        URL: URL
+        timestamp: 5
+        avatars:
+          s: s
+          l: l
+          m: m
+          o: o
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        fullName:
+          type: string
+        gender:
+          type: string
+        dob:
+          type: string
+        timestamp:
+          format: int64
+          type: integer
+        lastUpdatedTimestamp:
+          format: int64
+          type: integer
+        avatars:
+          $ref: '#/components/schemas/Avatars'
+        deleted:
+          type: boolean
+        user:
+          $ref: '#/components/schemas/User'
+      type: object
+    CoverTheme:
+      example:
+        name: name
+        label: label
+        url: url
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        url:
+          type: string
+      type: object
+    Cycle:
+      example:
+        reminderInDays: 9.369310271410669
+        displayName: displayName
+        calendarInt: 9.965781217890562
+        gracePeriodInDays: 6.683562403749608
+      properties:
+        displayName:
+          type: string
+        calendarInt:
+          format: int64
+          type: number
+        reminderInDays:
+          format: int64
+          type: number
+        gracePeriodInDays:
+          format: int64
+          type: number
+      type: object
+    DateStyle:
+      example:
+        format: format
+        name: name
+        label: label
+      properties:
+        format:
+          type: string
+        label:
+          type: string
+        name:
+          type: string
+      type: object
+    EmailFrequency:
+      example:
+        name: name
+        label: label
+      properties:
+        label:
+          type: string
+        name:
+          type: string
+      type: object
+    EmotionType:
+      example:
+        name: name
+        label: label
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+      type: object
+    Emotion:
+      example:
+        lastUpdatedTimestamp: 7
+        deleted: true
+        id: 2
+        type:
+          name: name
+          label: label
+        userId: 1
+        URL: URL
+        timestamp: 4
+        entryId: 1
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        type:
+          $ref: '#/components/schemas/EmotionType'
+        timestamp:
+          format: int64
+          type: integer
+        lastUpdatedTimestamp:
+          format: int64
+          type: integer
+        deleted:
+          type: boolean
+        entryId:
+          format: int64
+          type: integer
+        userId:
+          format: int64
+          type: integer
+      type: object
+    Entries:
+      example:
+        entries:
+        - lastUpdatedTimestamp: 7
+          blobs:
+            p: p
+            o2: o2
+            s: s
+            t: t
+            l: l
+            m: m
+            o: o
+            s2: s2
+          emotions:
+          - lastUpdatedTimestamp: 7
+            deleted: true
+            id: 2
+            type:
+              name: name
+              label: label
+            userId: 1
+            URL: URL
+            timestamp: 4
+            entryId: 1
+          - lastUpdatedTimestamp: 7
+            deleted: true
+            id: 2
+            type:
+              name: name
+              label: label
+            userId: 1
+            URL: URL
+            timestamp: 4
+            entryId: 1
+          year: 1
+          privateMode: true
+          journalId: 9
+          clientRef: clientRef
+          caption: caption
+          type: type
+          uuid: uuid
+          userId: 3
+          URL: URL
+          deleted: true
+          month: 5
+          id: 6
+          day: 5
+          timestamp: 2
+        - lastUpdatedTimestamp: 7
+          blobs:
+            p: p
+            o2: o2
+            s: s
+            t: t
+            l: l
+            m: m
+            o: o
+            s2: s2
+          emotions:
+          - lastUpdatedTimestamp: 7
+            deleted: true
+            id: 2
+            type:
+              name: name
+              label: label
+            userId: 1
+            URL: URL
+            timestamp: 4
+            entryId: 1
+          - lastUpdatedTimestamp: 7
+            deleted: true
+            id: 2
+            type:
+              name: name
+              label: label
+            userId: 1
+            URL: URL
+            timestamp: 4
+            entryId: 1
+          year: 1
+          privateMode: true
+          journalId: 9
+          clientRef: clientRef
+          caption: caption
+          type: type
+          uuid: uuid
+          userId: 3
+          URL: URL
+          deleted: true
+          month: 5
+          id: 6
+          day: 5
+          timestamp: 2
+        numEntriesRemaining: 0
+        status: status
+      properties:
+        status:
+          type: string
+        numEntriesRemaining:
+          format: int64
+          type: integer
+        entries:
+          items:
+            $ref: '#/components/schemas/Entry'
+          type: array
+      type: object
+    Entry:
+      example:
+        lastUpdatedTimestamp: 7
+        blobs:
+          p: p
+          o2: o2
+          s: s
+          t: t
+          l: l
+          m: m
+          o: o
+          s2: s2
+        emotions:
+        - lastUpdatedTimestamp: 7
+          deleted: true
+          id: 2
+          type:
+            name: name
+            label: label
+          userId: 1
+          URL: URL
+          timestamp: 4
+          entryId: 1
+        - lastUpdatedTimestamp: 7
+          deleted: true
+          id: 2
+          type:
+            name: name
+            label: label
+          userId: 1
+          URL: URL
+          timestamp: 4
+          entryId: 1
+        year: 1
+        privateMode: true
+        journalId: 9
+        clientRef: clientRef
+        caption: caption
+        type: type
+        uuid: uuid
+        userId: 3
+        URL: URL
+        deleted: true
+        month: 5
+        id: 6
+        day: 5
+        timestamp: 2
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        deleted:
+          type: boolean
+        privateMode:
+          type: boolean
+        uuid:
+          type: string
+        clientRef:
+          type: string
+        type:
+          type: string
+        year:
+          format: int64
+          type: integer
+        month:
+          format: int64
+          type: integer
+        day:
+          format: int64
+          type: integer
+        caption:
+          type: string
+        timestamp:
+          format: int64
+          type: integer
+        lastUpdatedTimestamp:
+          format: int64
+          type: integer
+        blobs:
+          $ref: '#/components/schemas/Blob'
+        journalId:
+          format: int64
+          type: integer
+        userId:
+          format: int64
+          type: integer
+        emotions:
+          items:
+            $ref: '#/components/schemas/Emotion'
+          type: array
+      type: object
+    Features:
+      example:
+        lastUpdated: lastUpdated
+        dateCreated: dateCreated
+        name: name
+        description: description
+        id: 7.061401241503109
+        scopeMap: scopeMap
+        URL: URL
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: number
+        dateCreated:
+          type: string
+        lastUpdated:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        scopeMap:
+          type: string
+      type: object
+    Following:
+      example:
+        coOwner: true
+        viewMilestones: true
+        journalId: 5
+        URL: URL
+        emailFrequencyOnNewEvent:
+          name: name
+          label: label
+        addEntries: true
+        editMilestones: true
+        sendFlashback: true
+        journal:
+          disableAnonymousComments: true
+          pets:
+          - birthday: birthday
+            deleted: true
+            size: size
+            species: species
+            sex: sex
+            name: name
+            developmentOptOut: true
+            id: 2
+            adoptionDate: adoptionDate
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            breed: breed
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          - birthday: birthday
+            deleted: true
+            size: size
+            species: species
+            sex: sex
+            name: name
+            developmentOptOut: true
+            id: 2
+            adoptionDate: adoptionDate
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            breed: breed
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          disableDownloads: true
+          shouldShowAds: true
+          title: title
+          classification: classification
+          URL: URL
+          disableComments: true
+          latestSubscription:
+            expiryDate: 2
+            expiryDateDisplay: expiryDateDisplay
+            renewal: renewal
+            journalId: 8
+            id: 9
+            startDateDisplay: startDateDisplay
+            paymentTransaction:
+              amountInCents: 6
+              last4: last4
+              productId: productId
+              discount: 3
+              description: description
+              paymentGatewayType: paymentGatewayType
+              transactionDate: transactionDate
+              userId: 6
+              URL: URL
+              lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              paymentId: paymentId
+              amountDisplay: amountDisplay
+              id: 9
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              receiptNumber: receiptNumber
+            subscriptionProductId: 4
+            URL: URL
+            startDate: 3
+            subscriptionProduct:
+              amountInCents: 1
+              codePlayStore: codePlayStore
+              code: code
+              description: description
+              productStatus: productStatus
+              cycle:
+                reminderInDays: 9.369310271410669
+                displayName: displayName
+                calendarInt: 9.965781217890562
+                gracePeriodInDays: 6.683562403749608
+              URL: URL
+              lastUpdated: lastUpdated
+              features:
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              dateCreated: dateCreated
+              codeAppStore: codeAppStore
+              tier: tier
+              cycleDuration: 5
+              price:
+                amountInCents: 6
+                taxAsPercentage: 1.1730742
+                localeTag: localeTag
+                dateCreated: dateCreated
+                taxAmountInCents: 4
+                amountInDollarsAndCents: 7.4577446
+                id: 1
+                URL: URL
+              name: name
+              amountInDollarsAndCents: 1.0246457
+              id: 7
+            status: status
+          features:
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          currentSubscription:
+            expiryDate: 2
+            expiryDateDisplay: expiryDateDisplay
+            renewal: renewal
+            journalId: 8
+            id: 9
+            startDateDisplay: startDateDisplay
+            paymentTransaction:
+              amountInCents: 6
+              last4: last4
+              productId: productId
+              discount: 3
+              description: description
+              paymentGatewayType: paymentGatewayType
+              transactionDate: transactionDate
+              userId: 6
+              URL: URL
+              lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              paymentId: paymentId
+              amountDisplay: amountDisplay
+              id: 9
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              receiptNumber: receiptNumber
+            subscriptionProductId: 4
+            URL: URL
+            startDate: 3
+            subscriptionProduct:
+              amountInCents: 1
+              codePlayStore: codePlayStore
+              code: code
+              description: description
+              productStatus: productStatus
+              cycle:
+                reminderInDays: 9.369310271410669
+                displayName: displayName
+                calendarInt: 9.965781217890562
+                gracePeriodInDays: 6.683562403749608
+              URL: URL
+              lastUpdated: lastUpdated
+              features:
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              dateCreated: dateCreated
+              codeAppStore: codeAppStore
+              tier: tier
+              cycleDuration: 5
+              price:
+                amountInCents: 6
+                taxAsPercentage: 1.1730742
+                localeTag: localeTag
+                dateCreated: dateCreated
+                taxAmountInCents: 4
+                amountInDollarsAndCents: 7.4577446
+                id: 1
+                URL: URL
+              name: name
+              amountInDollarsAndCents: 1.0246457
+              id: 7
+            status: status
+          deleted: true
+          children:
+          - firstName: firstName
+            lastName: lastName
+            lastUpdatedTimestamp: 5
+            deleted: true
+            gender: gender
+            dob: dob
+            fullName: fullName
+            id: 1
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            URL: URL
+            timestamp: 5
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          - firstName: firstName
+            lastName: lastName
+            lastUpdatedTimestamp: 5
+            deleted: true
+            gender: gender
+            dob: dob
+            fullName: fullName
+            id: 1
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            URL: URL
+            timestamp: 5
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          isPublic: true
+          coverTheme:
+            name: name
+            label: label
+            url: url
+          id: 0
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          timestamp: 6
+        sortOrder: 6
+        id: 0
+        viewEntries: true
+        relationship:
+          name: name
+          label: label
+        user:
+          lastName: lastName
+          timeZoneOffset: 2
+          emailFrequencyOnNewComment:
+            name: name
+            label: label
+          lastEmailOpenTimestamp: 1
+          emailFrequencyOnNewEmotion:
+            name: name
+            label: label
+          emailMarketingOptOut: true
+          URL: URL
+          emailOptOut: true
+          emailAddress: emailAddress
+          referralUrl: referralUrl
+          referralCode: referralCode
+          id: 6
+          publicUsername: publicUsername
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+          lastLoggedInTimestamp: 5
+          timestamp: 7
+          lastUpdatedTimestamp: 5
+          dateStyle:
+            format: format
+            name: name
+            label: label
+          externalProviderRef: externalProviderRef
+          emailWeeklySummary: true
+          facebookId: facebookId
+          fullName: fullName
+          timeZone:
+            name: name
+            label: label
+          firstName: firstName
+          deleted: true
+          instagramUsername: instagramUsername
+          instagramId: instagramId
+          hasMemoriesAccess: true
+          measurementSystem:
+            name: name
+            label: label
+          firstLoggedInTimestamp: 0
+          username: username
+        timestamp: 1
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        viewEntries:
+          type: boolean
+        addEntries:
+          type: boolean
+        viewMilestones:
+          type: boolean
+        editMilestones:
+          type: boolean
+        coOwner:
+          type: boolean
+        sortOrder:
+          format: int64
+          type: integer
+        sendFlashback:
+          type: boolean
+        relationship:
+          $ref: '#/components/schemas/Relationship'
+        emailFrequencyOnNewEvent:
+          $ref: '#/components/schemas/EmailFrequency'
+        timestamp:
+          format: int64
+          type: integer
+        journalId:
+          format: int64
+          type: integer
+        journal:
+          $ref: '#/components/schemas/Journal'
+        user:
+          $ref: '#/components/schemas/User'
+      type: object
+    Followings:
+      example:
+        followings:
+        - coOwner: true
+          viewMilestones: true
+          journalId: 5
+          URL: URL
+          emailFrequencyOnNewEvent:
+            name: name
+            label: label
+          addEntries: true
+          editMilestones: true
+          sendFlashback: true
+          journal:
+            disableAnonymousComments: true
+            pets:
+            - birthday: birthday
+              deleted: true
+              size: size
+              species: species
+              sex: sex
+              name: name
+              developmentOptOut: true
+              id: 2
+              adoptionDate: adoptionDate
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              breed: breed
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            - birthday: birthday
+              deleted: true
+              size: size
+              species: species
+              sex: sex
+              name: name
+              developmentOptOut: true
+              id: 2
+              adoptionDate: adoptionDate
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              breed: breed
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            disableDownloads: true
+            shouldShowAds: true
+            title: title
+            classification: classification
+            URL: URL
+            disableComments: true
+            latestSubscription:
+              expiryDate: 2
+              expiryDateDisplay: expiryDateDisplay
+              renewal: renewal
+              journalId: 8
+              id: 9
+              startDateDisplay: startDateDisplay
+              paymentTransaction:
+                amountInCents: 6
+                last4: last4
+                productId: productId
+                discount: 3
+                description: description
+                paymentGatewayType: paymentGatewayType
+                transactionDate: transactionDate
+                userId: 6
+                URL: URL
+                lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                paymentId: paymentId
+                amountDisplay: amountDisplay
+                id: 9
+                user:
+                  lastName: lastName
+                  timeZoneOffset: 2
+                  emailFrequencyOnNewComment:
+                    name: name
+                    label: label
+                  lastEmailOpenTimestamp: 1
+                  emailFrequencyOnNewEmotion:
+                    name: name
+                    label: label
+                  emailMarketingOptOut: true
+                  URL: URL
+                  emailOptOut: true
+                  emailAddress: emailAddress
+                  referralUrl: referralUrl
+                  referralCode: referralCode
+                  id: 6
+                  publicUsername: publicUsername
+                  avatars:
+                    s: s
+                    l: l
+                    m: m
+                    o: o
+                  lastLoggedInTimestamp: 5
+                  timestamp: 7
+                  lastUpdatedTimestamp: 5
+                  dateStyle:
+                    format: format
+                    name: name
+                    label: label
+                  externalProviderRef: externalProviderRef
+                  emailWeeklySummary: true
+                  facebookId: facebookId
+                  fullName: fullName
+                  timeZone:
+                    name: name
+                    label: label
+                  firstName: firstName
+                  deleted: true
+                  instagramUsername: instagramUsername
+                  instagramId: instagramId
+                  hasMemoriesAccess: true
+                  measurementSystem:
+                    name: name
+                    label: label
+                  firstLoggedInTimestamp: 0
+                  username: username
+                receiptNumber: receiptNumber
+              subscriptionProductId: 4
+              URL: URL
+              startDate: 3
+              subscriptionProduct:
+                amountInCents: 1
+                codePlayStore: codePlayStore
+                code: code
+                description: description
+                productStatus: productStatus
+                cycle:
+                  reminderInDays: 9.369310271410669
+                  displayName: displayName
+                  calendarInt: 9.965781217890562
+                  gracePeriodInDays: 6.683562403749608
+                URL: URL
+                lastUpdated: lastUpdated
+                features:
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                dateCreated: dateCreated
+                codeAppStore: codeAppStore
+                tier: tier
+                cycleDuration: 5
+                price:
+                  amountInCents: 6
+                  taxAsPercentage: 1.1730742
+                  localeTag: localeTag
+                  dateCreated: dateCreated
+                  taxAmountInCents: 4
+                  amountInDollarsAndCents: 7.4577446
+                  id: 1
+                  URL: URL
+                name: name
+                amountInDollarsAndCents: 1.0246457
+                id: 7
+              status: status
+            features:
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            currentSubscription:
+              expiryDate: 2
+              expiryDateDisplay: expiryDateDisplay
+              renewal: renewal
+              journalId: 8
+              id: 9
+              startDateDisplay: startDateDisplay
+              paymentTransaction:
+                amountInCents: 6
+                last4: last4
+                productId: productId
+                discount: 3
+                description: description
+                paymentGatewayType: paymentGatewayType
+                transactionDate: transactionDate
+                userId: 6
+                URL: URL
+                lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                paymentId: paymentId
+                amountDisplay: amountDisplay
+                id: 9
+                user:
+                  lastName: lastName
+                  timeZoneOffset: 2
+                  emailFrequencyOnNewComment:
+                    name: name
+                    label: label
+                  lastEmailOpenTimestamp: 1
+                  emailFrequencyOnNewEmotion:
+                    name: name
+                    label: label
+                  emailMarketingOptOut: true
+                  URL: URL
+                  emailOptOut: true
+                  emailAddress: emailAddress
+                  referralUrl: referralUrl
+                  referralCode: referralCode
+                  id: 6
+                  publicUsername: publicUsername
+                  avatars:
+                    s: s
+                    l: l
+                    m: m
+                    o: o
+                  lastLoggedInTimestamp: 5
+                  timestamp: 7
+                  lastUpdatedTimestamp: 5
+                  dateStyle:
+                    format: format
+                    name: name
+                    label: label
+                  externalProviderRef: externalProviderRef
+                  emailWeeklySummary: true
+                  facebookId: facebookId
+                  fullName: fullName
+                  timeZone:
+                    name: name
+                    label: label
+                  firstName: firstName
+                  deleted: true
+                  instagramUsername: instagramUsername
+                  instagramId: instagramId
+                  hasMemoriesAccess: true
+                  measurementSystem:
+                    name: name
+                    label: label
+                  firstLoggedInTimestamp: 0
+                  username: username
+                receiptNumber: receiptNumber
+              subscriptionProductId: 4
+              URL: URL
+              startDate: 3
+              subscriptionProduct:
+                amountInCents: 1
+                codePlayStore: codePlayStore
+                code: code
+                description: description
+                productStatus: productStatus
+                cycle:
+                  reminderInDays: 9.369310271410669
+                  displayName: displayName
+                  calendarInt: 9.965781217890562
+                  gracePeriodInDays: 6.683562403749608
+                URL: URL
+                lastUpdated: lastUpdated
+                features:
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                dateCreated: dateCreated
+                codeAppStore: codeAppStore
+                tier: tier
+                cycleDuration: 5
+                price:
+                  amountInCents: 6
+                  taxAsPercentage: 1.1730742
+                  localeTag: localeTag
+                  dateCreated: dateCreated
+                  taxAmountInCents: 4
+                  amountInDollarsAndCents: 7.4577446
+                  id: 1
+                  URL: URL
+                name: name
+                amountInDollarsAndCents: 1.0246457
+                id: 7
+              status: status
+            deleted: true
+            children:
+            - firstName: firstName
+              lastName: lastName
+              lastUpdatedTimestamp: 5
+              deleted: true
+              gender: gender
+              dob: dob
+              fullName: fullName
+              id: 1
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              URL: URL
+              timestamp: 5
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            - firstName: firstName
+              lastName: lastName
+              lastUpdatedTimestamp: 5
+              deleted: true
+              gender: gender
+              dob: dob
+              fullName: fullName
+              id: 1
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              URL: URL
+              timestamp: 5
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            isPublic: true
+            coverTheme:
+              name: name
+              label: label
+              url: url
+            id: 0
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            timestamp: 6
+          sortOrder: 6
+          id: 0
+          viewEntries: true
+          relationship:
+            name: name
+            label: label
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          timestamp: 1
+        - coOwner: true
+          viewMilestones: true
+          journalId: 5
+          URL: URL
+          emailFrequencyOnNewEvent:
+            name: name
+            label: label
+          addEntries: true
+          editMilestones: true
+          sendFlashback: true
+          journal:
+            disableAnonymousComments: true
+            pets:
+            - birthday: birthday
+              deleted: true
+              size: size
+              species: species
+              sex: sex
+              name: name
+              developmentOptOut: true
+              id: 2
+              adoptionDate: adoptionDate
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              breed: breed
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            - birthday: birthday
+              deleted: true
+              size: size
+              species: species
+              sex: sex
+              name: name
+              developmentOptOut: true
+              id: 2
+              adoptionDate: adoptionDate
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              breed: breed
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            disableDownloads: true
+            shouldShowAds: true
+            title: title
+            classification: classification
+            URL: URL
+            disableComments: true
+            latestSubscription:
+              expiryDate: 2
+              expiryDateDisplay: expiryDateDisplay
+              renewal: renewal
+              journalId: 8
+              id: 9
+              startDateDisplay: startDateDisplay
+              paymentTransaction:
+                amountInCents: 6
+                last4: last4
+                productId: productId
+                discount: 3
+                description: description
+                paymentGatewayType: paymentGatewayType
+                transactionDate: transactionDate
+                userId: 6
+                URL: URL
+                lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                paymentId: paymentId
+                amountDisplay: amountDisplay
+                id: 9
+                user:
+                  lastName: lastName
+                  timeZoneOffset: 2
+                  emailFrequencyOnNewComment:
+                    name: name
+                    label: label
+                  lastEmailOpenTimestamp: 1
+                  emailFrequencyOnNewEmotion:
+                    name: name
+                    label: label
+                  emailMarketingOptOut: true
+                  URL: URL
+                  emailOptOut: true
+                  emailAddress: emailAddress
+                  referralUrl: referralUrl
+                  referralCode: referralCode
+                  id: 6
+                  publicUsername: publicUsername
+                  avatars:
+                    s: s
+                    l: l
+                    m: m
+                    o: o
+                  lastLoggedInTimestamp: 5
+                  timestamp: 7
+                  lastUpdatedTimestamp: 5
+                  dateStyle:
+                    format: format
+                    name: name
+                    label: label
+                  externalProviderRef: externalProviderRef
+                  emailWeeklySummary: true
+                  facebookId: facebookId
+                  fullName: fullName
+                  timeZone:
+                    name: name
+                    label: label
+                  firstName: firstName
+                  deleted: true
+                  instagramUsername: instagramUsername
+                  instagramId: instagramId
+                  hasMemoriesAccess: true
+                  measurementSystem:
+                    name: name
+                    label: label
+                  firstLoggedInTimestamp: 0
+                  username: username
+                receiptNumber: receiptNumber
+              subscriptionProductId: 4
+              URL: URL
+              startDate: 3
+              subscriptionProduct:
+                amountInCents: 1
+                codePlayStore: codePlayStore
+                code: code
+                description: description
+                productStatus: productStatus
+                cycle:
+                  reminderInDays: 9.369310271410669
+                  displayName: displayName
+                  calendarInt: 9.965781217890562
+                  gracePeriodInDays: 6.683562403749608
+                URL: URL
+                lastUpdated: lastUpdated
+                features:
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                dateCreated: dateCreated
+                codeAppStore: codeAppStore
+                tier: tier
+                cycleDuration: 5
+                price:
+                  amountInCents: 6
+                  taxAsPercentage: 1.1730742
+                  localeTag: localeTag
+                  dateCreated: dateCreated
+                  taxAmountInCents: 4
+                  amountInDollarsAndCents: 7.4577446
+                  id: 1
+                  URL: URL
+                name: name
+                amountInDollarsAndCents: 1.0246457
+                id: 7
+              status: status
+            features:
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            currentSubscription:
+              expiryDate: 2
+              expiryDateDisplay: expiryDateDisplay
+              renewal: renewal
+              journalId: 8
+              id: 9
+              startDateDisplay: startDateDisplay
+              paymentTransaction:
+                amountInCents: 6
+                last4: last4
+                productId: productId
+                discount: 3
+                description: description
+                paymentGatewayType: paymentGatewayType
+                transactionDate: transactionDate
+                userId: 6
+                URL: URL
+                lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                paymentId: paymentId
+                amountDisplay: amountDisplay
+                id: 9
+                user:
+                  lastName: lastName
+                  timeZoneOffset: 2
+                  emailFrequencyOnNewComment:
+                    name: name
+                    label: label
+                  lastEmailOpenTimestamp: 1
+                  emailFrequencyOnNewEmotion:
+                    name: name
+                    label: label
+                  emailMarketingOptOut: true
+                  URL: URL
+                  emailOptOut: true
+                  emailAddress: emailAddress
+                  referralUrl: referralUrl
+                  referralCode: referralCode
+                  id: 6
+                  publicUsername: publicUsername
+                  avatars:
+                    s: s
+                    l: l
+                    m: m
+                    o: o
+                  lastLoggedInTimestamp: 5
+                  timestamp: 7
+                  lastUpdatedTimestamp: 5
+                  dateStyle:
+                    format: format
+                    name: name
+                    label: label
+                  externalProviderRef: externalProviderRef
+                  emailWeeklySummary: true
+                  facebookId: facebookId
+                  fullName: fullName
+                  timeZone:
+                    name: name
+                    label: label
+                  firstName: firstName
+                  deleted: true
+                  instagramUsername: instagramUsername
+                  instagramId: instagramId
+                  hasMemoriesAccess: true
+                  measurementSystem:
+                    name: name
+                    label: label
+                  firstLoggedInTimestamp: 0
+                  username: username
+                receiptNumber: receiptNumber
+              subscriptionProductId: 4
+              URL: URL
+              startDate: 3
+              subscriptionProduct:
+                amountInCents: 1
+                codePlayStore: codePlayStore
+                code: code
+                description: description
+                productStatus: productStatus
+                cycle:
+                  reminderInDays: 9.369310271410669
+                  displayName: displayName
+                  calendarInt: 9.965781217890562
+                  gracePeriodInDays: 6.683562403749608
+                URL: URL
+                lastUpdated: lastUpdated
+                features:
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                - lastUpdated: lastUpdated
+                  dateCreated: dateCreated
+                  name: name
+                  description: description
+                  id: 7.061401241503109
+                  scopeMap: scopeMap
+                  URL: URL
+                dateCreated: dateCreated
+                codeAppStore: codeAppStore
+                tier: tier
+                cycleDuration: 5
+                price:
+                  amountInCents: 6
+                  taxAsPercentage: 1.1730742
+                  localeTag: localeTag
+                  dateCreated: dateCreated
+                  taxAmountInCents: 4
+                  amountInDollarsAndCents: 7.4577446
+                  id: 1
+                  URL: URL
+                name: name
+                amountInDollarsAndCents: 1.0246457
+                id: 7
+              status: status
+            deleted: true
+            children:
+            - firstName: firstName
+              lastName: lastName
+              lastUpdatedTimestamp: 5
+              deleted: true
+              gender: gender
+              dob: dob
+              fullName: fullName
+              id: 1
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              URL: URL
+              timestamp: 5
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            - firstName: firstName
+              lastName: lastName
+              lastUpdatedTimestamp: 5
+              deleted: true
+              gender: gender
+              dob: dob
+              fullName: fullName
+              id: 1
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              URL: URL
+              timestamp: 5
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+            isPublic: true
+            coverTheme:
+              name: name
+              label: label
+              url: url
+            id: 0
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            timestamp: 6
+          sortOrder: 6
+          id: 0
+          viewEntries: true
+          relationship:
+            name: name
+            label: label
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          timestamp: 1
+        status: status
+      properties:
+        status:
+          type: string
+        followings:
+          items:
+            $ref: '#/components/schemas/Following'
+          type: array
+      type: object
+    Journal:
+      example:
+        disableAnonymousComments: true
+        pets:
+        - birthday: birthday
+          deleted: true
+          size: size
+          species: species
+          sex: sex
+          name: name
+          developmentOptOut: true
+          id: 2
+          adoptionDate: adoptionDate
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          breed: breed
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+        - birthday: birthday
+          deleted: true
+          size: size
+          species: species
+          sex: sex
+          name: name
+          developmentOptOut: true
+          id: 2
+          adoptionDate: adoptionDate
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          breed: breed
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+        disableDownloads: true
+        shouldShowAds: true
+        title: title
+        classification: classification
+        URL: URL
+        disableComments: true
+        latestSubscription:
+          expiryDate: 2
+          expiryDateDisplay: expiryDateDisplay
+          renewal: renewal
+          journalId: 8
+          id: 9
+          startDateDisplay: startDateDisplay
+          paymentTransaction:
+            amountInCents: 6
+            last4: last4
+            productId: productId
+            discount: 3
+            description: description
+            paymentGatewayType: paymentGatewayType
+            transactionDate: transactionDate
+            userId: 6
+            URL: URL
+            lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            paymentId: paymentId
+            amountDisplay: amountDisplay
+            id: 9
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            receiptNumber: receiptNumber
+          subscriptionProductId: 4
+          URL: URL
+          startDate: 3
+          subscriptionProduct:
+            amountInCents: 1
+            codePlayStore: codePlayStore
+            code: code
+            description: description
+            productStatus: productStatus
+            cycle:
+              reminderInDays: 9.369310271410669
+              displayName: displayName
+              calendarInt: 9.965781217890562
+              gracePeriodInDays: 6.683562403749608
+            URL: URL
+            lastUpdated: lastUpdated
+            features:
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            dateCreated: dateCreated
+            codeAppStore: codeAppStore
+            tier: tier
+            cycleDuration: 5
+            price:
+              amountInCents: 6
+              taxAsPercentage: 1.1730742
+              localeTag: localeTag
+              dateCreated: dateCreated
+              taxAmountInCents: 4
+              amountInDollarsAndCents: 7.4577446
+              id: 1
+              URL: URL
+            name: name
+            amountInDollarsAndCents: 1.0246457
+            id: 7
+          status: status
+        features:
+        - lastUpdated: lastUpdated
+          dateCreated: dateCreated
+          name: name
+          description: description
+          id: 7.061401241503109
+          scopeMap: scopeMap
+          URL: URL
+        - lastUpdated: lastUpdated
+          dateCreated: dateCreated
+          name: name
+          description: description
+          id: 7.061401241503109
+          scopeMap: scopeMap
+          URL: URL
+        currentSubscription:
+          expiryDate: 2
+          expiryDateDisplay: expiryDateDisplay
+          renewal: renewal
+          journalId: 8
+          id: 9
+          startDateDisplay: startDateDisplay
+          paymentTransaction:
+            amountInCents: 6
+            last4: last4
+            productId: productId
+            discount: 3
+            description: description
+            paymentGatewayType: paymentGatewayType
+            transactionDate: transactionDate
+            userId: 6
+            URL: URL
+            lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            paymentId: paymentId
+            amountDisplay: amountDisplay
+            id: 9
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            receiptNumber: receiptNumber
+          subscriptionProductId: 4
+          URL: URL
+          startDate: 3
+          subscriptionProduct:
+            amountInCents: 1
+            codePlayStore: codePlayStore
+            code: code
+            description: description
+            productStatus: productStatus
+            cycle:
+              reminderInDays: 9.369310271410669
+              displayName: displayName
+              calendarInt: 9.965781217890562
+              gracePeriodInDays: 6.683562403749608
+            URL: URL
+            lastUpdated: lastUpdated
+            features:
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            - lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              name: name
+              description: description
+              id: 7.061401241503109
+              scopeMap: scopeMap
+              URL: URL
+            dateCreated: dateCreated
+            codeAppStore: codeAppStore
+            tier: tier
+            cycleDuration: 5
+            price:
+              amountInCents: 6
+              taxAsPercentage: 1.1730742
+              localeTag: localeTag
+              dateCreated: dateCreated
+              taxAmountInCents: 4
+              amountInDollarsAndCents: 7.4577446
+              id: 1
+              URL: URL
+            name: name
+            amountInDollarsAndCents: 1.0246457
+            id: 7
+          status: status
+        deleted: true
+        children:
+        - firstName: firstName
+          lastName: lastName
+          lastUpdatedTimestamp: 5
+          deleted: true
+          gender: gender
+          dob: dob
+          fullName: fullName
+          id: 1
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          URL: URL
+          timestamp: 5
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+        - firstName: firstName
+          lastName: lastName
+          lastUpdatedTimestamp: 5
+          deleted: true
+          gender: gender
+          dob: dob
+          fullName: fullName
+          id: 1
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          URL: URL
+          timestamp: 5
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+        isPublic: true
+        coverTheme:
+          name: name
+          label: label
+          url: url
+        id: 0
+        user:
+          lastName: lastName
+          timeZoneOffset: 2
+          emailFrequencyOnNewComment:
+            name: name
+            label: label
+          lastEmailOpenTimestamp: 1
+          emailFrequencyOnNewEmotion:
+            name: name
+            label: label
+          emailMarketingOptOut: true
+          URL: URL
+          emailOptOut: true
+          emailAddress: emailAddress
+          referralUrl: referralUrl
+          referralCode: referralCode
+          id: 6
+          publicUsername: publicUsername
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+          lastLoggedInTimestamp: 5
+          timestamp: 7
+          lastUpdatedTimestamp: 5
+          dateStyle:
+            format: format
+            name: name
+            label: label
+          externalProviderRef: externalProviderRef
+          emailWeeklySummary: true
+          facebookId: facebookId
+          fullName: fullName
+          timeZone:
+            name: name
+            label: label
+          firstName: firstName
+          deleted: true
+          instagramUsername: instagramUsername
+          instagramId: instagramId
+          hasMemoriesAccess: true
+          measurementSystem:
+            name: name
+            label: label
+          firstLoggedInTimestamp: 0
+          username: username
+        timestamp: 6
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        title:
+          type: string
+        timestamp:
+          format: int64
+          type: integer
+        disableComments:
+          type: boolean
+        disableAnonymousComments:
+          type: boolean
+        disableDownloads:
+          type: boolean
+        classification:
+          type: string
+        isPublic:
+          type: boolean
+        deleted:
+          type: boolean
+        user:
+          $ref: '#/components/schemas/User'
+        children:
+          items:
+            $ref: '#/components/schemas/Child'
+          type: array
+        pets:
+          items:
+            $ref: '#/components/schemas/Pet'
+          type: array
+        coverTheme:
+          $ref: '#/components/schemas/CoverTheme'
+        features:
+          items:
+            $ref: '#/components/schemas/Features'
+          type: array
+        currentSubscription:
+          $ref: '#/components/schemas/Subscription'
+        latestSubscription:
+          $ref: '#/components/schemas/Subscription'
+        shouldShowAds:
+          type: boolean
+      type: object
+    Journals:
+      example:
+        journals:
+        - disableAnonymousComments: true
+          pets:
+          - birthday: birthday
+            deleted: true
+            size: size
+            species: species
+            sex: sex
+            name: name
+            developmentOptOut: true
+            id: 2
+            adoptionDate: adoptionDate
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            breed: breed
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          - birthday: birthday
+            deleted: true
+            size: size
+            species: species
+            sex: sex
+            name: name
+            developmentOptOut: true
+            id: 2
+            adoptionDate: adoptionDate
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            breed: breed
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          disableDownloads: true
+          shouldShowAds: true
+          title: title
+          classification: classification
+          URL: URL
+          disableComments: true
+          latestSubscription:
+            expiryDate: 2
+            expiryDateDisplay: expiryDateDisplay
+            renewal: renewal
+            journalId: 8
+            id: 9
+            startDateDisplay: startDateDisplay
+            paymentTransaction:
+              amountInCents: 6
+              last4: last4
+              productId: productId
+              discount: 3
+              description: description
+              paymentGatewayType: paymentGatewayType
+              transactionDate: transactionDate
+              userId: 6
+              URL: URL
+              lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              paymentId: paymentId
+              amountDisplay: amountDisplay
+              id: 9
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              receiptNumber: receiptNumber
+            subscriptionProductId: 4
+            URL: URL
+            startDate: 3
+            subscriptionProduct:
+              amountInCents: 1
+              codePlayStore: codePlayStore
+              code: code
+              description: description
+              productStatus: productStatus
+              cycle:
+                reminderInDays: 9.369310271410669
+                displayName: displayName
+                calendarInt: 9.965781217890562
+                gracePeriodInDays: 6.683562403749608
+              URL: URL
+              lastUpdated: lastUpdated
+              features:
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              dateCreated: dateCreated
+              codeAppStore: codeAppStore
+              tier: tier
+              cycleDuration: 5
+              price:
+                amountInCents: 6
+                taxAsPercentage: 1.1730742
+                localeTag: localeTag
+                dateCreated: dateCreated
+                taxAmountInCents: 4
+                amountInDollarsAndCents: 7.4577446
+                id: 1
+                URL: URL
+              name: name
+              amountInDollarsAndCents: 1.0246457
+              id: 7
+            status: status
+          features:
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          currentSubscription:
+            expiryDate: 2
+            expiryDateDisplay: expiryDateDisplay
+            renewal: renewal
+            journalId: 8
+            id: 9
+            startDateDisplay: startDateDisplay
+            paymentTransaction:
+              amountInCents: 6
+              last4: last4
+              productId: productId
+              discount: 3
+              description: description
+              paymentGatewayType: paymentGatewayType
+              transactionDate: transactionDate
+              userId: 6
+              URL: URL
+              lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              paymentId: paymentId
+              amountDisplay: amountDisplay
+              id: 9
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              receiptNumber: receiptNumber
+            subscriptionProductId: 4
+            URL: URL
+            startDate: 3
+            subscriptionProduct:
+              amountInCents: 1
+              codePlayStore: codePlayStore
+              code: code
+              description: description
+              productStatus: productStatus
+              cycle:
+                reminderInDays: 9.369310271410669
+                displayName: displayName
+                calendarInt: 9.965781217890562
+                gracePeriodInDays: 6.683562403749608
+              URL: URL
+              lastUpdated: lastUpdated
+              features:
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              dateCreated: dateCreated
+              codeAppStore: codeAppStore
+              tier: tier
+              cycleDuration: 5
+              price:
+                amountInCents: 6
+                taxAsPercentage: 1.1730742
+                localeTag: localeTag
+                dateCreated: dateCreated
+                taxAmountInCents: 4
+                amountInDollarsAndCents: 7.4577446
+                id: 1
+                URL: URL
+              name: name
+              amountInDollarsAndCents: 1.0246457
+              id: 7
+            status: status
+          deleted: true
+          children:
+          - firstName: firstName
+            lastName: lastName
+            lastUpdatedTimestamp: 5
+            deleted: true
+            gender: gender
+            dob: dob
+            fullName: fullName
+            id: 1
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            URL: URL
+            timestamp: 5
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          - firstName: firstName
+            lastName: lastName
+            lastUpdatedTimestamp: 5
+            deleted: true
+            gender: gender
+            dob: dob
+            fullName: fullName
+            id: 1
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            URL: URL
+            timestamp: 5
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          isPublic: true
+          coverTheme:
+            name: name
+            label: label
+            url: url
+          id: 0
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          timestamp: 6
+        - disableAnonymousComments: true
+          pets:
+          - birthday: birthday
+            deleted: true
+            size: size
+            species: species
+            sex: sex
+            name: name
+            developmentOptOut: true
+            id: 2
+            adoptionDate: adoptionDate
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            breed: breed
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          - birthday: birthday
+            deleted: true
+            size: size
+            species: species
+            sex: sex
+            name: name
+            developmentOptOut: true
+            id: 2
+            adoptionDate: adoptionDate
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            breed: breed
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          disableDownloads: true
+          shouldShowAds: true
+          title: title
+          classification: classification
+          URL: URL
+          disableComments: true
+          latestSubscription:
+            expiryDate: 2
+            expiryDateDisplay: expiryDateDisplay
+            renewal: renewal
+            journalId: 8
+            id: 9
+            startDateDisplay: startDateDisplay
+            paymentTransaction:
+              amountInCents: 6
+              last4: last4
+              productId: productId
+              discount: 3
+              description: description
+              paymentGatewayType: paymentGatewayType
+              transactionDate: transactionDate
+              userId: 6
+              URL: URL
+              lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              paymentId: paymentId
+              amountDisplay: amountDisplay
+              id: 9
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              receiptNumber: receiptNumber
+            subscriptionProductId: 4
+            URL: URL
+            startDate: 3
+            subscriptionProduct:
+              amountInCents: 1
+              codePlayStore: codePlayStore
+              code: code
+              description: description
+              productStatus: productStatus
+              cycle:
+                reminderInDays: 9.369310271410669
+                displayName: displayName
+                calendarInt: 9.965781217890562
+                gracePeriodInDays: 6.683562403749608
+              URL: URL
+              lastUpdated: lastUpdated
+              features:
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              dateCreated: dateCreated
+              codeAppStore: codeAppStore
+              tier: tier
+              cycleDuration: 5
+              price:
+                amountInCents: 6
+                taxAsPercentage: 1.1730742
+                localeTag: localeTag
+                dateCreated: dateCreated
+                taxAmountInCents: 4
+                amountInDollarsAndCents: 7.4577446
+                id: 1
+                URL: URL
+              name: name
+              amountInDollarsAndCents: 1.0246457
+              id: 7
+            status: status
+          features:
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          currentSubscription:
+            expiryDate: 2
+            expiryDateDisplay: expiryDateDisplay
+            renewal: renewal
+            journalId: 8
+            id: 9
+            startDateDisplay: startDateDisplay
+            paymentTransaction:
+              amountInCents: 6
+              last4: last4
+              productId: productId
+              discount: 3
+              description: description
+              paymentGatewayType: paymentGatewayType
+              transactionDate: transactionDate
+              userId: 6
+              URL: URL
+              lastUpdated: lastUpdated
+              dateCreated: dateCreated
+              paymentId: paymentId
+              amountDisplay: amountDisplay
+              id: 9
+              user:
+                lastName: lastName
+                timeZoneOffset: 2
+                emailFrequencyOnNewComment:
+                  name: name
+                  label: label
+                lastEmailOpenTimestamp: 1
+                emailFrequencyOnNewEmotion:
+                  name: name
+                  label: label
+                emailMarketingOptOut: true
+                URL: URL
+                emailOptOut: true
+                emailAddress: emailAddress
+                referralUrl: referralUrl
+                referralCode: referralCode
+                id: 6
+                publicUsername: publicUsername
+                avatars:
+                  s: s
+                  l: l
+                  m: m
+                  o: o
+                lastLoggedInTimestamp: 5
+                timestamp: 7
+                lastUpdatedTimestamp: 5
+                dateStyle:
+                  format: format
+                  name: name
+                  label: label
+                externalProviderRef: externalProviderRef
+                emailWeeklySummary: true
+                facebookId: facebookId
+                fullName: fullName
+                timeZone:
+                  name: name
+                  label: label
+                firstName: firstName
+                deleted: true
+                instagramUsername: instagramUsername
+                instagramId: instagramId
+                hasMemoriesAccess: true
+                measurementSystem:
+                  name: name
+                  label: label
+                firstLoggedInTimestamp: 0
+                username: username
+              receiptNumber: receiptNumber
+            subscriptionProductId: 4
+            URL: URL
+            startDate: 3
+            subscriptionProduct:
+              amountInCents: 1
+              codePlayStore: codePlayStore
+              code: code
+              description: description
+              productStatus: productStatus
+              cycle:
+                reminderInDays: 9.369310271410669
+                displayName: displayName
+                calendarInt: 9.965781217890562
+                gracePeriodInDays: 6.683562403749608
+              URL: URL
+              lastUpdated: lastUpdated
+              features:
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              - lastUpdated: lastUpdated
+                dateCreated: dateCreated
+                name: name
+                description: description
+                id: 7.061401241503109
+                scopeMap: scopeMap
+                URL: URL
+              dateCreated: dateCreated
+              codeAppStore: codeAppStore
+              tier: tier
+              cycleDuration: 5
+              price:
+                amountInCents: 6
+                taxAsPercentage: 1.1730742
+                localeTag: localeTag
+                dateCreated: dateCreated
+                taxAmountInCents: 4
+                amountInDollarsAndCents: 7.4577446
+                id: 1
+                URL: URL
+              name: name
+              amountInDollarsAndCents: 1.0246457
+              id: 7
+            status: status
+          deleted: true
+          children:
+          - firstName: firstName
+            lastName: lastName
+            lastUpdatedTimestamp: 5
+            deleted: true
+            gender: gender
+            dob: dob
+            fullName: fullName
+            id: 1
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            URL: URL
+            timestamp: 5
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          - firstName: firstName
+            lastName: lastName
+            lastUpdatedTimestamp: 5
+            deleted: true
+            gender: gender
+            dob: dob
+            fullName: fullName
+            id: 1
+            user:
+              lastName: lastName
+              timeZoneOffset: 2
+              emailFrequencyOnNewComment:
+                name: name
+                label: label
+              lastEmailOpenTimestamp: 1
+              emailFrequencyOnNewEmotion:
+                name: name
+                label: label
+              emailMarketingOptOut: true
+              URL: URL
+              emailOptOut: true
+              emailAddress: emailAddress
+              referralUrl: referralUrl
+              referralCode: referralCode
+              id: 6
+              publicUsername: publicUsername
+              avatars:
+                s: s
+                l: l
+                m: m
+                o: o
+              lastLoggedInTimestamp: 5
+              timestamp: 7
+              lastUpdatedTimestamp: 5
+              dateStyle:
+                format: format
+                name: name
+                label: label
+              externalProviderRef: externalProviderRef
+              emailWeeklySummary: true
+              facebookId: facebookId
+              fullName: fullName
+              timeZone:
+                name: name
+                label: label
+              firstName: firstName
+              deleted: true
+              instagramUsername: instagramUsername
+              instagramId: instagramId
+              hasMemoriesAccess: true
+              measurementSystem:
+                name: name
+                label: label
+              firstLoggedInTimestamp: 0
+              username: username
+            URL: URL
+            timestamp: 5
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+          isPublic: true
+          coverTheme:
+            name: name
+            label: label
+            url: url
+          id: 0
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          timestamp: 6
+        status: status
+      properties:
+        journals:
+          items:
+            $ref: '#/components/schemas/Journal'
+          type: array
+        status:
+          type: string
+      type: object
+    MeasurementSystem:
+      example:
+        name: name
+        label: label
+      properties:
+        label:
+          type: string
+        name:
+          type: string
+      type: object
+    PaymentTransaction:
+      example:
+        amountInCents: 6
+        last4: last4
+        productId: productId
+        discount: 3
+        description: description
+        paymentGatewayType: paymentGatewayType
+        transactionDate: transactionDate
+        userId: 6
+        URL: URL
+        lastUpdated: lastUpdated
+        dateCreated: dateCreated
+        paymentId: paymentId
+        amountDisplay: amountDisplay
+        id: 9
+        user:
+          lastName: lastName
+          timeZoneOffset: 2
+          emailFrequencyOnNewComment:
+            name: name
+            label: label
+          lastEmailOpenTimestamp: 1
+          emailFrequencyOnNewEmotion:
+            name: name
+            label: label
+          emailMarketingOptOut: true
+          URL: URL
+          emailOptOut: true
+          emailAddress: emailAddress
+          referralUrl: referralUrl
+          referralCode: referralCode
+          id: 6
+          publicUsername: publicUsername
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+          lastLoggedInTimestamp: 5
+          timestamp: 7
+          lastUpdatedTimestamp: 5
+          dateStyle:
+            format: format
+            name: name
+            label: label
+          externalProviderRef: externalProviderRef
+          emailWeeklySummary: true
+          facebookId: facebookId
+          fullName: fullName
+          timeZone:
+            name: name
+            label: label
+          firstName: firstName
+          deleted: true
+          instagramUsername: instagramUsername
+          instagramId: instagramId
+          hasMemoriesAccess: true
+          measurementSystem:
+            name: name
+            label: label
+          firstLoggedInTimestamp: 0
+          username: username
+        receiptNumber: receiptNumber
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        dateCreated:
+          type: string
+        lastUpdated:
+          type: string
+        transactionDate:
+          type: string
+        amountInCents:
+          format: int64
+          type: integer
+        amountDisplay:
+          type: string
+        discount:
+          format: int64
+          type: integer
+        userId:
+          format: int64
+          type: integer
+        productId:
+          type: string
+        paymentId:
+          type: string
+        receiptNumber:
+          type: string
+        description:
+          type: string
+        paymentGatewayType:
+          type: string
+        last4:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+      type: object
+    Pet:
+      example:
+        birthday: birthday
+        deleted: true
+        size: size
+        species: species
+        sex: sex
+        name: name
+        developmentOptOut: true
+        id: 2
+        adoptionDate: adoptionDate
+        user:
+          lastName: lastName
+          timeZoneOffset: 2
+          emailFrequencyOnNewComment:
+            name: name
+            label: label
+          lastEmailOpenTimestamp: 1
+          emailFrequencyOnNewEmotion:
+            name: name
+            label: label
+          emailMarketingOptOut: true
+          URL: URL
+          emailOptOut: true
+          emailAddress: emailAddress
+          referralUrl: referralUrl
+          referralCode: referralCode
+          id: 6
+          publicUsername: publicUsername
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+          lastLoggedInTimestamp: 5
+          timestamp: 7
+          lastUpdatedTimestamp: 5
+          dateStyle:
+            format: format
+            name: name
+            label: label
+          externalProviderRef: externalProviderRef
+          emailWeeklySummary: true
+          facebookId: facebookId
+          fullName: fullName
+          timeZone:
+            name: name
+            label: label
+          firstName: firstName
+          deleted: true
+          instagramUsername: instagramUsername
+          instagramId: instagramId
+          hasMemoriesAccess: true
+          measurementSystem:
+            name: name
+            label: label
+          firstLoggedInTimestamp: 0
+          username: username
+        breed: breed
+        avatars:
+          s: s
+          l: l
+          m: m
+          o: o
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        species:
+          type: string
+        breed:
+          type: string
+        size:
+          type: string
+        sex:
+          type: string
+        deleted:
+          type: boolean
+        developmentOptOut:
+          type: boolean
+        birthday:
+          type: string
+        adoptionDate:
+          type: string
+        avatars:
+          $ref: '#/components/schemas/Avatars'
+        user:
+          $ref: '#/components/schemas/User'
+      type: object
+    Price:
+      example:
+        amountInCents: 6
+        taxAsPercentage: 1.1730742
+        localeTag: localeTag
+        dateCreated: dateCreated
+        taxAmountInCents: 4
+        amountInDollarsAndCents: 7.4577446
+        id: 1
+        URL: URL
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        dateCreated:
+          type: string
+        amountInCents:
+          format: int64
+          type: integer
+        amountInDollarsAndCents:
+          format: float
+          type: number
+        taxAsPercentage:
+          format: float
+          type: number
+        taxAmountInCents:
+          format: int64
+          type: integer
+        localeTag:
+          type: string
+      type: object
+    Relationship:
+      example:
+        name: name
+        label: label
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+      type: object
+    SubscriptionProduct:
+      example:
+        amountInCents: 1
+        codePlayStore: codePlayStore
+        code: code
+        description: description
+        productStatus: productStatus
+        cycle:
+          reminderInDays: 9.369310271410669
+          displayName: displayName
+          calendarInt: 9.965781217890562
+          gracePeriodInDays: 6.683562403749608
+        URL: URL
+        lastUpdated: lastUpdated
+        features:
+        - lastUpdated: lastUpdated
+          dateCreated: dateCreated
+          name: name
+          description: description
+          id: 7.061401241503109
+          scopeMap: scopeMap
+          URL: URL
+        - lastUpdated: lastUpdated
+          dateCreated: dateCreated
+          name: name
+          description: description
+          id: 7.061401241503109
+          scopeMap: scopeMap
+          URL: URL
+        dateCreated: dateCreated
+        codeAppStore: codeAppStore
+        tier: tier
+        cycleDuration: 5
+        price:
+          amountInCents: 6
+          taxAsPercentage: 1.1730742
+          localeTag: localeTag
+          dateCreated: dateCreated
+          taxAmountInCents: 4
+          amountInDollarsAndCents: 7.4577446
+          id: 1
+          URL: URL
+        name: name
+        amountInDollarsAndCents: 1.0246457
+        id: 7
+      properties:
+        id:
+          format: int64
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        dateCreated:
+          type: string
+        lastUpdated:
+          type: string
+        productStatus:
+          type: string
+        codeAppStore:
+          type: string
+        codePlayStore:
+          type: string
+        amountInCents:
+          format: int64
+          type: integer
+        amountInDollarsAndCents:
+          format: float
+          type: number
+        price:
+          $ref: '#/components/schemas/Price'
+        URL:
+          type: string
+        tier:
+          type: string
+        cycleDuration:
+          format: int64
+          type: integer
+        cycle:
+          $ref: '#/components/schemas/Cycle'
+        features:
+          items:
+            $ref: '#/components/schemas/Features'
+          type: array
+      type: object
+    Subscription:
+      example:
+        expiryDate: 2
+        expiryDateDisplay: expiryDateDisplay
+        renewal: renewal
+        journalId: 8
+        id: 9
+        startDateDisplay: startDateDisplay
+        paymentTransaction:
+          amountInCents: 6
+          last4: last4
+          productId: productId
+          discount: 3
+          description: description
+          paymentGatewayType: paymentGatewayType
+          transactionDate: transactionDate
+          userId: 6
+          URL: URL
+          lastUpdated: lastUpdated
+          dateCreated: dateCreated
+          paymentId: paymentId
+          amountDisplay: amountDisplay
+          id: 9
+          user:
+            lastName: lastName
+            timeZoneOffset: 2
+            emailFrequencyOnNewComment:
+              name: name
+              label: label
+            lastEmailOpenTimestamp: 1
+            emailFrequencyOnNewEmotion:
+              name: name
+              label: label
+            emailMarketingOptOut: true
+            URL: URL
+            emailOptOut: true
+            emailAddress: emailAddress
+            referralUrl: referralUrl
+            referralCode: referralCode
+            id: 6
+            publicUsername: publicUsername
+            avatars:
+              s: s
+              l: l
+              m: m
+              o: o
+            lastLoggedInTimestamp: 5
+            timestamp: 7
+            lastUpdatedTimestamp: 5
+            dateStyle:
+              format: format
+              name: name
+              label: label
+            externalProviderRef: externalProviderRef
+            emailWeeklySummary: true
+            facebookId: facebookId
+            fullName: fullName
+            timeZone:
+              name: name
+              label: label
+            firstName: firstName
+            deleted: true
+            instagramUsername: instagramUsername
+            instagramId: instagramId
+            hasMemoriesAccess: true
+            measurementSystem:
+              name: name
+              label: label
+            firstLoggedInTimestamp: 0
+            username: username
+          receiptNumber: receiptNumber
+        subscriptionProductId: 4
+        URL: URL
+        startDate: 3
+        subscriptionProduct:
+          amountInCents: 1
+          codePlayStore: codePlayStore
+          code: code
+          description: description
+          productStatus: productStatus
+          cycle:
+            reminderInDays: 9.369310271410669
+            displayName: displayName
+            calendarInt: 9.965781217890562
+            gracePeriodInDays: 6.683562403749608
+          URL: URL
+          lastUpdated: lastUpdated
+          features:
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          - lastUpdated: lastUpdated
+            dateCreated: dateCreated
+            name: name
+            description: description
+            id: 7.061401241503109
+            scopeMap: scopeMap
+            URL: URL
+          dateCreated: dateCreated
+          codeAppStore: codeAppStore
+          tier: tier
+          cycleDuration: 5
+          price:
+            amountInCents: 6
+            taxAsPercentage: 1.1730742
+            localeTag: localeTag
+            dateCreated: dateCreated
+            taxAmountInCents: 4
+            amountInDollarsAndCents: 7.4577446
+            id: 1
+            URL: URL
+          name: name
+          amountInDollarsAndCents: 1.0246457
+          id: 7
+        status: status
+      properties:
+        URL:
+          type: string
+        id:
+          format: int64
+          type: integer
+        startDate:
+          format: int64
+          type: integer
+        expiryDate:
+          format: int64
+          type: integer
+        startDateDisplay:
+          type: string
+        expiryDateDisplay:
+          type: string
+        status:
+          type: string
+        renewal:
+          type: string
+        subscriptionProductId:
+          format: int64
+          type: integer
+        subscriptionProduct:
+          $ref: '#/components/schemas/SubscriptionProduct'
+        journalId:
+          format: int64
+          type: integer
+        paymentTransaction:
+          $ref: '#/components/schemas/PaymentTransaction'
+      type: object
+    TimeZone:
+      example:
+        name: name
+        label: label
+      properties:
+        label:
+          type: string
+        name:
+          type: string
+      type: object
+    User:
+      example:
+        lastName: lastName
+        timeZoneOffset: 2
+        emailFrequencyOnNewComment:
+          name: name
+          label: label
+        lastEmailOpenTimestamp: 1
+        emailFrequencyOnNewEmotion:
+          name: name
+          label: label
+        emailMarketingOptOut: true
+        URL: URL
+        emailOptOut: true
+        emailAddress: emailAddress
+        referralUrl: referralUrl
+        referralCode: referralCode
+        id: 6
+        publicUsername: publicUsername
+        avatars:
+          s: s
+          l: l
+          m: m
+          o: o
+        lastLoggedInTimestamp: 5
+        timestamp: 7
+        lastUpdatedTimestamp: 5
+        dateStyle:
+          format: format
+          name: name
+          label: label
+        externalProviderRef: externalProviderRef
+        emailWeeklySummary: true
+        facebookId: facebookId
+        fullName: fullName
+        timeZone:
+          name: name
+          label: label
+        firstName: firstName
+        deleted: true
+        instagramUsername: instagramUsername
+        instagramId: instagramId
+        hasMemoriesAccess: true
+        measurementSystem:
+          name: name
+          label: label
+        firstLoggedInTimestamp: 0
+        username: username
+      properties:
+        URL:
+          type: string
+        avatars:
+          $ref: '#/components/schemas/Avatars'
+        dateStyle:
+          $ref: '#/components/schemas/DateStyle'
+        deleted:
+          type: boolean
+        emailAddress:
+          type: string
+        emailFrequencyOnNewComment:
+          $ref: '#/components/schemas/EmailFrequency'
+        emailFrequencyOnNewEmotion:
+          $ref: '#/components/schemas/EmailFrequency'
+        emailMarketingOptOut:
+          type: boolean
+        emailOptOut:
+          type: boolean
+        emailWeeklySummary:
+          type: boolean
+        externalProviderRef:
+          type: string
+        facebookId:
+          type: string
+        firstLoggedInTimestamp:
+          format: int64
+          type: integer
+        firstName:
+          type: string
+        fullName:
+          type: string
+        hasMemoriesAccess:
+          type: boolean
+        id:
+          format: int64
+          type: integer
+        instagramId:
+          type: string
+        instagramUsername:
+          type: string
+        lastEmailOpenTimestamp:
+          format: int64
+          type: integer
+        lastLoggedInTimestamp:
+          format: int64
+          type: integer
+        lastName:
+          type: string
+        lastUpdatedTimestamp:
+          format: int64
+          type: integer
+        measurementSystem:
+          $ref: '#/components/schemas/MeasurementSystem'
+        publicUsername:
+          type: string
+        referralCode:
+          type: string
+        referralUrl:
+          type: string
+        timeZone:
+          $ref: '#/components/schemas/TimeZone'
+        timeZoneOffset:
+          format: int64
+          type: integer
+        timestamp:
+          format: int64
+          type: integer
+        username:
+          type: string
+      type: object
+  securitySchemes:
+    Authorization:
+      in: header
+      name: authorization
+      type: apiKey

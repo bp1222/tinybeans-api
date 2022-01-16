@@ -1,0 +1,46 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: integer
+    format: int64
+  deleted:
+    type: boolean
+  privateMode:
+    type: boolean
+  uuid:
+    type: string
+  clientRef:
+    type: string
+  type:
+    type: string
+  year:
+    type: integer
+    format: int64
+  month:
+    type: integer
+    format: int64
+  day:
+    type: integer
+    format: int64
+  caption:
+    type: string
+  timestamp:
+    type: integer
+    format: int64
+  lastUpdatedTimestamp:
+    type: integer
+    format: int64
+  blobs:
+    $ref: '../schema/blobs.yaml'
+  journalId:
+    type: integer
+    format: int64
+  userId:
+    type: integer
+    format: int64
+  emotions:
+    type: array
+    items:
+      $ref: '../schema/emotion.yaml'

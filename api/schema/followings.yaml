@@ -1,0 +1,8 @@
+type: object
+properties:
+  status:
+    type: string
+  followings:
+    type: array
+    items:
+      $ref: '../schema/following.yaml'

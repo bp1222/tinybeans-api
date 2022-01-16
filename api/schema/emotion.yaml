@@ -1,0 +1,23 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: integer
+    format: int64
+  type:
+    $ref: '../schema/emotion_type.yaml'
+  timestamp:
+    type: integer
+    format: int64
+  lastUpdatedTimestamp:
+    type: integer
+    format: int64
+  deleted:
+    type: boolean
+  entryId:
+    type: integer
+    format: int64
+  userId:
+    type: integer
+    format: int64

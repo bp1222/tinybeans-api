@@ -1,0 +1,10 @@
+type: object
+properties:
+  l:
+    type: string
+  m:
+    type: string
+  o:
+    type: string
+  s:
+    type: string

@@ -1,0 +1,54 @@
+AuthenticateRequst:
+  $ref: './authenticate_request.yaml'
+AuthenticateResponse:
+  $ref: './authenticate_response.yaml'
+Avatars:
+  $ref: './avatars.yaml'
+Blob:
+  $ref: './blobs.yaml'
+Child:
+  $ref: './child.yaml'
+CoverTheme:
+  $ref: './cover_theme.yaml'
+Cycle:
+  $ref: './cycle.yaml'
+DateStyle:
+  $ref: './date_style.yaml'
+EmailFrequency:
+  $ref: './email_frequency.yaml'
+EmotionType:
+  $ref: './emotion_type.yaml'
+Emotion:
+  $ref: './emotion.yaml'
+Entries:
+  $ref: './entries.yaml'
+Entry:
+  $ref: './entry.yaml'
+Features:
+  $ref: './features.yaml'
+Following:
+  $ref: './following.yaml'
+Followings:
+  $ref: './followings.yaml'
+Journal:
+  $ref: './journal.yaml'
+Journals:
+  $ref: './journals.yaml'
+MeasurementSystem:
+  $ref: './measurement_system.yaml'
+PaymentTransaction:
+  $ref: './payment_transaction.yaml'
+Pet:
+  $ref: './pet.yaml'
+Price:
+  $ref: './price.yaml'
+Relationship:
+  $ref: './relationship.yaml'
+SubscriptionProduct:
+  $ref: './subscription_product.yaml'
+Subscription:
+  $ref: './subscription.yaml'
+TimeZone:
+  $ref: './time_zone.yaml'
+User:
+  $ref: './user.yaml'

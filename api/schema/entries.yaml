@@ -1,0 +1,11 @@
+type: object
+properties:
+  status:
+    type: string
+  numEntriesRemaining:
+    type: integer
+    format: int64
+  entries: 
+    type: array
+    items:
+      $ref: '../schema/entry.yaml'

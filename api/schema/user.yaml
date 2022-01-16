@@ -1,0 +1,71 @@
+type: object
+properties:
+  URL:
+    type: string
+  avatars:
+    $ref: '../schema/avatars.yaml'
+  dateStyle:
+    $ref: '../schema/date_style.yaml'
+  deleted:
+    type: boolean
+  emailAddress:
+    type: string
+  emailFrequencyOnNewComment:
+    $ref: '../schema/email_frequency.yaml'
+  emailFrequencyOnNewEmotion:
+    $ref: '../schema/email_frequency.yaml'
+  emailMarketingOptOut:
+    type: boolean
+  emailOptOut:
+    type: boolean
+  emailWeeklySummary:
+    type: boolean
+  externalProviderRef:
+    type: string
+  facebookId:
+    type: string
+  firstLoggedInTimestamp:
+    type: integer
+    format: int64
+  firstName:
+    type: string
+  fullName:
+    type: string
+  hasMemoriesAccess:
+    type: boolean
+  id:
+    type: integer 
+    format: int64
+  instagramId:
+    type: string
+  instagramUsername:
+    type: string
+  lastEmailOpenTimestamp:
+    type: integer 
+    format: int64
+  lastLoggedInTimestamp:
+    type: integer 
+    format: int64
+  lastName:
+    type: string
+  lastUpdatedTimestamp:
+    type: integer 
+    format: int64
+  measurementSystem:
+    $ref: '../schema/measurement_system.yaml'
+  publicUsername:
+    type: string
+  referralCode:
+    type: string
+  referralUrl:
+    type: string
+  timeZone:
+    $ref: '../schema/time_zone.yaml'
+  timeZoneOffset:
+    type: integer 
+    format: int64
+  timestamp:
+    type: integer 
+    format: int64
+  username:
+    type: string

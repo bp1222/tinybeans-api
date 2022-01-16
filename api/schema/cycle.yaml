@@ -1,0 +1,13 @@
+type: object
+properties:
+  displayName:
+    type: string
+  calendarInt:
+    type: number
+    format: int64
+  reminderInDays:
+    type: number
+    format: int64
+  gracePeriodInDays:
+    type: number
+    format: int64

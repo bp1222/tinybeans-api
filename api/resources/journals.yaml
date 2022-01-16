@@ -1,0 +1,12 @@
+get:
+  tags:
+    - journals
+  summary: Tinybeans Journals
+  operationId: journals
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../schema/journals.yaml'

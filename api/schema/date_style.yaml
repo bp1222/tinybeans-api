@@ -1,0 +1,8 @@
+type: object
+properties:
+  format:
+    type: string
+  label:
+    type: string
+  name:
+    type: string

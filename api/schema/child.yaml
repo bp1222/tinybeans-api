@@ -1,0 +1,29 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: integer
+    format: int64
+  firstName:
+    type: string
+  lastName:
+    type: string
+  fullName:
+    type: string
+  gender:
+    type: string
+  dob:
+    type: string
+  timestamp:
+    type: integer
+    format: int64
+  lastUpdatedTimestamp:
+    type: integer
+    format: int64
+  avatars:
+    $ref: '../schema/avatars.yaml'
+  deleted:
+    type: boolean
+  user:
+    $ref: '../schema/user.yaml'

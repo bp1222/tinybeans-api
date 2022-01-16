@@ -1,0 +1,46 @@
+type: object
+properties:
+  URL:
+    type: string
+  id:
+    type: integer
+    format: int64
+  title:
+    type: string
+  timestamp:
+    type: integer
+    format: int64
+  disableComments:
+    type: boolean
+  disableAnonymousComments:
+    type: boolean
+  disableDownloads:
+    type: boolean
+  classification:
+    type: string
+  isPublic:
+    type: boolean
+  deleted:
+    type: boolean
+  user:
+    $ref: '../schema/user.yaml'
+  children:
+    type: array
+    items:
+      $ref: '../schema/child.yaml'
+  pets:
+    type: array
+    items:
+      $ref: '../schema/pet.yaml'
+  coverTheme:
+    $ref: '../schema/cover_theme.yaml'
+  features: 
+    type: array
+    items:
+      $ref: '../schema/features.yaml'
+  currentSubscription:
+    $ref: '../schema/subscription.yaml'
+  latestSubscription: 
+    $ref: '../schema/subscription.yaml'
+  shouldShowAds:
+    type: boolean

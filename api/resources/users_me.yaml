@@ -1,0 +1,12 @@
+post:
+  tags:
+    - auth
+  summary: Check to Tinybeans
+  operationId: users_me 
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '../schema/users_me.yaml'

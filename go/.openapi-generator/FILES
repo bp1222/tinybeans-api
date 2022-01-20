@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -37,6 +38,7 @@ docs/Subscription.md
 docs/SubscriptionProduct.md
 docs/TimeZone.md
 docs/User.md
+docs/UsersMe.md
 git_push.sh
 go.mod
 go.sum
@@ -67,5 +69,6 @@ model_subscription.go
 model_subscription_product.go
 model_time_zone.go
 model_user.go
+model_users_me.go
 response.go
 utils.go

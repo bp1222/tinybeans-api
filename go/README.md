@@ -79,6 +79,7 @@ All URIs are relative to *https://tinybeans.com/api/1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthApi* | [**Login**](docs/AuthApi.md#login) | **Post** /authenticate | Login to Tinybeans
+*AuthApi* | [**UsersMe**](docs/AuthApi.md#usersme) | **Post** /users/me | Check to Tinybeans
 *FollowingsApi* | [**Followings**](docs/FollowingsApi.md#followings) | **Get** /followings | Tinybeans Followings
 *JournalsApi* | [**JournalEntries**](docs/JournalsApi.md#journalentries) | **Get** /journals/{journal}/entries | Tinybeans Journal Entries
 *JournalsApi* | [**Journals**](docs/JournalsApi.md#journals) | **Get** /journals | Tinybeans Journals
@@ -113,6 +114,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionProduct](docs/SubscriptionProduct.md)
  - [TimeZone](docs/TimeZone.md)
  - [User](docs/User.md)
+ - [UsersMe](docs/UsersMe.md)
 
 
 ## Documentation For Authorization

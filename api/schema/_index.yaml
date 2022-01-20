@@ -52,3 +52,5 @@ TimeZone:
   $ref: './time_zone.yaml'
 User:
   $ref: './user.yaml'
+UsersMe:
+  $ref: './users_me.yaml'

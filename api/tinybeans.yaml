@@ -26,6 +26,8 @@ paths:
     $ref: './resources/journal_entries.yaml'
   /followings:
     $ref: './resources/followings.yaml'
+  /users/me:
+    $ref: './resources/users_me.yaml'
 
 servers:
   - url: https://tinybeans.com/api/1

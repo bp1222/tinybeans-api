@@ -1,0 +1,6 @@
+type: object
+properties:
+  status:
+    type: string
+  user:
+    $ref: '../schema/user.yaml'

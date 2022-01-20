@@ -125,6 +125,19 @@ paths:
       summary: Tinybeans Followings
       tags:
       - followings
+  /users/me:
+    post:
+      operationId: users_me
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersMe'
+          description: Success
+      summary: Check to Tinybeans
+      tags:
+      - auth
 components:
   schemas:
     AuthenticateRequst:
@@ -4967,6 +4980,62 @@ components:
           type: integer
         username:
           type: string
+      type: object
+    UsersMe:
+      example:
+        user:
+          lastName: lastName
+          timeZoneOffset: 2
+          emailFrequencyOnNewComment:
+            name: name
+            label: label
+          lastEmailOpenTimestamp: 1
+          emailFrequencyOnNewEmotion:
+            name: name
+            label: label
+          emailMarketingOptOut: true
+          URL: URL
+          emailOptOut: true
+          emailAddress: emailAddress
+          referralUrl: referralUrl
+          referralCode: referralCode
+          id: 6
+          publicUsername: publicUsername
+          avatars:
+            s: s
+            l: l
+            m: m
+            o: o
+          lastLoggedInTimestamp: 5
+          timestamp: 7
+          lastUpdatedTimestamp: 5
+          dateStyle:
+            format: format
+            name: name
+            label: label
+          externalProviderRef: externalProviderRef
+          emailWeeklySummary: true
+          facebookId: facebookId
+          fullName: fullName
+          timeZone:
+            name: name
+            label: label
+          firstName: firstName
+          deleted: true
+          instagramUsername: instagramUsername
+          instagramId: instagramId
+          hasMemoriesAccess: true
+          measurementSystem:
+            name: name
+            label: label
+          firstLoggedInTimestamp: 0
+          username: username
+        status: status
+      properties:
+        status:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
       type: object
   securitySchemes:
     Authorization:

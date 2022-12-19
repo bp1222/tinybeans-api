@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   description: Reverse Engineered API for Tinybeans.  This is horribly incomplete, and not supported
-  version: 0.0.1
+  version: 0.1.1
   title: Tinybeans API - Unofficial
   contact:
     email: dave@mudsite.com

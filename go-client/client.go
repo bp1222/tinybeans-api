@@ -50,11 +50,11 @@ type APIClient struct {
 
 	// API Services
 
-	AuthApi *AuthApiService
+	AuthApi AuthApi
 
-	FollowingsApi *FollowingsApiService
+	FollowingsApi FollowingsApi
 
-	JournalsApi *JournalsApiService
+	JournalsApi JournalsApi
 }
 
 type service struct {

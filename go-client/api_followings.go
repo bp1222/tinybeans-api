@@ -20,12 +20,27 @@ import (
 )
 
 
+type FollowingsApi interface {
+
+	/*
+	Followings Tinybeans Followings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiFollowingsRequest
+	*/
+	Followings(ctx context.Context) ApiFollowingsRequest
+
+	// FollowingsExecute executes the request
+	//  @return Followings
+	FollowingsExecute(r ApiFollowingsRequest) (*Followings, *http.Response, error)
+}
+
 // FollowingsApiService FollowingsApi service
 type FollowingsApiService service
 
 type ApiFollowingsRequest struct {
 	ctx context.Context
-	ApiService *FollowingsApiService
+	ApiService FollowingsApi
 }
 
 func (r ApiFollowingsRequest) Execute() (*Followings, *http.Response, error) {

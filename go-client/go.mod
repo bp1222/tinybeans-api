@@ -1,4 +1,4 @@
-module github.com/bp1222/tinybeans-api/go
+module github.com/bp1222/tinybeans-api/go-client
 
 go 1.13
 

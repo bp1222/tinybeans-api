@@ -7,12 +7,11 @@
 			"client": {
 				"generatorName": "go",
 				"inputSpec": "bundle.yaml",
-				"output": "go",
+				"output": "go-client",
 				"gitUserId": "bp1222",
-				"gitRepoId": "tinybeans-api/go",
+				"gitRepoId": "tinybeans-api/go-client",
 				"additionalProperties": {
-					"onlyInterfaces": true,
-					"outputAsLibrary": true,
+					"generateInterfaces": true,
 					"packageName": "tinybeans",
 					"sourceFolder": "./"
 				}

@@ -26,6 +26,7 @@ _testmain.go
 .idea/
 .vscode/
 node_modules/
+package-lock.json
 
 # API Asset
 bundle.yaml

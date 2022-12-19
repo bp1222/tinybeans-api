@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import tinybeans "github.com/bp1222/tinybeans-api/go"
+import tinybeans "github.com/bp1222/tinybeans-api/go-client"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:

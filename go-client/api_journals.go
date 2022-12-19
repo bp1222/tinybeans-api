@@ -17,64 +17,131 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 
-// AuthApiService AuthApi service
-type AuthApiService service
+type JournalsApi interface {
 
-type ApiLoginRequest struct {
-	ctx context.Context
-	ApiService *AuthApiService
-	authenticateRequst *AuthenticateRequst
+	/*
+	JournalEntries Tinybeans Journal Entries
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param journal ID of journal to pull entries from
+	@return ApiJournalEntriesRequest
+	*/
+	JournalEntries(ctx context.Context, journal int64) ApiJournalEntriesRequest
+
+	// JournalEntriesExecute executes the request
+	//  @return Entries
+	JournalEntriesExecute(r ApiJournalEntriesRequest) (*Entries, *http.Response, error)
+
+	/*
+	Journals Tinybeans Journals
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiJournalsRequest
+	*/
+	Journals(ctx context.Context) ApiJournalsRequest
+
+	// JournalsExecute executes the request
+	//  @return Journals
+	JournalsExecute(r ApiJournalsRequest) (*Journals, *http.Response, error)
 }
 
-// Login Information
-func (r ApiLoginRequest) AuthenticateRequst(authenticateRequst AuthenticateRequst) ApiLoginRequest {
-	r.authenticateRequst = &authenticateRequst
+// JournalsApiService JournalsApi service
+type JournalsApiService service
+
+type ApiJournalEntriesRequest struct {
+	ctx context.Context
+	ApiService JournalsApi
+	journal int64
+	fetchSize *int64
+	idsOnly *int64
+	last *int64
+	since *int64
+}
+
+// How many to fetch
+func (r ApiJournalEntriesRequest) FetchSize(fetchSize int64) ApiJournalEntriesRequest {
+	r.fetchSize = &fetchSize
 	return r
 }
 
-func (r ApiLoginRequest) Execute() (*AuthenticateResponse, *http.Response, error) {
-	return r.ApiService.LoginExecute(r)
+// ID&#39;s Only?
+func (r ApiJournalEntriesRequest) IdsOnly(idsOnly int64) ApiJournalEntriesRequest {
+	r.idsOnly = &idsOnly
+	return r
+}
+
+// Last (timestamp) you viewed [non inclusive]
+func (r ApiJournalEntriesRequest) Last(last int64) ApiJournalEntriesRequest {
+	r.last = &last
+	return r
+}
+
+// Since (timestamp) most recent (timestamp) you know about [inclusive]
+func (r ApiJournalEntriesRequest) Since(since int64) ApiJournalEntriesRequest {
+	r.since = &since
+	return r
+}
+
+func (r ApiJournalEntriesRequest) Execute() (*Entries, *http.Response, error) {
+	return r.ApiService.JournalEntriesExecute(r)
 }
 
 /*
-Login Login to Tinybeans
+JournalEntries Tinybeans Journal Entries
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLoginRequest
+ @param journal ID of journal to pull entries from
+ @return ApiJournalEntriesRequest
 */
-func (a *AuthApiService) Login(ctx context.Context) ApiLoginRequest {
-	return ApiLoginRequest{
+func (a *JournalsApiService) JournalEntries(ctx context.Context, journal int64) ApiJournalEntriesRequest {
+	return ApiJournalEntriesRequest{
 		ApiService: a,
 		ctx: ctx,
+		journal: journal,
 	}
 }
 
 // Execute executes the request
-//  @return AuthenticateResponse
-func (a *AuthApiService) LoginExecute(r ApiLoginRequest) (*AuthenticateResponse, *http.Response, error) {
+//  @return Entries
+func (a *JournalsApiService) JournalEntriesExecute(r ApiJournalEntriesRequest) (*Entries, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AuthenticateResponse
+		localVarReturnValue  *Entries
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.Login")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JournalsApiService.JournalEntries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/authenticate"
+	localVarPath := localBasePath + "/journals/{journal}/entries"
+	localVarPath = strings.Replace(localVarPath, "{"+"journal"+"}", url.PathEscape(parameterToString(r.journal, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.fetchSize == nil {
+		return localVarReturnValue, nil, reportError("fetchSize is required and must be specified")
+	}
 
+	localVarQueryParams.Add("fetchSize", parameterToString(*r.fetchSize, ""))
+	if r.idsOnly != nil {
+		localVarQueryParams.Add("idsOnly", parameterToString(*r.idsOnly, ""))
+	}
+	if r.last != nil {
+		localVarQueryParams.Add("last", parameterToString(*r.last, ""))
+	}
+	if r.since != nil {
+		localVarQueryParams.Add("since", parameterToString(*r.since, ""))
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -90,8 +157,6 @@ func (a *AuthApiService) LoginExecute(r ApiLoginRequest) (*AuthenticateResponse,
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.authenticateRequst
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -129,44 +194,44 @@ func (a *AuthApiService) LoginExecute(r ApiLoginRequest) (*AuthenticateResponse,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUsersMeRequest struct {
+type ApiJournalsRequest struct {
 	ctx context.Context
-	ApiService *AuthApiService
+	ApiService JournalsApi
 }
 
-func (r ApiUsersMeRequest) Execute() (*UsersMe, *http.Response, error) {
-	return r.ApiService.UsersMeExecute(r)
+func (r ApiJournalsRequest) Execute() (*Journals, *http.Response, error) {
+	return r.ApiService.JournalsExecute(r)
 }
 
 /*
-UsersMe Check to Tinybeans
+Journals Tinybeans Journals
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersMeRequest
+ @return ApiJournalsRequest
 */
-func (a *AuthApiService) UsersMe(ctx context.Context) ApiUsersMeRequest {
-	return ApiUsersMeRequest{
+func (a *JournalsApiService) Journals(ctx context.Context) ApiJournalsRequest {
+	return ApiJournalsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return UsersMe
-func (a *AuthApiService) UsersMeExecute(r ApiUsersMeRequest) (*UsersMe, *http.Response, error) {
+//  @return Journals
+func (a *JournalsApiService) JournalsExecute(r ApiJournalsRequest) (*Journals, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *UsersMe
+		localVarReturnValue  *Journals
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthApiService.UsersMe")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JournalsApiService.Journals")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/users/me"
+	localVarPath := localBasePath + "/journals"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

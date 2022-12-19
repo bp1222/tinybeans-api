@@ -1,0 +1,22 @@
+{
+	"$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+	"spaces": 2,
+	"generator-cli": {
+		"version": "6.2.1",
+		"generators": {
+			"client": {
+				"generatorName": "go",
+				"inputSpec": "bundle.yaml",
+				"output": "go",
+				"gitUserId": "bp1222",
+				"gitRepoId": "tinybeans-api/go",
+				"additionalProperties": {
+					"onlyInterfaces": true,
+					"outputAsLibrary": true,
+					"packageName": "tinybeans",
+					"sourceFolder": "./"
+				}
+			}
+		}
+	}
+}

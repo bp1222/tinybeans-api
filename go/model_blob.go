@@ -46,7 +46,7 @@ func NewBlobWithDefaults() *Blob {
 
 // GetO returns the O field value if set, zero value otherwise.
 func (o *Blob) GetO() string {
-	if o == nil || o.O == nil {
+	if o == nil || isNil(o.O) {
 		var ret string
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *Blob) GetO() string {
 // GetOOk returns a tuple with the O field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetOOk() (*string, bool) {
-	if o == nil || o.O == nil {
-		return nil, false
+	if o == nil || isNil(o.O) {
+    return nil, false
 	}
 	return o.O, true
 }
 
 // HasO returns a boolean if a field has been set.
 func (o *Blob) HasO() bool {
-	if o != nil && o.O != nil {
+	if o != nil && !isNil(o.O) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *Blob) SetO(v string) {
 
 // GetO2 returns the O2 field value if set, zero value otherwise.
 func (o *Blob) GetO2() string {
-	if o == nil || o.O2 == nil {
+	if o == nil || isNil(o.O2) {
 		var ret string
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *Blob) GetO2() string {
 // GetO2Ok returns a tuple with the O2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetO2Ok() (*string, bool) {
-	if o == nil || o.O2 == nil {
-		return nil, false
+	if o == nil || isNil(o.O2) {
+    return nil, false
 	}
 	return o.O2, true
 }
 
 // HasO2 returns a boolean if a field has been set.
 func (o *Blob) HasO2() bool {
-	if o != nil && o.O2 != nil {
+	if o != nil && !isNil(o.O2) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *Blob) SetO2(v string) {
 
 // GetT returns the T field value if set, zero value otherwise.
 func (o *Blob) GetT() string {
-	if o == nil || o.T == nil {
+	if o == nil || isNil(o.T) {
 		var ret string
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *Blob) GetT() string {
 // GetTOk returns a tuple with the T field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetTOk() (*string, bool) {
-	if o == nil || o.T == nil {
-		return nil, false
+	if o == nil || isNil(o.T) {
+    return nil, false
 	}
 	return o.T, true
 }
 
 // HasT returns a boolean if a field has been set.
 func (o *Blob) HasT() bool {
-	if o != nil && o.T != nil {
+	if o != nil && !isNil(o.T) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *Blob) SetT(v string) {
 
 // GetS returns the S field value if set, zero value otherwise.
 func (o *Blob) GetS() string {
-	if o == nil || o.S == nil {
+	if o == nil || isNil(o.S) {
 		var ret string
 		return ret
 	}
@@ -152,15 +152,15 @@ func (o *Blob) GetS() string {
 // GetSOk returns a tuple with the S field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetSOk() (*string, bool) {
-	if o == nil || o.S == nil {
-		return nil, false
+	if o == nil || isNil(o.S) {
+    return nil, false
 	}
 	return o.S, true
 }
 
 // HasS returns a boolean if a field has been set.
 func (o *Blob) HasS() bool {
-	if o != nil && o.S != nil {
+	if o != nil && !isNil(o.S) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *Blob) SetS(v string) {
 
 // GetS2 returns the S2 field value if set, zero value otherwise.
 func (o *Blob) GetS2() string {
-	if o == nil || o.S2 == nil {
+	if o == nil || isNil(o.S2) {
 		var ret string
 		return ret
 	}
@@ -184,15 +184,15 @@ func (o *Blob) GetS2() string {
 // GetS2Ok returns a tuple with the S2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetS2Ok() (*string, bool) {
-	if o == nil || o.S2 == nil {
-		return nil, false
+	if o == nil || isNil(o.S2) {
+    return nil, false
 	}
 	return o.S2, true
 }
 
 // HasS2 returns a boolean if a field has been set.
 func (o *Blob) HasS2() bool {
-	if o != nil && o.S2 != nil {
+	if o != nil && !isNil(o.S2) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *Blob) SetS2(v string) {
 
 // GetM returns the M field value if set, zero value otherwise.
 func (o *Blob) GetM() string {
-	if o == nil || o.M == nil {
+	if o == nil || isNil(o.M) {
 		var ret string
 		return ret
 	}
@@ -216,15 +216,15 @@ func (o *Blob) GetM() string {
 // GetMOk returns a tuple with the M field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetMOk() (*string, bool) {
-	if o == nil || o.M == nil {
-		return nil, false
+	if o == nil || isNil(o.M) {
+    return nil, false
 	}
 	return o.M, true
 }
 
 // HasM returns a boolean if a field has been set.
 func (o *Blob) HasM() bool {
-	if o != nil && o.M != nil {
+	if o != nil && !isNil(o.M) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *Blob) SetM(v string) {
 
 // GetL returns the L field value if set, zero value otherwise.
 func (o *Blob) GetL() string {
-	if o == nil || o.L == nil {
+	if o == nil || isNil(o.L) {
 		var ret string
 		return ret
 	}
@@ -248,15 +248,15 @@ func (o *Blob) GetL() string {
 // GetLOk returns a tuple with the L field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetLOk() (*string, bool) {
-	if o == nil || o.L == nil {
-		return nil, false
+	if o == nil || isNil(o.L) {
+    return nil, false
 	}
 	return o.L, true
 }
 
 // HasL returns a boolean if a field has been set.
 func (o *Blob) HasL() bool {
-	if o != nil && o.L != nil {
+	if o != nil && !isNil(o.L) {
 		return true
 	}
 
@@ -270,7 +270,7 @@ func (o *Blob) SetL(v string) {
 
 // GetP returns the P field value if set, zero value otherwise.
 func (o *Blob) GetP() string {
-	if o == nil || o.P == nil {
+	if o == nil || isNil(o.P) {
 		var ret string
 		return ret
 	}
@@ -280,15 +280,15 @@ func (o *Blob) GetP() string {
 // GetPOk returns a tuple with the P field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Blob) GetPOk() (*string, bool) {
-	if o == nil || o.P == nil {
-		return nil, false
+	if o == nil || isNil(o.P) {
+    return nil, false
 	}
 	return o.P, true
 }
 
 // HasP returns a boolean if a field has been set.
 func (o *Blob) HasP() bool {
-	if o != nil && o.P != nil {
+	if o != nil && !isNil(o.P) {
 		return true
 	}
 
@@ -302,28 +302,28 @@ func (o *Blob) SetP(v string) {
 
 func (o Blob) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.O != nil {
+	if !isNil(o.O) {
 		toSerialize["o"] = o.O
 	}
-	if o.O2 != nil {
+	if !isNil(o.O2) {
 		toSerialize["o2"] = o.O2
 	}
-	if o.T != nil {
+	if !isNil(o.T) {
 		toSerialize["t"] = o.T
 	}
-	if o.S != nil {
+	if !isNil(o.S) {
 		toSerialize["s"] = o.S
 	}
-	if o.S2 != nil {
+	if !isNil(o.S2) {
 		toSerialize["s2"] = o.S2
 	}
-	if o.M != nil {
+	if !isNil(o.M) {
 		toSerialize["m"] = o.M
 	}
-	if o.L != nil {
+	if !isNil(o.L) {
 		toSerialize["l"] = o.L
 	}
-	if o.P != nil {
+	if !isNil(o.P) {
 		toSerialize["p"] = o.P
 	}
 	return json.Marshal(toSerialize)

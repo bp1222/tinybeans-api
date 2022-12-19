@@ -45,7 +45,7 @@ func NewFeaturesWithDefaults() *Features {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *Features) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -55,15 +55,15 @@ func (o *Features) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Features) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *Features) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *Features) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Features) GetId() float32 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret float32
 		return ret
 	}
@@ -87,15 +87,15 @@ func (o *Features) GetId() float32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Features) GetIdOk() (*float32, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Features) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -109,7 +109,7 @@ func (o *Features) SetId(v float32) {
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise.
 func (o *Features) GetDateCreated() string {
-	if o == nil || o.DateCreated == nil {
+	if o == nil || isNil(o.DateCreated) {
 		var ret string
 		return ret
 	}
@@ -119,15 +119,15 @@ func (o *Features) GetDateCreated() string {
 // GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Features) GetDateCreatedOk() (*string, bool) {
-	if o == nil || o.DateCreated == nil {
-		return nil, false
+	if o == nil || isNil(o.DateCreated) {
+    return nil, false
 	}
 	return o.DateCreated, true
 }
 
 // HasDateCreated returns a boolean if a field has been set.
 func (o *Features) HasDateCreated() bool {
-	if o != nil && o.DateCreated != nil {
+	if o != nil && !isNil(o.DateCreated) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *Features) SetDateCreated(v string) {
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
 func (o *Features) GetLastUpdated() string {
-	if o == nil || o.LastUpdated == nil {
+	if o == nil || isNil(o.LastUpdated) {
 		var ret string
 		return ret
 	}
@@ -151,15 +151,15 @@ func (o *Features) GetLastUpdated() string {
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Features) GetLastUpdatedOk() (*string, bool) {
-	if o == nil || o.LastUpdated == nil {
-		return nil, false
+	if o == nil || isNil(o.LastUpdated) {
+    return nil, false
 	}
 	return o.LastUpdated, true
 }
 
 // HasLastUpdated returns a boolean if a field has been set.
 func (o *Features) HasLastUpdated() bool {
-	if o != nil && o.LastUpdated != nil {
+	if o != nil && !isNil(o.LastUpdated) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *Features) SetLastUpdated(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Features) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -183,15 +183,15 @@ func (o *Features) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Features) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Features) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *Features) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Features) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -215,15 +215,15 @@ func (o *Features) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Features) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Features) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -237,7 +237,7 @@ func (o *Features) SetDescription(v string) {
 
 // GetScopeMap returns the ScopeMap field value if set, zero value otherwise.
 func (o *Features) GetScopeMap() string {
-	if o == nil || o.ScopeMap == nil {
+	if o == nil || isNil(o.ScopeMap) {
 		var ret string
 		return ret
 	}
@@ -247,15 +247,15 @@ func (o *Features) GetScopeMap() string {
 // GetScopeMapOk returns a tuple with the ScopeMap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Features) GetScopeMapOk() (*string, bool) {
-	if o == nil || o.ScopeMap == nil {
-		return nil, false
+	if o == nil || isNil(o.ScopeMap) {
+    return nil, false
 	}
 	return o.ScopeMap, true
 }
 
 // HasScopeMap returns a boolean if a field has been set.
 func (o *Features) HasScopeMap() bool {
-	if o != nil && o.ScopeMap != nil {
+	if o != nil && !isNil(o.ScopeMap) {
 		return true
 	}
 
@@ -269,25 +269,25 @@ func (o *Features) SetScopeMap(v string) {
 
 func (o Features) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.DateCreated != nil {
+	if !isNil(o.DateCreated) {
 		toSerialize["dateCreated"] = o.DateCreated
 	}
-	if o.LastUpdated != nil {
+	if !isNil(o.LastUpdated) {
 		toSerialize["lastUpdated"] = o.LastUpdated
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.ScopeMap != nil {
+	if !isNil(o.ScopeMap) {
 		toSerialize["scopeMap"] = o.ScopeMap
 	}
 	return json.Marshal(toSerialize)

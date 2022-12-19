@@ -28,10 +28,10 @@ type Journal struct {
 	IsPublic *bool `json:"isPublic,omitempty"`
 	Deleted *bool `json:"deleted,omitempty"`
 	User *User `json:"user,omitempty"`
-	Children *[]Child `json:"children,omitempty"`
-	Pets *[]Pet `json:"pets,omitempty"`
+	Children []Child `json:"children,omitempty"`
+	Pets []Pet `json:"pets,omitempty"`
 	CoverTheme *CoverTheme `json:"coverTheme,omitempty"`
-	Features *[]Features `json:"features,omitempty"`
+	Features []Features `json:"features,omitempty"`
 	CurrentSubscription *Subscription `json:"currentSubscription,omitempty"`
 	LatestSubscription *Subscription `json:"latestSubscription,omitempty"`
 	ShouldShowAds *bool `json:"shouldShowAds,omitempty"`
@@ -56,7 +56,7 @@ func NewJournalWithDefaults() *Journal {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *Journal) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -66,15 +66,15 @@ func (o *Journal) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *Journal) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -88,7 +88,7 @@ func (o *Journal) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Journal) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -98,15 +98,15 @@ func (o *Journal) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Journal) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -120,7 +120,7 @@ func (o *Journal) SetId(v int64) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *Journal) GetTitle() string {
-	if o == nil || o.Title == nil {
+	if o == nil || isNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -130,15 +130,15 @@ func (o *Journal) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
-		return nil, false
+	if o == nil || isNil(o.Title) {
+    return nil, false
 	}
 	return o.Title, true
 }
 
 // HasTitle returns a boolean if a field has been set.
 func (o *Journal) HasTitle() bool {
-	if o != nil && o.Title != nil {
+	if o != nil && !isNil(o.Title) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *Journal) SetTitle(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *Journal) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || isNil(o.Timestamp) {
 		var ret int64
 		return ret
 	}
@@ -162,15 +162,15 @@ func (o *Journal) GetTimestamp() int64 {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.Timestamp) {
+    return nil, false
 	}
 	return o.Timestamp, true
 }
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *Journal) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !isNil(o.Timestamp) {
 		return true
 	}
 
@@ -184,7 +184,7 @@ func (o *Journal) SetTimestamp(v int64) {
 
 // GetDisableComments returns the DisableComments field value if set, zero value otherwise.
 func (o *Journal) GetDisableComments() bool {
-	if o == nil || o.DisableComments == nil {
+	if o == nil || isNil(o.DisableComments) {
 		var ret bool
 		return ret
 	}
@@ -194,15 +194,15 @@ func (o *Journal) GetDisableComments() bool {
 // GetDisableCommentsOk returns a tuple with the DisableComments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetDisableCommentsOk() (*bool, bool) {
-	if o == nil || o.DisableComments == nil {
-		return nil, false
+	if o == nil || isNil(o.DisableComments) {
+    return nil, false
 	}
 	return o.DisableComments, true
 }
 
 // HasDisableComments returns a boolean if a field has been set.
 func (o *Journal) HasDisableComments() bool {
-	if o != nil && o.DisableComments != nil {
+	if o != nil && !isNil(o.DisableComments) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *Journal) SetDisableComments(v bool) {
 
 // GetDisableAnonymousComments returns the DisableAnonymousComments field value if set, zero value otherwise.
 func (o *Journal) GetDisableAnonymousComments() bool {
-	if o == nil || o.DisableAnonymousComments == nil {
+	if o == nil || isNil(o.DisableAnonymousComments) {
 		var ret bool
 		return ret
 	}
@@ -226,15 +226,15 @@ func (o *Journal) GetDisableAnonymousComments() bool {
 // GetDisableAnonymousCommentsOk returns a tuple with the DisableAnonymousComments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetDisableAnonymousCommentsOk() (*bool, bool) {
-	if o == nil || o.DisableAnonymousComments == nil {
-		return nil, false
+	if o == nil || isNil(o.DisableAnonymousComments) {
+    return nil, false
 	}
 	return o.DisableAnonymousComments, true
 }
 
 // HasDisableAnonymousComments returns a boolean if a field has been set.
 func (o *Journal) HasDisableAnonymousComments() bool {
-	if o != nil && o.DisableAnonymousComments != nil {
+	if o != nil && !isNil(o.DisableAnonymousComments) {
 		return true
 	}
 
@@ -248,7 +248,7 @@ func (o *Journal) SetDisableAnonymousComments(v bool) {
 
 // GetDisableDownloads returns the DisableDownloads field value if set, zero value otherwise.
 func (o *Journal) GetDisableDownloads() bool {
-	if o == nil || o.DisableDownloads == nil {
+	if o == nil || isNil(o.DisableDownloads) {
 		var ret bool
 		return ret
 	}
@@ -258,15 +258,15 @@ func (o *Journal) GetDisableDownloads() bool {
 // GetDisableDownloadsOk returns a tuple with the DisableDownloads field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetDisableDownloadsOk() (*bool, bool) {
-	if o == nil || o.DisableDownloads == nil {
-		return nil, false
+	if o == nil || isNil(o.DisableDownloads) {
+    return nil, false
 	}
 	return o.DisableDownloads, true
 }
 
 // HasDisableDownloads returns a boolean if a field has been set.
 func (o *Journal) HasDisableDownloads() bool {
-	if o != nil && o.DisableDownloads != nil {
+	if o != nil && !isNil(o.DisableDownloads) {
 		return true
 	}
 
@@ -280,7 +280,7 @@ func (o *Journal) SetDisableDownloads(v bool) {
 
 // GetClassification returns the Classification field value if set, zero value otherwise.
 func (o *Journal) GetClassification() string {
-	if o == nil || o.Classification == nil {
+	if o == nil || isNil(o.Classification) {
 		var ret string
 		return ret
 	}
@@ -290,15 +290,15 @@ func (o *Journal) GetClassification() string {
 // GetClassificationOk returns a tuple with the Classification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetClassificationOk() (*string, bool) {
-	if o == nil || o.Classification == nil {
-		return nil, false
+	if o == nil || isNil(o.Classification) {
+    return nil, false
 	}
 	return o.Classification, true
 }
 
 // HasClassification returns a boolean if a field has been set.
 func (o *Journal) HasClassification() bool {
-	if o != nil && o.Classification != nil {
+	if o != nil && !isNil(o.Classification) {
 		return true
 	}
 
@@ -312,7 +312,7 @@ func (o *Journal) SetClassification(v string) {
 
 // GetIsPublic returns the IsPublic field value if set, zero value otherwise.
 func (o *Journal) GetIsPublic() bool {
-	if o == nil || o.IsPublic == nil {
+	if o == nil || isNil(o.IsPublic) {
 		var ret bool
 		return ret
 	}
@@ -322,15 +322,15 @@ func (o *Journal) GetIsPublic() bool {
 // GetIsPublicOk returns a tuple with the IsPublic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetIsPublicOk() (*bool, bool) {
-	if o == nil || o.IsPublic == nil {
-		return nil, false
+	if o == nil || isNil(o.IsPublic) {
+    return nil, false
 	}
 	return o.IsPublic, true
 }
 
 // HasIsPublic returns a boolean if a field has been set.
 func (o *Journal) HasIsPublic() bool {
-	if o != nil && o.IsPublic != nil {
+	if o != nil && !isNil(o.IsPublic) {
 		return true
 	}
 
@@ -344,7 +344,7 @@ func (o *Journal) SetIsPublic(v bool) {
 
 // GetDeleted returns the Deleted field value if set, zero value otherwise.
 func (o *Journal) GetDeleted() bool {
-	if o == nil || o.Deleted == nil {
+	if o == nil || isNil(o.Deleted) {
 		var ret bool
 		return ret
 	}
@@ -354,15 +354,15 @@ func (o *Journal) GetDeleted() bool {
 // GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetDeletedOk() (*bool, bool) {
-	if o == nil || o.Deleted == nil {
-		return nil, false
+	if o == nil || isNil(o.Deleted) {
+    return nil, false
 	}
 	return o.Deleted, true
 }
 
 // HasDeleted returns a boolean if a field has been set.
 func (o *Journal) HasDeleted() bool {
-	if o != nil && o.Deleted != nil {
+	if o != nil && !isNil(o.Deleted) {
 		return true
 	}
 
@@ -376,7 +376,7 @@ func (o *Journal) SetDeleted(v bool) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *Journal) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || isNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -386,15 +386,15 @@ func (o *Journal) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || isNil(o.User) {
+    return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *Journal) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !isNil(o.User) {
 		return true
 	}
 
@@ -408,25 +408,25 @@ func (o *Journal) SetUser(v User) {
 
 // GetChildren returns the Children field value if set, zero value otherwise.
 func (o *Journal) GetChildren() []Child {
-	if o == nil || o.Children == nil {
+	if o == nil || isNil(o.Children) {
 		var ret []Child
 		return ret
 	}
-	return *o.Children
+	return o.Children
 }
 
 // GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Journal) GetChildrenOk() (*[]Child, bool) {
-	if o == nil || o.Children == nil {
-		return nil, false
+func (o *Journal) GetChildrenOk() ([]Child, bool) {
+	if o == nil || isNil(o.Children) {
+    return nil, false
 	}
 	return o.Children, true
 }
 
 // HasChildren returns a boolean if a field has been set.
 func (o *Journal) HasChildren() bool {
-	if o != nil && o.Children != nil {
+	if o != nil && !isNil(o.Children) {
 		return true
 	}
 
@@ -435,30 +435,30 @@ func (o *Journal) HasChildren() bool {
 
 // SetChildren gets a reference to the given []Child and assigns it to the Children field.
 func (o *Journal) SetChildren(v []Child) {
-	o.Children = &v
+	o.Children = v
 }
 
 // GetPets returns the Pets field value if set, zero value otherwise.
 func (o *Journal) GetPets() []Pet {
-	if o == nil || o.Pets == nil {
+	if o == nil || isNil(o.Pets) {
 		var ret []Pet
 		return ret
 	}
-	return *o.Pets
+	return o.Pets
 }
 
 // GetPetsOk returns a tuple with the Pets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Journal) GetPetsOk() (*[]Pet, bool) {
-	if o == nil || o.Pets == nil {
-		return nil, false
+func (o *Journal) GetPetsOk() ([]Pet, bool) {
+	if o == nil || isNil(o.Pets) {
+    return nil, false
 	}
 	return o.Pets, true
 }
 
 // HasPets returns a boolean if a field has been set.
 func (o *Journal) HasPets() bool {
-	if o != nil && o.Pets != nil {
+	if o != nil && !isNil(o.Pets) {
 		return true
 	}
 
@@ -467,12 +467,12 @@ func (o *Journal) HasPets() bool {
 
 // SetPets gets a reference to the given []Pet and assigns it to the Pets field.
 func (o *Journal) SetPets(v []Pet) {
-	o.Pets = &v
+	o.Pets = v
 }
 
 // GetCoverTheme returns the CoverTheme field value if set, zero value otherwise.
 func (o *Journal) GetCoverTheme() CoverTheme {
-	if o == nil || o.CoverTheme == nil {
+	if o == nil || isNil(o.CoverTheme) {
 		var ret CoverTheme
 		return ret
 	}
@@ -482,15 +482,15 @@ func (o *Journal) GetCoverTheme() CoverTheme {
 // GetCoverThemeOk returns a tuple with the CoverTheme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetCoverThemeOk() (*CoverTheme, bool) {
-	if o == nil || o.CoverTheme == nil {
-		return nil, false
+	if o == nil || isNil(o.CoverTheme) {
+    return nil, false
 	}
 	return o.CoverTheme, true
 }
 
 // HasCoverTheme returns a boolean if a field has been set.
 func (o *Journal) HasCoverTheme() bool {
-	if o != nil && o.CoverTheme != nil {
+	if o != nil && !isNil(o.CoverTheme) {
 		return true
 	}
 
@@ -504,25 +504,25 @@ func (o *Journal) SetCoverTheme(v CoverTheme) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *Journal) GetFeatures() []Features {
-	if o == nil || o.Features == nil {
+	if o == nil || isNil(o.Features) {
 		var ret []Features
 		return ret
 	}
-	return *o.Features
+	return o.Features
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Journal) GetFeaturesOk() (*[]Features, bool) {
-	if o == nil || o.Features == nil {
-		return nil, false
+func (o *Journal) GetFeaturesOk() ([]Features, bool) {
+	if o == nil || isNil(o.Features) {
+    return nil, false
 	}
 	return o.Features, true
 }
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *Journal) HasFeatures() bool {
-	if o != nil && o.Features != nil {
+	if o != nil && !isNil(o.Features) {
 		return true
 	}
 
@@ -531,12 +531,12 @@ func (o *Journal) HasFeatures() bool {
 
 // SetFeatures gets a reference to the given []Features and assigns it to the Features field.
 func (o *Journal) SetFeatures(v []Features) {
-	o.Features = &v
+	o.Features = v
 }
 
 // GetCurrentSubscription returns the CurrentSubscription field value if set, zero value otherwise.
 func (o *Journal) GetCurrentSubscription() Subscription {
-	if o == nil || o.CurrentSubscription == nil {
+	if o == nil || isNil(o.CurrentSubscription) {
 		var ret Subscription
 		return ret
 	}
@@ -546,15 +546,15 @@ func (o *Journal) GetCurrentSubscription() Subscription {
 // GetCurrentSubscriptionOk returns a tuple with the CurrentSubscription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetCurrentSubscriptionOk() (*Subscription, bool) {
-	if o == nil || o.CurrentSubscription == nil {
-		return nil, false
+	if o == nil || isNil(o.CurrentSubscription) {
+    return nil, false
 	}
 	return o.CurrentSubscription, true
 }
 
 // HasCurrentSubscription returns a boolean if a field has been set.
 func (o *Journal) HasCurrentSubscription() bool {
-	if o != nil && o.CurrentSubscription != nil {
+	if o != nil && !isNil(o.CurrentSubscription) {
 		return true
 	}
 
@@ -568,7 +568,7 @@ func (o *Journal) SetCurrentSubscription(v Subscription) {
 
 // GetLatestSubscription returns the LatestSubscription field value if set, zero value otherwise.
 func (o *Journal) GetLatestSubscription() Subscription {
-	if o == nil || o.LatestSubscription == nil {
+	if o == nil || isNil(o.LatestSubscription) {
 		var ret Subscription
 		return ret
 	}
@@ -578,15 +578,15 @@ func (o *Journal) GetLatestSubscription() Subscription {
 // GetLatestSubscriptionOk returns a tuple with the LatestSubscription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetLatestSubscriptionOk() (*Subscription, bool) {
-	if o == nil || o.LatestSubscription == nil {
-		return nil, false
+	if o == nil || isNil(o.LatestSubscription) {
+    return nil, false
 	}
 	return o.LatestSubscription, true
 }
 
 // HasLatestSubscription returns a boolean if a field has been set.
 func (o *Journal) HasLatestSubscription() bool {
-	if o != nil && o.LatestSubscription != nil {
+	if o != nil && !isNil(o.LatestSubscription) {
 		return true
 	}
 
@@ -600,7 +600,7 @@ func (o *Journal) SetLatestSubscription(v Subscription) {
 
 // GetShouldShowAds returns the ShouldShowAds field value if set, zero value otherwise.
 func (o *Journal) GetShouldShowAds() bool {
-	if o == nil || o.ShouldShowAds == nil {
+	if o == nil || isNil(o.ShouldShowAds) {
 		var ret bool
 		return ret
 	}
@@ -610,15 +610,15 @@ func (o *Journal) GetShouldShowAds() bool {
 // GetShouldShowAdsOk returns a tuple with the ShouldShowAds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journal) GetShouldShowAdsOk() (*bool, bool) {
-	if o == nil || o.ShouldShowAds == nil {
-		return nil, false
+	if o == nil || isNil(o.ShouldShowAds) {
+    return nil, false
 	}
 	return o.ShouldShowAds, true
 }
 
 // HasShouldShowAds returns a boolean if a field has been set.
 func (o *Journal) HasShouldShowAds() bool {
-	if o != nil && o.ShouldShowAds != nil {
+	if o != nil && !isNil(o.ShouldShowAds) {
 		return true
 	}
 
@@ -632,58 +632,58 @@ func (o *Journal) SetShouldShowAds(v bool) {
 
 func (o Journal) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Title != nil {
+	if !isNil(o.Title) {
 		toSerialize["title"] = o.Title
 	}
-	if o.Timestamp != nil {
+	if !isNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if o.DisableComments != nil {
+	if !isNil(o.DisableComments) {
 		toSerialize["disableComments"] = o.DisableComments
 	}
-	if o.DisableAnonymousComments != nil {
+	if !isNil(o.DisableAnonymousComments) {
 		toSerialize["disableAnonymousComments"] = o.DisableAnonymousComments
 	}
-	if o.DisableDownloads != nil {
+	if !isNil(o.DisableDownloads) {
 		toSerialize["disableDownloads"] = o.DisableDownloads
 	}
-	if o.Classification != nil {
+	if !isNil(o.Classification) {
 		toSerialize["classification"] = o.Classification
 	}
-	if o.IsPublic != nil {
+	if !isNil(o.IsPublic) {
 		toSerialize["isPublic"] = o.IsPublic
 	}
-	if o.Deleted != nil {
+	if !isNil(o.Deleted) {
 		toSerialize["deleted"] = o.Deleted
 	}
-	if o.User != nil {
+	if !isNil(o.User) {
 		toSerialize["user"] = o.User
 	}
-	if o.Children != nil {
+	if !isNil(o.Children) {
 		toSerialize["children"] = o.Children
 	}
-	if o.Pets != nil {
+	if !isNil(o.Pets) {
 		toSerialize["pets"] = o.Pets
 	}
-	if o.CoverTheme != nil {
+	if !isNil(o.CoverTheme) {
 		toSerialize["coverTheme"] = o.CoverTheme
 	}
-	if o.Features != nil {
+	if !isNil(o.Features) {
 		toSerialize["features"] = o.Features
 	}
-	if o.CurrentSubscription != nil {
+	if !isNil(o.CurrentSubscription) {
 		toSerialize["currentSubscription"] = o.CurrentSubscription
 	}
-	if o.LatestSubscription != nil {
+	if !isNil(o.LatestSubscription) {
 		toSerialize["latestSubscription"] = o.LatestSubscription
 	}
-	if o.ShouldShowAds != nil {
+	if !isNil(o.ShouldShowAds) {
 		toSerialize["shouldShowAds"] = o.ShouldShowAds
 	}
 	return json.Marshal(toSerialize)

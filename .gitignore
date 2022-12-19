@@ -23,5 +23,9 @@ _testmain.go
 *.test
 *.prof
 
+.idea/
+.vscode/
+node_modules/
+
 # API Asset
 bundle.yaml

@@ -50,7 +50,7 @@ func NewChildWithDefaults() *Child {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *Child) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -60,15 +60,15 @@ func (o *Child) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *Child) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *Child) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Child) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -92,15 +92,15 @@ func (o *Child) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Child) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *Child) SetId(v int64) {
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise.
 func (o *Child) GetFirstName() string {
-	if o == nil || o.FirstName == nil {
+	if o == nil || isNil(o.FirstName) {
 		var ret string
 		return ret
 	}
@@ -124,15 +124,15 @@ func (o *Child) GetFirstName() string {
 // GetFirstNameOk returns a tuple with the FirstName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetFirstNameOk() (*string, bool) {
-	if o == nil || o.FirstName == nil {
-		return nil, false
+	if o == nil || isNil(o.FirstName) {
+    return nil, false
 	}
 	return o.FirstName, true
 }
 
 // HasFirstName returns a boolean if a field has been set.
 func (o *Child) HasFirstName() bool {
-	if o != nil && o.FirstName != nil {
+	if o != nil && !isNil(o.FirstName) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *Child) SetFirstName(v string) {
 
 // GetLastName returns the LastName field value if set, zero value otherwise.
 func (o *Child) GetLastName() string {
-	if o == nil || o.LastName == nil {
+	if o == nil || isNil(o.LastName) {
 		var ret string
 		return ret
 	}
@@ -156,15 +156,15 @@ func (o *Child) GetLastName() string {
 // GetLastNameOk returns a tuple with the LastName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetLastNameOk() (*string, bool) {
-	if o == nil || o.LastName == nil {
-		return nil, false
+	if o == nil || isNil(o.LastName) {
+    return nil, false
 	}
 	return o.LastName, true
 }
 
 // HasLastName returns a boolean if a field has been set.
 func (o *Child) HasLastName() bool {
-	if o != nil && o.LastName != nil {
+	if o != nil && !isNil(o.LastName) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *Child) SetLastName(v string) {
 
 // GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *Child) GetFullName() string {
-	if o == nil || o.FullName == nil {
+	if o == nil || isNil(o.FullName) {
 		var ret string
 		return ret
 	}
@@ -188,15 +188,15 @@ func (o *Child) GetFullName() string {
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetFullNameOk() (*string, bool) {
-	if o == nil || o.FullName == nil {
-		return nil, false
+	if o == nil || isNil(o.FullName) {
+    return nil, false
 	}
 	return o.FullName, true
 }
 
 // HasFullName returns a boolean if a field has been set.
 func (o *Child) HasFullName() bool {
-	if o != nil && o.FullName != nil {
+	if o != nil && !isNil(o.FullName) {
 		return true
 	}
 
@@ -210,7 +210,7 @@ func (o *Child) SetFullName(v string) {
 
 // GetGender returns the Gender field value if set, zero value otherwise.
 func (o *Child) GetGender() string {
-	if o == nil || o.Gender == nil {
+	if o == nil || isNil(o.Gender) {
 		var ret string
 		return ret
 	}
@@ -220,15 +220,15 @@ func (o *Child) GetGender() string {
 // GetGenderOk returns a tuple with the Gender field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetGenderOk() (*string, bool) {
-	if o == nil || o.Gender == nil {
-		return nil, false
+	if o == nil || isNil(o.Gender) {
+    return nil, false
 	}
 	return o.Gender, true
 }
 
 // HasGender returns a boolean if a field has been set.
 func (o *Child) HasGender() bool {
-	if o != nil && o.Gender != nil {
+	if o != nil && !isNil(o.Gender) {
 		return true
 	}
 
@@ -242,7 +242,7 @@ func (o *Child) SetGender(v string) {
 
 // GetDob returns the Dob field value if set, zero value otherwise.
 func (o *Child) GetDob() string {
-	if o == nil || o.Dob == nil {
+	if o == nil || isNil(o.Dob) {
 		var ret string
 		return ret
 	}
@@ -252,15 +252,15 @@ func (o *Child) GetDob() string {
 // GetDobOk returns a tuple with the Dob field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetDobOk() (*string, bool) {
-	if o == nil || o.Dob == nil {
-		return nil, false
+	if o == nil || isNil(o.Dob) {
+    return nil, false
 	}
 	return o.Dob, true
 }
 
 // HasDob returns a boolean if a field has been set.
 func (o *Child) HasDob() bool {
-	if o != nil && o.Dob != nil {
+	if o != nil && !isNil(o.Dob) {
 		return true
 	}
 
@@ -274,7 +274,7 @@ func (o *Child) SetDob(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *Child) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || isNil(o.Timestamp) {
 		var ret int64
 		return ret
 	}
@@ -284,15 +284,15 @@ func (o *Child) GetTimestamp() int64 {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.Timestamp) {
+    return nil, false
 	}
 	return o.Timestamp, true
 }
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *Child) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !isNil(o.Timestamp) {
 		return true
 	}
 
@@ -306,7 +306,7 @@ func (o *Child) SetTimestamp(v int64) {
 
 // GetLastUpdatedTimestamp returns the LastUpdatedTimestamp field value if set, zero value otherwise.
 func (o *Child) GetLastUpdatedTimestamp() int64 {
-	if o == nil || o.LastUpdatedTimestamp == nil {
+	if o == nil || isNil(o.LastUpdatedTimestamp) {
 		var ret int64
 		return ret
 	}
@@ -316,15 +316,15 @@ func (o *Child) GetLastUpdatedTimestamp() int64 {
 // GetLastUpdatedTimestampOk returns a tuple with the LastUpdatedTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetLastUpdatedTimestampOk() (*int64, bool) {
-	if o == nil || o.LastUpdatedTimestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.LastUpdatedTimestamp) {
+    return nil, false
 	}
 	return o.LastUpdatedTimestamp, true
 }
 
 // HasLastUpdatedTimestamp returns a boolean if a field has been set.
 func (o *Child) HasLastUpdatedTimestamp() bool {
-	if o != nil && o.LastUpdatedTimestamp != nil {
+	if o != nil && !isNil(o.LastUpdatedTimestamp) {
 		return true
 	}
 
@@ -338,7 +338,7 @@ func (o *Child) SetLastUpdatedTimestamp(v int64) {
 
 // GetAvatars returns the Avatars field value if set, zero value otherwise.
 func (o *Child) GetAvatars() Avatars {
-	if o == nil || o.Avatars == nil {
+	if o == nil || isNil(o.Avatars) {
 		var ret Avatars
 		return ret
 	}
@@ -348,15 +348,15 @@ func (o *Child) GetAvatars() Avatars {
 // GetAvatarsOk returns a tuple with the Avatars field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetAvatarsOk() (*Avatars, bool) {
-	if o == nil || o.Avatars == nil {
-		return nil, false
+	if o == nil || isNil(o.Avatars) {
+    return nil, false
 	}
 	return o.Avatars, true
 }
 
 // HasAvatars returns a boolean if a field has been set.
 func (o *Child) HasAvatars() bool {
-	if o != nil && o.Avatars != nil {
+	if o != nil && !isNil(o.Avatars) {
 		return true
 	}
 
@@ -370,7 +370,7 @@ func (o *Child) SetAvatars(v Avatars) {
 
 // GetDeleted returns the Deleted field value if set, zero value otherwise.
 func (o *Child) GetDeleted() bool {
-	if o == nil || o.Deleted == nil {
+	if o == nil || isNil(o.Deleted) {
 		var ret bool
 		return ret
 	}
@@ -380,15 +380,15 @@ func (o *Child) GetDeleted() bool {
 // GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetDeletedOk() (*bool, bool) {
-	if o == nil || o.Deleted == nil {
-		return nil, false
+	if o == nil || isNil(o.Deleted) {
+    return nil, false
 	}
 	return o.Deleted, true
 }
 
 // HasDeleted returns a boolean if a field has been set.
 func (o *Child) HasDeleted() bool {
-	if o != nil && o.Deleted != nil {
+	if o != nil && !isNil(o.Deleted) {
 		return true
 	}
 
@@ -402,7 +402,7 @@ func (o *Child) SetDeleted(v bool) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *Child) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || isNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -412,15 +412,15 @@ func (o *Child) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Child) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || isNil(o.User) {
+    return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *Child) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !isNil(o.User) {
 		return true
 	}
 
@@ -434,40 +434,40 @@ func (o *Child) SetUser(v User) {
 
 func (o Child) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.FirstName != nil {
+	if !isNil(o.FirstName) {
 		toSerialize["firstName"] = o.FirstName
 	}
-	if o.LastName != nil {
+	if !isNil(o.LastName) {
 		toSerialize["lastName"] = o.LastName
 	}
-	if o.FullName != nil {
+	if !isNil(o.FullName) {
 		toSerialize["fullName"] = o.FullName
 	}
-	if o.Gender != nil {
+	if !isNil(o.Gender) {
 		toSerialize["gender"] = o.Gender
 	}
-	if o.Dob != nil {
+	if !isNil(o.Dob) {
 		toSerialize["dob"] = o.Dob
 	}
-	if o.Timestamp != nil {
+	if !isNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if o.LastUpdatedTimestamp != nil {
+	if !isNil(o.LastUpdatedTimestamp) {
 		toSerialize["lastUpdatedTimestamp"] = o.LastUpdatedTimestamp
 	}
-	if o.Avatars != nil {
+	if !isNil(o.Avatars) {
 		toSerialize["avatars"] = o.Avatars
 	}
-	if o.Deleted != nil {
+	if !isNil(o.Deleted) {
 		toSerialize["deleted"] = o.Deleted
 	}
-	if o.User != nil {
+	if !isNil(o.User) {
 		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)

@@ -19,7 +19,7 @@ import (
 type Entries struct {
 	Status *string `json:"status,omitempty"`
 	NumEntriesRemaining *int64 `json:"numEntriesRemaining,omitempty"`
-	Entries *[]Entry `json:"entries,omitempty"`
+	Entries []Entry `json:"entries,omitempty"`
 }
 
 // NewEntries instantiates a new Entries object
@@ -41,7 +41,7 @@ func NewEntriesWithDefaults() *Entries {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Entries) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -51,15 +51,15 @@ func (o *Entries) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entries) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Entries) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *Entries) SetStatus(v string) {
 
 // GetNumEntriesRemaining returns the NumEntriesRemaining field value if set, zero value otherwise.
 func (o *Entries) GetNumEntriesRemaining() int64 {
-	if o == nil || o.NumEntriesRemaining == nil {
+	if o == nil || isNil(o.NumEntriesRemaining) {
 		var ret int64
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *Entries) GetNumEntriesRemaining() int64 {
 // GetNumEntriesRemainingOk returns a tuple with the NumEntriesRemaining field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entries) GetNumEntriesRemainingOk() (*int64, bool) {
-	if o == nil || o.NumEntriesRemaining == nil {
-		return nil, false
+	if o == nil || isNil(o.NumEntriesRemaining) {
+    return nil, false
 	}
 	return o.NumEntriesRemaining, true
 }
 
 // HasNumEntriesRemaining returns a boolean if a field has been set.
 func (o *Entries) HasNumEntriesRemaining() bool {
-	if o != nil && o.NumEntriesRemaining != nil {
+	if o != nil && !isNil(o.NumEntriesRemaining) {
 		return true
 	}
 
@@ -105,25 +105,25 @@ func (o *Entries) SetNumEntriesRemaining(v int64) {
 
 // GetEntries returns the Entries field value if set, zero value otherwise.
 func (o *Entries) GetEntries() []Entry {
-	if o == nil || o.Entries == nil {
+	if o == nil || isNil(o.Entries) {
 		var ret []Entry
 		return ret
 	}
-	return *o.Entries
+	return o.Entries
 }
 
 // GetEntriesOk returns a tuple with the Entries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entries) GetEntriesOk() (*[]Entry, bool) {
-	if o == nil || o.Entries == nil {
-		return nil, false
+func (o *Entries) GetEntriesOk() ([]Entry, bool) {
+	if o == nil || isNil(o.Entries) {
+    return nil, false
 	}
 	return o.Entries, true
 }
 
 // HasEntries returns a boolean if a field has been set.
 func (o *Entries) HasEntries() bool {
-	if o != nil && o.Entries != nil {
+	if o != nil && !isNil(o.Entries) {
 		return true
 	}
 
@@ -132,18 +132,18 @@ func (o *Entries) HasEntries() bool {
 
 // SetEntries gets a reference to the given []Entry and assigns it to the Entries field.
 func (o *Entries) SetEntries(v []Entry) {
-	o.Entries = &v
+	o.Entries = v
 }
 
 func (o Entries) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.NumEntriesRemaining != nil {
+	if !isNil(o.NumEntriesRemaining) {
 		toSerialize["numEntriesRemaining"] = o.NumEntriesRemaining
 	}
-	if o.Entries != nil {
+	if !isNil(o.Entries) {
 		toSerialize["entries"] = o.Entries
 	}
 	return json.Marshal(toSerialize)

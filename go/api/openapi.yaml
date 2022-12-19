@@ -2,8 +2,8 @@ openapi: 3.0.1
 info:
   contact:
     email: dave@mudsite.com
-  description: Reverse Engineered API for Tinybeans.  This is horribly incomplete,
-    and not supported
+  description: "Reverse Engineered API for Tinybeans.  This is horribly incomplete,\
+    \ and not supported"
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -11,8 +11,6 @@ info:
   version: 0.0.1
 servers:
 - url: https://tinybeans.com/api/1
-security:
-- Authorization: []
 tags:
 - description: Authentication
   name: authenticate
@@ -84,7 +82,7 @@ paths:
           format: int64
           type: integer
         style: form
-      - description: Last (timestamp) you viewed [non inclusive]
+      - description: "Last (timestamp) you viewed [non inclusive]"
         explode: true
         in: query
         name: last
@@ -93,7 +91,7 @@ paths:
           format: int64
           type: integer
         style: form
-      - description: Since (timestamp) most recent (timestamp) you know about [inclusive]
+      - description: "Since (timestamp) most recent (timestamp) you know about [inclusive]"
         explode: true
         in: query
         name: since
@@ -126,7 +124,7 @@ paths:
       tags:
       - followings
   /users/me:
-    post:
+    get:
       operationId: users_me
       responses:
         "200":

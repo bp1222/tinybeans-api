@@ -1,0 +1,1259 @@
+openapi: 3.0.3
+info:
+  title: Spreadsheets V1
+  description: Specification for the Spreadsheets V1 API
+  version: 1.0.0
+paths:
+  "/spreadsheets/{SpreadsheetId}/sheets/{SheetId}/update":
+    post:
+      summary: Submit a sheet update
+      operationId: sheetUpdate
+      parameters:
+        - $ref: "#/components/parameters/SpreadsheetId"
+        - $ref: "#/components/parameters/SheetId"
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/SheetUpdate"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SheetUpdatedResponse"
+        "202":
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SheetUpdateAcceptedResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestErrorResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnauthorizedErrorResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenErrorResponse"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundErrorResponse"
+        "422":
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnprocessableEntityErrorResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorResponse"
+  "/spreadsheets/{SpreadsheetId}/sheets/{SheetId}/sheetdata":
+    get:
+      summary: Retrieve data from a sheet
+      operationId: getSheetData
+      parameters:
+        - $ref: "#/components/parameters/SpreadsheetId"
+        - $ref: "#/components/parameters/SheetId"
+        - $ref: "#/components/parameters/Revision"
+        - $ref: "#/components/parameters/Range"
+        - $ref: "#/components/parameters/Page"
+        - $ref: "#/components/parameters/PerPage"
+        - $ref: "#/components/parameters/FieldFilter"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SheetDataResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestErrorResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnauthorizedErrorResponse"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForbiddenErrorResponse"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundErrorResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerErrorResponse"
+components:
+  parameters:
+    SpreadsheetId:
+      description: The id of a spreadsheet
+      in: path
+      name: SpreadsheetId
+      schema:
+        type: string
+      required: true
+    SheetId:
+      description: The id of a sheet
+      in: path
+      name: SheetId
+      schema:
+        type: string
+      required: true
+    Range:
+      description: |
+        The range to query. If not provided, the entire sheet will be queried.
+        A1 style representation of a cell or range. A range my be unbounded in any/all directions by leaving off the corresponding column or row.
+      in: query
+      name: range
+      schema:
+        type: string
+        example: "A2:B"
+      required: false
+    Revision:
+      description: The spreadsheet revision from which to select data. If no revision is provided, the latest revision will be selected.
+      in: query
+      name: revision
+      schema:
+        type: integer
+      required: false
+    Page:
+      description: The page of results to return
+      in: query
+      name: page
+      schema:
+        type: integer
+      required: false
+    PerPage:
+      description: The number of cells to return per page. The server may return up to this many items per page.
+      in: query
+      name: per_page
+      schema:
+        type: integer
+      required: false
+    FieldFilter:
+      description: Filter the results to particular fields. Comma separated list of paths rooted at the results object.
+      in: query
+      name: fields
+      schema:
+        type: string
+        example: "cells/calculated_value,cells/formats/value_format"
+      required: false
+
+  schemas:
+    SheetDataResponse:
+      description: A response object containing the results of a sheet data query
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 200
+        reason:
+          description: A code that may be used to reliably detect a specific response condition
+          type: string
+          example: "sheet_data_retrieved"
+        messages:
+          description: Human readable descriptions of the response condition
+          type: array
+          items:
+            type: string
+            example: "The requested Sheet data has been fetched"
+        context:
+          $ref: "#/components/schemas/SheetDataResponseContext"
+        results:
+          $ref: "#/components/schemas/SheetDataResults"
+
+    SheetDataResponseContext:
+      description: Contextual information for the Response
+      type: object
+      properties:
+        revision:
+          description: The document revision of the data returned in this response
+          type: integer
+        page:
+          description: The current page index of this response
+          type: integer
+        per_page:
+          description: The maximum number of cells returned per page in this response
+          type: integer
+        paged_region:
+          description: The sub-region of the request that this page represents
+          type: string
+          example: "A1000:J2000"
+        next_url:
+          description: The URL of the next page of results
+          type: string
+
+    SheetDataResults:
+      description: Contains data from a sheet
+      type: object
+      properties:
+        range:
+          $ref: "#/components/schemas/Range"
+        merges:
+          description: Merged ranges that intersect with the request range
+          type: array
+          items:
+            $ref: "#/components/schemas/Range"
+        row_metadata:
+          description: Metadata about the rows in the request range
+          type: array
+          items:
+            $ref: "#/components/schemas/RowMetadata"
+        column_metadata:
+          description: Metadata about the columns in the request range
+          type: array
+          items:
+            $ref: "#/components/schemas/ColumnMetadata"
+        cells:
+          description: Cell data in row-major order
+          type: array
+          items:
+            type: array
+            items:
+              $ref: "#/components/schemas/CellData"
+
+    Formats:
+      description: Formats on a cell
+      type: object
+      properties:
+        text_format:
+          $ref: "#/components/schemas/TextFormat"
+        value_format:
+          $ref: "#/components/schemas/ValueFormat"
+        cell_format:
+          $ref: "#/components/schemas/CellFormat"
+
+    RowMetadata:
+      description: Metadata about a row
+      type: object
+      properties:
+        size:
+          description: The height of the row, in points
+          type: integer
+        hidden:
+          description: Whether the row is hidden
+          type: boolean
+        filtered:
+          description: Whether the row is filtered
+          type: boolean
+
+    ColumnMetadata:
+      description: Metadata about a column
+      type: object
+      properties:
+        size:
+          description: The width of the column, in points
+          type: integer
+        hidden:
+          description: Whether the column is hidden
+          type: boolean
+
+    CellData:
+      description: Data in a cell
+      type: object
+      properties:
+        value:
+          description: String, numeric, or boolean value of the cell. If the cell is a formula, this value will be the formula string.
+        calculated_value:
+          description: String, numeric, or boolean value result value of the cell. If the cell is a formula, this value will be the calculated result.
+        formats:
+          $ref: "#/components/schemas/Formats"
+
+    UpdateResponseContext:
+      description: Contextual information for the Response
+      type: object
+      properties:
+        revision:
+          description: The revision created by the request
+          type: integer
+        location:
+          description: The url of the async job that was kicked off by the request
+          type: string
+    SheetUpdatedResponse:
+      description: A response object indicating the sheet update was successful
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 200
+        reason:
+          description: A code that may be used to reliably detect a specific response condition
+          type: string
+          example: "sheet_updated"
+        messages:
+          description: Human readable descriptions of the response condition
+          type: array
+          items:
+            type: string
+            example: "The requested Sheet has been updated"
+        context:
+          $ref: "#/components/schemas/UpdateResponseContext"
+    SheetUpdateAcceptedResponse:
+      description: A response object indicating the asynchronous sheet update was accepted
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 202
+        reason:
+          description: A code that may be used to reliably detect a specific response condition
+          type: string
+          example: "sheet_update_accepted"
+        messages:
+          description: Human readable descriptions of the response condition
+          type: array
+          items:
+            type: string
+            example: "The requested Sheet update has been accepted"
+        context:
+          $ref: "#/components/schemas/UpdateResponseContext"
+    BadRequestErrorResponse:
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 400
+        reason:
+          description: A code that may be used to reliably detect a specific error condition
+          type: string
+          example: "request_body_undeserializable"
+        messages:
+          description: Human readable descriptions of the error condition
+          type: array
+          items:
+            type: string
+            example: "The request body could not be json deserialized into the expected type"
+    UnauthorizedErrorResponse:
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 401
+        reason:
+          description: A code that may be used to reliably detect a specific error condition
+          type: string
+          example: "read_permissions_missing"
+        messages:
+          description: Human readable descriptions of the error condition
+          type: array
+          items:
+            type: string
+            example: "Missing read permissions for the selected content"
+    ForbiddenErrorResponse:
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 403
+        reason:
+          description: A code that may be used to reliably detect a specific error condition
+          type: string
+          example: "feature_forbidden"
+        messages:
+          description: Human readable descriptions of the error condition
+          type: array
+          items:
+            type: string
+            example: "Access to this feature is forbidden for this account"
+    NotFoundErrorResponse:
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 404
+        reason:
+          description: A code that may be used to reliably detect a specific error condition
+          type: string
+          example: "sheet_not_found"
+        messages:
+          description: Human readable descriptions of the error condition
+          type: array
+          items:
+            type: string
+            example: "The selected Sheet could not be found"
+    UnprocessableEntityErrorResponse:
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 422
+        reason:
+          description: A code that may be used to reliably detect a specific error condition
+          type: string
+          example: "edit_rejected_by_locked_cells"
+        messages:
+          description: Human readable descriptions of the error condition
+          type: array
+          items:
+            type: string
+            example: "Attempted to modify locked cells"
+    InternalServerErrorResponse:
+      type: object
+      properties:
+        status:
+          description: The HTTP status code for the response
+          type: integer
+          example: 500
+        reason:
+          description: A code that may be used to reliably detect a specific error condition
+          type: string
+          example: "unexpected_error"
+        messages:
+          description: Human readable descriptions of the error condition
+          type: array
+          items:
+            type: string
+            example: "An unexpected server error occurred"
+
+    SheetUpdate:
+      type: object
+      properties:
+        requests:
+          description: The list of requests to perform on the sheet
+          type: array
+          items:
+            $ref: "#/components/schemas/SheetUpdateRequest"
+      required:
+        - requests
+    SheetUpdateRequest:
+      description: A request to update a sheet in some way. A single field on the SheetUpdateRequest should be set.
+      type: object
+      properties:
+        edit_cells:
+          $ref: "#/components/schemas/EditCellsRequest"
+        edit_range:
+          $ref: "#/components/schemas/EditRangeRequest"
+        apply_formats:
+          $ref: "#/components/schemas/ApplyFormatsRequest"
+        clear_formats:
+          $ref: "#/components/schemas/ClearFormatsRequest"
+        insert_rows:
+          $ref: "#/components/schemas/InsertRowsRequest"
+        insert_columns:
+          $ref: "#/components/schemas/InsertColumnsRequest"
+        delete_rows:
+          $ref: "#/components/schemas/DeleteRowsRequest"
+        delete_columns:
+          $ref: "#/components/schemas/DeleteColumnsRequest"
+        hide_rows:
+          $ref: "#/components/schemas/HideRowsRequest"
+        hide_columns:
+          $ref: "#/components/schemas/HideColumnsRequest"
+        unhide_rows:
+          $ref: "#/components/schemas/UnhideRowsRequest"
+        unhide_columns:
+          $ref: "#/components/schemas/UnhideColumnsRequest"
+        resize_rows:
+          $ref: "#/components/schemas/ResizeRowsRequest"
+        resize_rows_to_fit:
+          $ref: "#/components/schemas/ResizeRowsToFitRequest"
+        resize_columns:
+          $ref: "#/components/schemas/ResizeColumnsRequest"
+        resize_columns_to_fit:
+          $ref: "#/components/schemas/ResizeColumnsToFitRequest"
+        merge_ranges:
+          $ref: "#/components/schemas/MergeRangesRequest"
+        unmerge_ranges:
+          $ref: "#/components/schemas/UnmergeRangesRequest"
+        apply_borders:
+          $ref: "#/components/schemas/ApplyBordersRequest"
+        clear_borders:
+          $ref: "#/components/schemas/ClearBordersRequest"
+
+    Range:
+      description: A range in a sheet. If any field is omitted or null, the range is unbounded in that direction.
+      type: object
+      properties:
+        start_row:
+          description: The index of the first row of the range, inclusive
+          type: integer
+          minimum: 0
+          nullable: true
+        stop_row:
+          description: The index of the last row of the range, inclusive
+          type: integer
+          minimum: 0
+          nullable: true
+        start_column:
+          description: The index of the first column of the range, inclusive
+          type: integer
+          minimum: 0
+          nullable: true
+        stop_column:
+          description: The index of the last column of the range, inclusive
+          type: integer
+          minimum: 0
+          nullable: true
+
+    RangeValues:
+      description: Row-major ordered two-dimensional array of cell values
+      type: array
+      items:
+        description: List of cell values in a row
+        type: array
+        items:
+          description: String, numeric, or boolean value
+          nullable: true
+
+    EditCellsRequest:
+      description: Edit a list of cells
+      type: object
+      properties:
+        cells:
+          description: The cells to edit
+          items:
+            $ref: "#/components/schemas/CellEdit"
+          type: array
+      required:
+        - cells
+    CellEdit:
+      description: A single cell edit
+      type: object
+      properties:
+        row:
+          description: The row of the cell to edit
+          type: integer
+          minimum: 0
+        col:
+          description: The column of the cell to edit
+          type: integer
+          minimum: 0
+        value:
+          description: String, numeric, or boolean value
+      required:
+        - row
+        - col
+        - value
+
+    EditRangeRequest:
+      description: Edit all of the cells in a contiguous range
+      type: object
+      properties:
+        range:
+          $ref: "#/components/schemas/Range"
+        values:
+          $ref: "#/components/schemas/RangeValues"
+      required:
+        - range
+        - values
+
+    HexColor:
+      description: A hex color code
+      type: string
+      pattern: "^#(?:[0-9a-fA-F]{3}){1,2}$"
+      example: "#4bdf58"
+      default: "#000000"
+
+    TextFormat:
+      description: Text formats. Fields that are omitted will be ignored.
+      type: object
+      properties:
+        bold:
+          description: Text bold format
+          type: boolean
+        italic:
+          description: Text italic format
+          type: boolean
+        underline:
+          description: Text underline format
+          type: boolean
+        strikethrough:
+          description: Text strikethrough format
+          type: boolean
+        font_family:
+          description: Text font format
+          type: string
+          example: "Times New Roman"
+        font_size:
+          description: Text font size, in points
+          type: number
+          example: 12
+          minimum: 1
+          maximum: 720
+        font_color:
+          $ref: "#/components/schemas/HexColor"
+
+    ValueFormat:
+      description: Value Formats. Fields that are omitted will be ignored.
+      type: object
+      properties:
+        value_format_type:
+          description: The value format type of the content. Setting this property will clear any other ValueFormat properties that are not valid for the new value format type.
+          type: string
+          enum:
+            - "AUTOMATIC"
+            - "ACCOUNTING"
+            - "CURRENCY"
+            - "NUMBER"
+            - "PERCENT"
+            - "DATE"
+            - "PERIOD"
+            - "TEXT"
+        entered_in:
+          description: The scale cell values are entered in. Valid for AUTOMATIC, ACCOUNTING, CURRENCY, and NUMBER.
+          type: string
+          enum:
+            - "BASIS POINTS"
+            - "HUNDREDTHS"
+            - "ONES"
+            - "THOUSANDS"
+            - "TEN THOUSANDS"
+            - "MILLIONS"
+            - "HUNDRED MILLIONS"
+            - "BILLIONS"
+            - "TRILLIONS"
+        shown_in:
+          description: The scale cell values are displayed in. Valid for AUTOMATIC, ACCOUNTING, CURRENCY, and NUMBER.
+          type: string
+          enum:
+            - "BASIS POINTS"
+            - "HUNDREDTHS"
+            - "ONES"
+            - "THOUSANDS"
+            - "TEN THOUSANDS"
+            - "MILLIONS"
+            - "HUNDRED MILLIONS"
+            - "BILLIONS"
+            - "TRILLIONS"
+        precision:
+          description: Precision to use when rounding numbers for display. Valid for AUTOMATIC, ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: object
+          properties:
+            auto:
+              description: Render with automatic precision based on the value in the cell
+              type: boolean
+              default: false
+            value:
+              description: Explicit precision value to use. Required unless auto is true.
+              type: integer
+              minimum: -15
+              maximum: 15
+        currency_symbol:
+          description: Render numbers with a currency symbol. Valid for ACCOUNTING and CURRENCY. Either generic or currency should be set, but not both.
+          type: object
+          properties:
+            generic:
+              description: A generic currency symbol
+              type: string
+              enum:
+                - "$"
+                - "¢"
+            currency:
+              description: An ISO currency format
+              type: object
+              properties:
+                code:
+                  description: The ISO currency identifier
+                  type: string
+                  enum:
+                    - "AUD"
+                    - "BGN"
+                    - "BRL"
+                    - "CAD"
+                    - "CHF"
+                    - "CNH"
+                    - "CNY"
+                    - "CZK"
+                    - "DKK"
+                    - "EUR"
+                    - "GBP"
+                    - "HKD"
+                    - "HRK"
+                    - "HUF"
+                    - "INR"
+                    - "ISK"
+                    - "IDR"
+                    - "JPY"
+                    - "KRW"
+                    - "MXN"
+                    - "MYR"
+                    - "NOK"
+                    - "PHP"
+                    - "PLN"
+                    - "RON"
+                    - "RSD"
+                    - "RUB"
+                    - "SEK"
+                    - "SGD"
+                    - "THB"
+                    - "TRY"
+                    - "TWD"
+                    - "UAH"
+                    - "USD"
+                    - "ZAR"
+                    - "VND"
+                display:
+                  description: | 
+                    How to display the currency. CODE simply displays the ISO currency code while SYMBOL displays the corresponding currency symbol.
+                    For codes where we support two different symbols, SYMBOL and SYMBOL2 display as follows:
+                      | code | SYMBOL | SYMBOL2 |
+                      | ---- | ------ | ------- |
+                      | INR  | ₹      | Rs      |
+                      | RSD  | дин    | din     |
+                      | UAH  | ₴      | грн     |
+                  type: string
+                  enum:
+                    - "SYMBOL"
+                    - "SYMBOL2"
+                    - "CODE"
+        percent_symbol:
+          description: Render numbers with a percent symbol. Valid for PERCENT.
+          type: string
+          enum:
+            - "NONE"
+            - "SYMBOL"
+            - "WORD"
+        symbol_align:
+          description: Where to render the symbol relative to the value. All values valid for ACCOUNTING and CURRENCY. Left values valid for NUMBER. Right values valid for PERCENT.
+          type: string
+          enum:
+            - "LEFT"
+            - "LEFT INSIDE"
+            - "RIGHT"
+            - "RIGHT INSIDE"
+            - "RIGHT SPACED INSIDE"
+            - "RIGHT SPACED"
+        show_leading_zero:
+          description: Include a leading zero for decimal numbers with no whole number part. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: boolean
+        show_thousands_separator:
+          description: Render the thousands separator. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: boolean
+        use_dashes_for_zeros:
+          description: Render zero as a dash instead of a digit. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: boolean
+        use_parens_for_negatives:
+          description: Render parentheses around the number instead of a negative symbol. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: boolean
+        show_numbers_as_words:
+          description: Render the number as words instead of digits. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: boolean
+        capitalize_first_word:
+          description: Capitalize the first word of the numbers as words. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT only when show_numbers_as_words is true.
+          type: boolean
+        display_zero_as:
+          description: The value to use for zero when displaying numbers as words. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT only when show_numbers_as_words is true.
+          type: string
+          enum:
+            - "ZERO"
+            - "NO"
+            - "NONE"
+            - "NOTHING"
+            - "NIL"
+            - "NOT"
+            - "NOMINAL"
+            - "IMMATERIAL"
+        show_sign_rounded_zero:
+          description: Render the sign on values rounded to zero. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: boolean
+        show_positive_sign:
+          description: Render the positive sign on numbers greater than zero. Valid for ACCOUNTING, CURRENCY, NUMBER, and PERCENT.
+          type: boolean
+        date_uppercase_all:
+          description: Uppercase all characters in the date string. Valid for DATE.
+          type: boolean
+        date_abbreviate_month:
+          description: Use month abbreviations instead of full month names. Valid for DATE.
+          type: boolean
+        date_format_string:
+          description: Format to use when rendering the date. Valid for DATE.
+          type: string
+          example: "d/m/yyyy"
+        period_format:
+          description: Options for formatting a duration string. Valid for PERIOD
+          type: object
+          properties:
+            display:
+              description: Method of displaying the period value
+              type: string
+              enum:
+                - "RAW"
+                - "LARGEST"
+                - "YEARS"
+                - "ALL"
+            separator:
+              description: The separator to use between denominations if multiple are displayed
+              type: string
+              enum:
+                - "NONE"
+                - "COMMA"
+              default: "COMMA"
+            precision:
+              description: Precision to use when rounding decimal numbers for display. Renders with automatic precision if null.
+              type: integer
+              minimum: 0
+              maximum: 15
+              nullable: true
+              default: null
+            show_labels:
+              description: Render a label after each denomination
+              type: boolean
+              default: true
+            show_numbers_as_words:
+              description: Render the numbers as words instead of digits
+              type: boolean
+              default: false
+            capitalize_first_word:
+              description: Capitalize the first word
+              type: boolean
+              default: false
+          required:
+            - display
+        prefix:
+          description: Custom prefix value to render in the cell. Valid for ACCOUNTING, CURRENCY, NUMBER, PERCENT, and DATE.
+          type: string
+        suffix:
+          description: Custom suffix value to render in the cell. Valid for ACCOUNTING, CURRENCY, NUMBER, PERCENT, and DATE.
+          type: string
+
+    CellFormat:
+      description: Cell Formats. Fields that are omitted will be ignored.
+      type: object
+      properties:
+        indent:
+          description: Indentation of content in the cell
+          type: object
+          properties:
+            value:
+              description: The size of the indent
+              type: number
+              minimum: 0
+            unit:
+              description: The unit of the size
+              type: string
+              enum:
+                - "INCHES"
+                - "CENTIMETERS"
+          required:
+            - value
+            - unit
+        horizontal_align:
+          description: The horizontal alignment of the content in the cell
+          type: string
+          enum:
+            - "LEFT"
+            - "RIGHT"
+            - "CENTER"
+            - "JUSTIFIED"
+        vertical_align:
+          description: The vertical alignment of the content in the cell
+          type: string
+          enum:
+            - "TOP"
+            - "MIDDLE"
+            - "BOTTOM"
+        text_rotation:
+          description: The text orientation
+          type: string
+          enum:
+            - "HORIZONTAL"
+            - "ASCENDING"
+            - "DESCENDING"
+        background_color:
+          $ref: "#/components/schemas/HexColor"
+        leader_dots:
+          description: The leader dot pattern to show on the cell
+          type: string
+          enum:
+            - "NARROW"
+            - "WIDE"
+        borders:
+          "$ref": "#/components/schemas/CellBorders"
+
+    ApplyFormatsRequest:
+      description: Apply formats to a list of ranges
+      type: object
+      properties:
+        ranges:
+          description: The ranges to format
+          type: array
+          items:
+            $ref: "#/components/schemas/Range"
+        text_format:
+          $ref: "#/components/schemas/TextFormat"
+        value_format:
+          $ref: "#/components/schemas/ValueFormat"
+        cell_format:
+          $ref: "#/components/schemas/CellFormat"
+      required:
+        - ranges
+
+    ClearFormatsRequest:
+      description: Clear formats from ranges.
+      type: object
+      properties:
+        ranges:
+          description: The ranges to clear formats
+          type: array
+          items:
+            $ref: "#/components/schemas/Range"
+        text_format_fields:
+          description: List of TextFormat fields to clear. Use "*" to clear all fields.
+          example: ["bold", "italic", "underline"]
+          type: array
+          items:
+            type: string
+        value_format_fields:
+          description: List of ValueFormat fields to clear. Use "*" to clear all fields.
+          example: ["shown_in", "precision", "currency_symbol"]
+          type: array
+          items:
+            type: string
+        cell_format_fields:
+          description: List of CellFormat fields to clear. Use "*" to clear all fields.
+          example: ["indent", "background_color", "leader_dots"]
+          type: array
+          items:
+            type: string
+      required:
+        - ranges
+
+    Border:
+      description: The type of border that should be applied
+      type: object
+      properties:
+        style:
+          description: The type of border to apply
+          type: string
+          enum:
+            - "SINGLE"
+            - "DOUBLE"
+            - "DASHED1"
+            - "DASHED2"
+            - "DASHED3"
+            - "DASHED4"
+            - "DASHED5"
+        weight:
+          description: The thickness of the border, in points. Rounded to the nearest hundredth.
+          type: number
+          default: 1
+          minimum: 0.25
+          maximum: 10
+        color:
+          $ref: "#/components/schemas/HexColor"
+      required:
+        - style
+
+    CellBorders:
+      description: The borders applied to a cell
+      readOnly: true
+      type: object
+      properties:
+        top:
+          "$ref": "#/components/schemas/Border"
+        bottom:
+          "$ref": "#/components/schemas/Border"
+        left:
+          "$ref": "#/components/schemas/Border"
+        right:
+          "$ref": "#/components/schemas/Border"
+
+    ApplyBordersRequest:
+      description: Apply borders to ranges
+      type: object
+      properties:
+        ranges:
+          description: The ranges to apply borders
+          type: array
+          items:
+            $ref: "#/components/schemas/Range"
+        top:
+          $ref: "#/components/schemas/Border"
+        bottom:
+          $ref: "#/components/schemas/Border"
+        left:
+          $ref: "#/components/schemas/Border"
+        right:
+          $ref: "#/components/schemas/Border"
+        inner_horizontal:
+          $ref: "#/components/schemas/Border"
+        inner_vertical:
+          $ref: "#/components/schemas/Border"
+      required:
+        - ranges
+
+    ClearBordersRequest:
+      description: Clears borders in ranges
+      type: object
+      properties:
+        ranges:
+          description: The ranges to clear borders
+          type: array
+          items:
+            $ref: "#/components/schemas/Range"
+      required:
+        - ranges
+
+    InheritFrom:
+      description: Where to inherit formats from when performing an insertion
+      type: string
+      enum:
+        - "NONE"
+        - "BEFORE"
+        - "AFTER"
+
+    InsertRowsRequest:
+      description: Insert rows into the sheet
+      type: object
+      properties:
+        index:
+          description: The index to insert the rows
+          type: integer
+          minimum: 0
+        count:
+          description: The number of rows to insert
+          type: integer
+          minimum: 1
+        inherit_from:
+          $ref: "#/components/schemas/InheritFrom"
+      required:
+        - index
+        - count
+        - inherit_from
+
+    InsertColumnsRequest:
+      description: Insert columns into the sheet
+      type: object
+      properties:
+        index:
+          description: The index to insert the columns
+          type: integer
+          minimum: 0
+        count:
+          description: The number of columns to insert
+          type: integer
+          minimum: 1
+        inherit_from:
+          $ref: "#/components/schemas/InheritFrom"
+      required:
+        - index
+        - count
+        - inherit_from
+
+    Interval:
+      description: An interval of rows or columns. If either the start or end is null or omitted, the interval is unbounded in that direction.
+      type: object
+      properties:
+        start:
+          description: The first index of the interval, inclusive
+          type: integer
+          minimum: 0
+          nullable: true
+        end:
+          description: The last index of the interval, inclusive
+          type: integer
+          minimum: 0
+          nullable: true
+
+    DeleteRowsRequest:
+      description: Delete rows from the sheet
+      type: object
+      properties:
+        interval:
+          $ref: "#/components/schemas/Interval"
+        force:
+          description: Force the deletion of links, xbrl, footnotes, etc
+          type: boolean
+      required:
+        - interval
+
+    DeleteColumnsRequest:
+      description: Delete columns from the sheet
+      type: object
+      properties:
+        interval:
+          $ref: "#/components/schemas/Interval"
+        force:
+          description: Force the deletion of links, xbrl, footnotes, etc
+          type: boolean
+      required:
+        - interval
+
+    HideRowsRequest:
+      description: Hide rows in the sheet
+      type: object
+      properties:
+        intervals:
+          description: The intervals of rows to hide
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+        force:
+          description: Force the hiding of footnotes
+          type: boolean
+      required:
+        - intervals
+
+    HideColumnsRequest:
+      description: Hide columns in the sheet
+      type: object
+      properties:
+        intervals:
+          description: The intervals of columns to hide
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+        force:
+          description: Force the hiding of footnotes
+          type: boolean
+      required:
+        - intervals
+
+    UnhideRowsRequest:
+      description: Unhide rows in the sheet
+      type: object
+      properties:
+        intervals:
+          description: The intervals of rows to unhide
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+      required:
+        - intervals
+
+    UnhideColumnsRequest:
+      description: Unhide columns in the sheet
+      type: object
+      properties:
+        intervals:
+          description: The intervals of columns to unhide
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+      required:
+        - intervals
+
+    ResizeRowsRequest:
+      description: Resize rows to the specified size
+      type: object
+      properties:
+        size:
+          description: The new size for the rows, in points
+          type: integer
+          minimum: 3
+          maximum: 10000
+        intervals:
+          description: The intervals of rows to resize
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+      required:
+        - size
+        - intervals
+
+    ResizeRowsToFitRequest:
+      description: Auto-size rows to fit content
+      type: object
+      properties:
+        intervals:
+          description: The intervals of rows to resize
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+      required:
+        - intervals
+
+    ResizeColumnsRequest:
+      description: Resize columns to the specified size
+      type: object
+      properties:
+        size:
+          description: The new size for the columns, in points
+          type: integer
+          minimum: 3
+          maximum: 10000
+        intervals:
+          description: The intervals of columns to resize
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+      required:
+        - size
+        - intervals
+
+    ResizeColumnsToFitRequest:
+      description: Auto-size columns to fit content
+      type: object
+      properties:
+        intervals:
+          description: The intervals of columns to resize
+          type: array
+          items:
+            $ref: "#/components/schemas/Interval"
+      required:
+        - intervals
+
+    MergeRangesRequest:
+      description: Merge ranges
+      type: object
+      properties:
+        ranges:
+          description: The ranges to merge
+          type: array
+          items:
+            $ref: "#/components/schemas/Range"
+        merge_type:
+          description: How cells should be merged
+          type: string
+          enum:
+            - "ALL"
+            - "HORIZONTAL"
+            - "VERTICAL"
+          default: "ALL"
+        force:
+          description: Force the merge through links, xbrl, footnotes, etc
+          type: boolean
+      required:
+        - ranges
+
+    UnmergeRangesRequest:
+      description: Unmerge merges that intersect the provided ranges
+      type: object
+      properties:
+        ranges:
+          description: The ranges to unmerge
+          type: array
+          items:
+            $ref: "#/components/schemas/Range"
+      required:
+        - ranges

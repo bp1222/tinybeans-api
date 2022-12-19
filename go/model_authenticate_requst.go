@@ -44,7 +44,7 @@ func NewAuthenticateRequstWithDefaults() *AuthenticateRequst {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *AuthenticateRequst) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || isNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -54,15 +54,15 @@ func (o *AuthenticateRequst) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateRequst) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
-		return nil, false
+	if o == nil || isNil(o.ClientId) {
+    return nil, false
 	}
 	return o.ClientId, true
 }
 
 // HasClientId returns a boolean if a field has been set.
 func (o *AuthenticateRequst) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !isNil(o.ClientId) {
 		return true
 	}
 
@@ -76,7 +76,7 @@ func (o *AuthenticateRequst) SetClientId(v string) {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *AuthenticateRequst) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || isNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -86,15 +86,15 @@ func (o *AuthenticateRequst) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateRequst) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
-		return nil, false
+	if o == nil || isNil(o.DeviceId) {
+    return nil, false
 	}
 	return o.DeviceId, true
 }
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *AuthenticateRequst) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !isNil(o.DeviceId) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *AuthenticateRequst) SetDeviceId(v string) {
 
 // GetInviteToken returns the InviteToken field value if set, zero value otherwise.
 func (o *AuthenticateRequst) GetInviteToken() string {
-	if o == nil || o.InviteToken == nil {
+	if o == nil || isNil(o.InviteToken) {
 		var ret string
 		return ret
 	}
@@ -118,15 +118,15 @@ func (o *AuthenticateRequst) GetInviteToken() string {
 // GetInviteTokenOk returns a tuple with the InviteToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateRequst) GetInviteTokenOk() (*string, bool) {
-	if o == nil || o.InviteToken == nil {
-		return nil, false
+	if o == nil || isNil(o.InviteToken) {
+    return nil, false
 	}
 	return o.InviteToken, true
 }
 
 // HasInviteToken returns a boolean if a field has been set.
 func (o *AuthenticateRequst) HasInviteToken() bool {
-	if o != nil && o.InviteToken != nil {
+	if o != nil && !isNil(o.InviteToken) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o *AuthenticateRequst) SetInviteToken(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *AuthenticateRequst) GetPassword() string {
-	if o == nil || o.Password == nil {
+	if o == nil || isNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -150,15 +150,15 @@ func (o *AuthenticateRequst) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateRequst) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
-		return nil, false
+	if o == nil || isNil(o.Password) {
+    return nil, false
 	}
 	return o.Password, true
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *AuthenticateRequst) HasPassword() bool {
-	if o != nil && o.Password != nil {
+	if o != nil && !isNil(o.Password) {
 		return true
 	}
 
@@ -172,7 +172,7 @@ func (o *AuthenticateRequst) SetPassword(v string) {
 
 // GetRememberMe returns the RememberMe field value if set, zero value otherwise.
 func (o *AuthenticateRequst) GetRememberMe() bool {
-	if o == nil || o.RememberMe == nil {
+	if o == nil || isNil(o.RememberMe) {
 		var ret bool
 		return ret
 	}
@@ -182,15 +182,15 @@ func (o *AuthenticateRequst) GetRememberMe() bool {
 // GetRememberMeOk returns a tuple with the RememberMe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateRequst) GetRememberMeOk() (*bool, bool) {
-	if o == nil || o.RememberMe == nil {
-		return nil, false
+	if o == nil || isNil(o.RememberMe) {
+    return nil, false
 	}
 	return o.RememberMe, true
 }
 
 // HasRememberMe returns a boolean if a field has been set.
 func (o *AuthenticateRequst) HasRememberMe() bool {
-	if o != nil && o.RememberMe != nil {
+	if o != nil && !isNil(o.RememberMe) {
 		return true
 	}
 
@@ -204,7 +204,7 @@ func (o *AuthenticateRequst) SetRememberMe(v bool) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *AuthenticateRequst) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || isNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -214,15 +214,15 @@ func (o *AuthenticateRequst) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateRequst) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
-		return nil, false
+	if o == nil || isNil(o.Username) {
+    return nil, false
 	}
 	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *AuthenticateRequst) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !isNil(o.Username) {
 		return true
 	}
 
@@ -236,22 +236,22 @@ func (o *AuthenticateRequst) SetUsername(v string) {
 
 func (o AuthenticateRequst) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ClientId != nil {
+	if !isNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if o.DeviceId != nil {
+	if !isNil(o.DeviceId) {
 		toSerialize["deviceId"] = o.DeviceId
 	}
-	if o.InviteToken != nil {
+	if !isNil(o.InviteToken) {
 		toSerialize["inviteToken"] = o.InviteToken
 	}
-	if o.Password != nil {
+	if !isNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
-	if o.RememberMe != nil {
+	if !isNil(o.RememberMe) {
 		toSerialize["rememberMe"] = o.RememberMe
 	}
-	if o.Username != nil {
+	if !isNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}
 	return json.Marshal(toSerialize)

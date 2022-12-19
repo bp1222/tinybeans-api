@@ -13,23 +13,19 @@ package tinybeans
 
 import (
 	"bytes"
-	_context "context"
-	_ioutil "io/ioutil"
-	_nethttp "net/http"
-	_neturl "net/url"
+	"context"
+	"io/ioutil"
+	"net/http"
+	"net/url"
 	"strings"
 )
 
-// Linger please
-var (
-	_ _context.Context
-)
 
 // JournalsApiService JournalsApi service
 type JournalsApiService service
 
 type ApiJournalEntriesRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *JournalsApiService
 	journal int64
 	fetchSize *int64
@@ -43,34 +39,37 @@ func (r ApiJournalEntriesRequest) FetchSize(fetchSize int64) ApiJournalEntriesRe
 	r.fetchSize = &fetchSize
 	return r
 }
+
 // ID&#39;s Only?
 func (r ApiJournalEntriesRequest) IdsOnly(idsOnly int64) ApiJournalEntriesRequest {
 	r.idsOnly = &idsOnly
 	return r
 }
+
 // Last (timestamp) you viewed [non inclusive]
 func (r ApiJournalEntriesRequest) Last(last int64) ApiJournalEntriesRequest {
 	r.last = &last
 	return r
 }
+
 // Since (timestamp) most recent (timestamp) you know about [inclusive]
 func (r ApiJournalEntriesRequest) Since(since int64) ApiJournalEntriesRequest {
 	r.since = &since
 	return r
 }
 
-func (r ApiJournalEntriesRequest) Execute() (Entries, *_nethttp.Response, error) {
+func (r ApiJournalEntriesRequest) Execute() (*Entries, *http.Response, error) {
 	return r.ApiService.JournalEntriesExecute(r)
 }
 
 /*
 JournalEntries Tinybeans Journal Entries
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param journal ID of journal to pull entries from
  @return ApiJournalEntriesRequest
 */
-func (a *JournalsApiService) JournalEntries(ctx _context.Context, journal int64) ApiJournalEntriesRequest {
+func (a *JournalsApiService) JournalEntries(ctx context.Context, journal int64) ApiJournalEntriesRequest {
 	return ApiJournalEntriesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -80,25 +79,25 @@ func (a *JournalsApiService) JournalEntries(ctx _context.Context, journal int64)
 
 // Execute executes the request
 //  @return Entries
-func (a *JournalsApiService) JournalEntriesExecute(r ApiJournalEntriesRequest) (Entries, *_nethttp.Response, error) {
+func (a *JournalsApiService) JournalEntriesExecute(r ApiJournalEntriesRequest) (*Entries, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  Entries
+		localVarReturnValue  *Entries
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JournalsApiService.JournalEntries")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/journals/{journal}/entries"
-	localVarPath = strings.Replace(localVarPath, "{"+"journal"+"}", _neturl.PathEscape(parameterToString(r.journal, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"journal"+"}", url.PathEscape(parameterToString(r.journal, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 	if r.fetchSize == nil {
 		return localVarReturnValue, nil, reportError("fetchSize is required and must be specified")
 	}
@@ -130,20 +129,6 @@ func (a *JournalsApiService) JournalEntriesExecute(r ApiJournalEntriesRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Authorization"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -154,15 +139,15 @@ func (a *JournalsApiService) JournalEntriesExecute(r ApiJournalEntriesRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -171,7 +156,7 @@ func (a *JournalsApiService) JournalEntriesExecute(r ApiJournalEntriesRequest) (
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -182,22 +167,21 @@ func (a *JournalsApiService) JournalEntriesExecute(r ApiJournalEntriesRequest) (
 }
 
 type ApiJournalsRequest struct {
-	ctx _context.Context
+	ctx context.Context
 	ApiService *JournalsApiService
 }
 
-
-func (r ApiJournalsRequest) Execute() (Journals, *_nethttp.Response, error) {
+func (r ApiJournalsRequest) Execute() (*Journals, *http.Response, error) {
 	return r.ApiService.JournalsExecute(r)
 }
 
 /*
 Journals Tinybeans Journals
 
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiJournalsRequest
 */
-func (a *JournalsApiService) Journals(ctx _context.Context) ApiJournalsRequest {
+func (a *JournalsApiService) Journals(ctx context.Context) ApiJournalsRequest {
 	return ApiJournalsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -206,24 +190,24 @@ func (a *JournalsApiService) Journals(ctx _context.Context) ApiJournalsRequest {
 
 // Execute executes the request
 //  @return Journals
-func (a *JournalsApiService) JournalsExecute(r ApiJournalsRequest) (Journals, *_nethttp.Response, error) {
+func (a *JournalsApiService) JournalsExecute(r ApiJournalsRequest) (*Journals, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  Journals
+		localVarReturnValue  *Journals
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JournalsApiService.Journals")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/journals"
 
 	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -242,20 +226,6 @@ func (a *JournalsApiService) JournalsExecute(r ApiJournalsRequest) (Journals, *_
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Authorization"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["authorization"] = key
-			}
-		}
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -266,15 +236,15 @@ func (a *JournalsApiService) JournalsExecute(r ApiJournalsRequest) (Journals, *_
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -283,7 +253,7 @@ func (a *JournalsApiService) JournalsExecute(r ApiJournalsRequest) (Journals, *_
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := GenericOpenAPIError{
+		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

@@ -54,7 +54,7 @@ func NewPaymentTransactionWithDefaults() *PaymentTransaction {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -64,15 +64,15 @@ func (o *PaymentTransaction) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -86,7 +86,7 @@ func (o *PaymentTransaction) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -96,15 +96,15 @@ func (o *PaymentTransaction) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -118,7 +118,7 @@ func (o *PaymentTransaction) SetId(v int64) {
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetDateCreated() string {
-	if o == nil || o.DateCreated == nil {
+	if o == nil || isNil(o.DateCreated) {
 		var ret string
 		return ret
 	}
@@ -128,15 +128,15 @@ func (o *PaymentTransaction) GetDateCreated() string {
 // GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetDateCreatedOk() (*string, bool) {
-	if o == nil || o.DateCreated == nil {
-		return nil, false
+	if o == nil || isNil(o.DateCreated) {
+    return nil, false
 	}
 	return o.DateCreated, true
 }
 
 // HasDateCreated returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasDateCreated() bool {
-	if o != nil && o.DateCreated != nil {
+	if o != nil && !isNil(o.DateCreated) {
 		return true
 	}
 
@@ -150,7 +150,7 @@ func (o *PaymentTransaction) SetDateCreated(v string) {
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetLastUpdated() string {
-	if o == nil || o.LastUpdated == nil {
+	if o == nil || isNil(o.LastUpdated) {
 		var ret string
 		return ret
 	}
@@ -160,15 +160,15 @@ func (o *PaymentTransaction) GetLastUpdated() string {
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetLastUpdatedOk() (*string, bool) {
-	if o == nil || o.LastUpdated == nil {
-		return nil, false
+	if o == nil || isNil(o.LastUpdated) {
+    return nil, false
 	}
 	return o.LastUpdated, true
 }
 
 // HasLastUpdated returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasLastUpdated() bool {
-	if o != nil && o.LastUpdated != nil {
+	if o != nil && !isNil(o.LastUpdated) {
 		return true
 	}
 
@@ -182,7 +182,7 @@ func (o *PaymentTransaction) SetLastUpdated(v string) {
 
 // GetTransactionDate returns the TransactionDate field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetTransactionDate() string {
-	if o == nil || o.TransactionDate == nil {
+	if o == nil || isNil(o.TransactionDate) {
 		var ret string
 		return ret
 	}
@@ -192,15 +192,15 @@ func (o *PaymentTransaction) GetTransactionDate() string {
 // GetTransactionDateOk returns a tuple with the TransactionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetTransactionDateOk() (*string, bool) {
-	if o == nil || o.TransactionDate == nil {
-		return nil, false
+	if o == nil || isNil(o.TransactionDate) {
+    return nil, false
 	}
 	return o.TransactionDate, true
 }
 
 // HasTransactionDate returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasTransactionDate() bool {
-	if o != nil && o.TransactionDate != nil {
+	if o != nil && !isNil(o.TransactionDate) {
 		return true
 	}
 
@@ -214,7 +214,7 @@ func (o *PaymentTransaction) SetTransactionDate(v string) {
 
 // GetAmountInCents returns the AmountInCents field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetAmountInCents() int64 {
-	if o == nil || o.AmountInCents == nil {
+	if o == nil || isNil(o.AmountInCents) {
 		var ret int64
 		return ret
 	}
@@ -224,15 +224,15 @@ func (o *PaymentTransaction) GetAmountInCents() int64 {
 // GetAmountInCentsOk returns a tuple with the AmountInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetAmountInCentsOk() (*int64, bool) {
-	if o == nil || o.AmountInCents == nil {
-		return nil, false
+	if o == nil || isNil(o.AmountInCents) {
+    return nil, false
 	}
 	return o.AmountInCents, true
 }
 
 // HasAmountInCents returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasAmountInCents() bool {
-	if o != nil && o.AmountInCents != nil {
+	if o != nil && !isNil(o.AmountInCents) {
 		return true
 	}
 
@@ -246,7 +246,7 @@ func (o *PaymentTransaction) SetAmountInCents(v int64) {
 
 // GetAmountDisplay returns the AmountDisplay field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetAmountDisplay() string {
-	if o == nil || o.AmountDisplay == nil {
+	if o == nil || isNil(o.AmountDisplay) {
 		var ret string
 		return ret
 	}
@@ -256,15 +256,15 @@ func (o *PaymentTransaction) GetAmountDisplay() string {
 // GetAmountDisplayOk returns a tuple with the AmountDisplay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetAmountDisplayOk() (*string, bool) {
-	if o == nil || o.AmountDisplay == nil {
-		return nil, false
+	if o == nil || isNil(o.AmountDisplay) {
+    return nil, false
 	}
 	return o.AmountDisplay, true
 }
 
 // HasAmountDisplay returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasAmountDisplay() bool {
-	if o != nil && o.AmountDisplay != nil {
+	if o != nil && !isNil(o.AmountDisplay) {
 		return true
 	}
 
@@ -278,7 +278,7 @@ func (o *PaymentTransaction) SetAmountDisplay(v string) {
 
 // GetDiscount returns the Discount field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetDiscount() int64 {
-	if o == nil || o.Discount == nil {
+	if o == nil || isNil(o.Discount) {
 		var ret int64
 		return ret
 	}
@@ -288,15 +288,15 @@ func (o *PaymentTransaction) GetDiscount() int64 {
 // GetDiscountOk returns a tuple with the Discount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetDiscountOk() (*int64, bool) {
-	if o == nil || o.Discount == nil {
-		return nil, false
+	if o == nil || isNil(o.Discount) {
+    return nil, false
 	}
 	return o.Discount, true
 }
 
 // HasDiscount returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasDiscount() bool {
-	if o != nil && o.Discount != nil {
+	if o != nil && !isNil(o.Discount) {
 		return true
 	}
 
@@ -310,7 +310,7 @@ func (o *PaymentTransaction) SetDiscount(v int64) {
 
 // GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetUserId() int64 {
-	if o == nil || o.UserId == nil {
+	if o == nil || isNil(o.UserId) {
 		var ret int64
 		return ret
 	}
@@ -320,15 +320,15 @@ func (o *PaymentTransaction) GetUserId() int64 {
 // GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetUserIdOk() (*int64, bool) {
-	if o == nil || o.UserId == nil {
-		return nil, false
+	if o == nil || isNil(o.UserId) {
+    return nil, false
 	}
 	return o.UserId, true
 }
 
 // HasUserId returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasUserId() bool {
-	if o != nil && o.UserId != nil {
+	if o != nil && !isNil(o.UserId) {
 		return true
 	}
 
@@ -342,7 +342,7 @@ func (o *PaymentTransaction) SetUserId(v int64) {
 
 // GetProductId returns the ProductId field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetProductId() string {
-	if o == nil || o.ProductId == nil {
+	if o == nil || isNil(o.ProductId) {
 		var ret string
 		return ret
 	}
@@ -352,15 +352,15 @@ func (o *PaymentTransaction) GetProductId() string {
 // GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetProductIdOk() (*string, bool) {
-	if o == nil || o.ProductId == nil {
-		return nil, false
+	if o == nil || isNil(o.ProductId) {
+    return nil, false
 	}
 	return o.ProductId, true
 }
 
 // HasProductId returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasProductId() bool {
-	if o != nil && o.ProductId != nil {
+	if o != nil && !isNil(o.ProductId) {
 		return true
 	}
 
@@ -374,7 +374,7 @@ func (o *PaymentTransaction) SetProductId(v string) {
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetPaymentId() string {
-	if o == nil || o.PaymentId == nil {
+	if o == nil || isNil(o.PaymentId) {
 		var ret string
 		return ret
 	}
@@ -384,15 +384,15 @@ func (o *PaymentTransaction) GetPaymentId() string {
 // GetPaymentIdOk returns a tuple with the PaymentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetPaymentIdOk() (*string, bool) {
-	if o == nil || o.PaymentId == nil {
-		return nil, false
+	if o == nil || isNil(o.PaymentId) {
+    return nil, false
 	}
 	return o.PaymentId, true
 }
 
 // HasPaymentId returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasPaymentId() bool {
-	if o != nil && o.PaymentId != nil {
+	if o != nil && !isNil(o.PaymentId) {
 		return true
 	}
 
@@ -406,7 +406,7 @@ func (o *PaymentTransaction) SetPaymentId(v string) {
 
 // GetReceiptNumber returns the ReceiptNumber field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetReceiptNumber() string {
-	if o == nil || o.ReceiptNumber == nil {
+	if o == nil || isNil(o.ReceiptNumber) {
 		var ret string
 		return ret
 	}
@@ -416,15 +416,15 @@ func (o *PaymentTransaction) GetReceiptNumber() string {
 // GetReceiptNumberOk returns a tuple with the ReceiptNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetReceiptNumberOk() (*string, bool) {
-	if o == nil || o.ReceiptNumber == nil {
-		return nil, false
+	if o == nil || isNil(o.ReceiptNumber) {
+    return nil, false
 	}
 	return o.ReceiptNumber, true
 }
 
 // HasReceiptNumber returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasReceiptNumber() bool {
-	if o != nil && o.ReceiptNumber != nil {
+	if o != nil && !isNil(o.ReceiptNumber) {
 		return true
 	}
 
@@ -438,7 +438,7 @@ func (o *PaymentTransaction) SetReceiptNumber(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -448,15 +448,15 @@ func (o *PaymentTransaction) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -470,7 +470,7 @@ func (o *PaymentTransaction) SetDescription(v string) {
 
 // GetPaymentGatewayType returns the PaymentGatewayType field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetPaymentGatewayType() string {
-	if o == nil || o.PaymentGatewayType == nil {
+	if o == nil || isNil(o.PaymentGatewayType) {
 		var ret string
 		return ret
 	}
@@ -480,15 +480,15 @@ func (o *PaymentTransaction) GetPaymentGatewayType() string {
 // GetPaymentGatewayTypeOk returns a tuple with the PaymentGatewayType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetPaymentGatewayTypeOk() (*string, bool) {
-	if o == nil || o.PaymentGatewayType == nil {
-		return nil, false
+	if o == nil || isNil(o.PaymentGatewayType) {
+    return nil, false
 	}
 	return o.PaymentGatewayType, true
 }
 
 // HasPaymentGatewayType returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasPaymentGatewayType() bool {
-	if o != nil && o.PaymentGatewayType != nil {
+	if o != nil && !isNil(o.PaymentGatewayType) {
 		return true
 	}
 
@@ -502,7 +502,7 @@ func (o *PaymentTransaction) SetPaymentGatewayType(v string) {
 
 // GetLast4 returns the Last4 field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetLast4() string {
-	if o == nil || o.Last4 == nil {
+	if o == nil || isNil(o.Last4) {
 		var ret string
 		return ret
 	}
@@ -512,15 +512,15 @@ func (o *PaymentTransaction) GetLast4() string {
 // GetLast4Ok returns a tuple with the Last4 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetLast4Ok() (*string, bool) {
-	if o == nil || o.Last4 == nil {
-		return nil, false
+	if o == nil || isNil(o.Last4) {
+    return nil, false
 	}
 	return o.Last4, true
 }
 
 // HasLast4 returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasLast4() bool {
-	if o != nil && o.Last4 != nil {
+	if o != nil && !isNil(o.Last4) {
 		return true
 	}
 
@@ -534,7 +534,7 @@ func (o *PaymentTransaction) SetLast4(v string) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *PaymentTransaction) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || isNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -544,15 +544,15 @@ func (o *PaymentTransaction) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PaymentTransaction) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || isNil(o.User) {
+    return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *PaymentTransaction) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !isNil(o.User) {
 		return true
 	}
 
@@ -566,52 +566,52 @@ func (o *PaymentTransaction) SetUser(v User) {
 
 func (o PaymentTransaction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.DateCreated != nil {
+	if !isNil(o.DateCreated) {
 		toSerialize["dateCreated"] = o.DateCreated
 	}
-	if o.LastUpdated != nil {
+	if !isNil(o.LastUpdated) {
 		toSerialize["lastUpdated"] = o.LastUpdated
 	}
-	if o.TransactionDate != nil {
+	if !isNil(o.TransactionDate) {
 		toSerialize["transactionDate"] = o.TransactionDate
 	}
-	if o.AmountInCents != nil {
+	if !isNil(o.AmountInCents) {
 		toSerialize["amountInCents"] = o.AmountInCents
 	}
-	if o.AmountDisplay != nil {
+	if !isNil(o.AmountDisplay) {
 		toSerialize["amountDisplay"] = o.AmountDisplay
 	}
-	if o.Discount != nil {
+	if !isNil(o.Discount) {
 		toSerialize["discount"] = o.Discount
 	}
-	if o.UserId != nil {
+	if !isNil(o.UserId) {
 		toSerialize["userId"] = o.UserId
 	}
-	if o.ProductId != nil {
+	if !isNil(o.ProductId) {
 		toSerialize["productId"] = o.ProductId
 	}
-	if o.PaymentId != nil {
+	if !isNil(o.PaymentId) {
 		toSerialize["paymentId"] = o.PaymentId
 	}
-	if o.ReceiptNumber != nil {
+	if !isNil(o.ReceiptNumber) {
 		toSerialize["receiptNumber"] = o.ReceiptNumber
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.PaymentGatewayType != nil {
+	if !isNil(o.PaymentGatewayType) {
 		toSerialize["paymentGatewayType"] = o.PaymentGatewayType
 	}
-	if o.Last4 != nil {
+	if !isNil(o.Last4) {
 		toSerialize["last4"] = o.Last4
 	}
-	if o.User != nil {
+	if !isNil(o.User) {
 		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)

@@ -46,7 +46,7 @@ func NewEmotionWithDefaults() *Emotion {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *Emotion) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *Emotion) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *Emotion) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *Emotion) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Emotion) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *Emotion) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Emotion) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *Emotion) SetId(v int64) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Emotion) GetType() EmotionType {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret EmotionType
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *Emotion) GetType() EmotionType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetTypeOk() (*EmotionType, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Emotion) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *Emotion) SetType(v EmotionType) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *Emotion) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || isNil(o.Timestamp) {
 		var ret int64
 		return ret
 	}
@@ -152,15 +152,15 @@ func (o *Emotion) GetTimestamp() int64 {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.Timestamp) {
+    return nil, false
 	}
 	return o.Timestamp, true
 }
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *Emotion) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !isNil(o.Timestamp) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *Emotion) SetTimestamp(v int64) {
 
 // GetLastUpdatedTimestamp returns the LastUpdatedTimestamp field value if set, zero value otherwise.
 func (o *Emotion) GetLastUpdatedTimestamp() int64 {
-	if o == nil || o.LastUpdatedTimestamp == nil {
+	if o == nil || isNil(o.LastUpdatedTimestamp) {
 		var ret int64
 		return ret
 	}
@@ -184,15 +184,15 @@ func (o *Emotion) GetLastUpdatedTimestamp() int64 {
 // GetLastUpdatedTimestampOk returns a tuple with the LastUpdatedTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetLastUpdatedTimestampOk() (*int64, bool) {
-	if o == nil || o.LastUpdatedTimestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.LastUpdatedTimestamp) {
+    return nil, false
 	}
 	return o.LastUpdatedTimestamp, true
 }
 
 // HasLastUpdatedTimestamp returns a boolean if a field has been set.
 func (o *Emotion) HasLastUpdatedTimestamp() bool {
-	if o != nil && o.LastUpdatedTimestamp != nil {
+	if o != nil && !isNil(o.LastUpdatedTimestamp) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *Emotion) SetLastUpdatedTimestamp(v int64) {
 
 // GetDeleted returns the Deleted field value if set, zero value otherwise.
 func (o *Emotion) GetDeleted() bool {
-	if o == nil || o.Deleted == nil {
+	if o == nil || isNil(o.Deleted) {
 		var ret bool
 		return ret
 	}
@@ -216,15 +216,15 @@ func (o *Emotion) GetDeleted() bool {
 // GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetDeletedOk() (*bool, bool) {
-	if o == nil || o.Deleted == nil {
-		return nil, false
+	if o == nil || isNil(o.Deleted) {
+    return nil, false
 	}
 	return o.Deleted, true
 }
 
 // HasDeleted returns a boolean if a field has been set.
 func (o *Emotion) HasDeleted() bool {
-	if o != nil && o.Deleted != nil {
+	if o != nil && !isNil(o.Deleted) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *Emotion) SetDeleted(v bool) {
 
 // GetEntryId returns the EntryId field value if set, zero value otherwise.
 func (o *Emotion) GetEntryId() int64 {
-	if o == nil || o.EntryId == nil {
+	if o == nil || isNil(o.EntryId) {
 		var ret int64
 		return ret
 	}
@@ -248,15 +248,15 @@ func (o *Emotion) GetEntryId() int64 {
 // GetEntryIdOk returns a tuple with the EntryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetEntryIdOk() (*int64, bool) {
-	if o == nil || o.EntryId == nil {
-		return nil, false
+	if o == nil || isNil(o.EntryId) {
+    return nil, false
 	}
 	return o.EntryId, true
 }
 
 // HasEntryId returns a boolean if a field has been set.
 func (o *Emotion) HasEntryId() bool {
-	if o != nil && o.EntryId != nil {
+	if o != nil && !isNil(o.EntryId) {
 		return true
 	}
 
@@ -270,7 +270,7 @@ func (o *Emotion) SetEntryId(v int64) {
 
 // GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *Emotion) GetUserId() int64 {
-	if o == nil || o.UserId == nil {
+	if o == nil || isNil(o.UserId) {
 		var ret int64
 		return ret
 	}
@@ -280,15 +280,15 @@ func (o *Emotion) GetUserId() int64 {
 // GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Emotion) GetUserIdOk() (*int64, bool) {
-	if o == nil || o.UserId == nil {
-		return nil, false
+	if o == nil || isNil(o.UserId) {
+    return nil, false
 	}
 	return o.UserId, true
 }
 
 // HasUserId returns a boolean if a field has been set.
 func (o *Emotion) HasUserId() bool {
-	if o != nil && o.UserId != nil {
+	if o != nil && !isNil(o.UserId) {
 		return true
 	}
 
@@ -302,28 +302,28 @@ func (o *Emotion) SetUserId(v int64) {
 
 func (o Emotion) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Timestamp != nil {
+	if !isNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if o.LastUpdatedTimestamp != nil {
+	if !isNil(o.LastUpdatedTimestamp) {
 		toSerialize["lastUpdatedTimestamp"] = o.LastUpdatedTimestamp
 	}
-	if o.Deleted != nil {
+	if !isNil(o.Deleted) {
 		toSerialize["deleted"] = o.Deleted
 	}
-	if o.EntryId != nil {
+	if !isNil(o.EntryId) {
 		toSerialize["entryId"] = o.EntryId
 	}
-	if o.UserId != nil {
+	if !isNil(o.UserId) {
 		toSerialize["userId"] = o.UserId
 	}
 	return json.Marshal(toSerialize)

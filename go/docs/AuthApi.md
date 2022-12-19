@@ -5,7 +5,7 @@ All URIs are relative to *https://tinybeans.com/api/1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Login**](AuthApi.md#Login) | **Post** /authenticate | Login to Tinybeans
-[**UsersMe**](AuthApi.md#UsersMe) | **Post** /users/me | Check to Tinybeans
+[**UsersMe**](AuthApi.md#UsersMe) | **Get** /users/me | Check to Tinybeans
 
 
 
@@ -31,8 +31,8 @@ func main() {
     authenticateRequst := *openapiclient.NewAuthenticateRequst() // AuthenticateRequst | Login Information (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthApi.Login(context.Background()).AuthenticateRequst(authenticateRequst).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthApi.Login(context.Background()).AuthenticateRequst(authenticateRequst).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthApi.Login``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+No authorization required
 
 ### HTTP request headers
 
@@ -94,8 +94,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AuthApi.UsersMe(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AuthApi.UsersMe(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuthApi.UsersMe``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -120,7 +120,7 @@ Other parameters are passed through a pointer to a apiUsersMeRequest struct via 
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+No authorization required
 
 ### HTTP request headers
 

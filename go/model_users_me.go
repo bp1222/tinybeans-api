@@ -40,7 +40,7 @@ func NewUsersMeWithDefaults() *UsersMe {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *UsersMe) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *UsersMe) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UsersMe) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *UsersMe) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *UsersMe) SetStatus(v string) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *UsersMe) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || isNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *UsersMe) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UsersMe) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || isNil(o.User) {
+    return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *UsersMe) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !isNil(o.User) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *UsersMe) SetUser(v User) {
 
 func (o UsersMe) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.User != nil {
+	if !isNil(o.User) {
 		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)

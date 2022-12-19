@@ -41,7 +41,7 @@ func NewCoverThemeWithDefaults() *CoverTheme {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CoverTheme) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,15 +51,15 @@ func (o *CoverTheme) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CoverTheme) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CoverTheme) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *CoverTheme) SetName(v string) {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *CoverTheme) GetLabel() string {
-	if o == nil || o.Label == nil {
+	if o == nil || isNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -83,15 +83,15 @@ func (o *CoverTheme) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CoverTheme) GetLabelOk() (*string, bool) {
-	if o == nil || o.Label == nil {
-		return nil, false
+	if o == nil || isNil(o.Label) {
+    return nil, false
 	}
 	return o.Label, true
 }
 
 // HasLabel returns a boolean if a field has been set.
 func (o *CoverTheme) HasLabel() bool {
-	if o != nil && o.Label != nil {
+	if o != nil && !isNil(o.Label) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *CoverTheme) SetLabel(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CoverTheme) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || isNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -115,15 +115,15 @@ func (o *CoverTheme) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CoverTheme) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
-		return nil, false
+	if o == nil || isNil(o.Url) {
+    return nil, false
 	}
 	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *CoverTheme) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !isNil(o.Url) {
 		return true
 	}
 
@@ -137,13 +137,13 @@ func (o *CoverTheme) SetUrl(v string) {
 
 func (o CoverTheme) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Label != nil {
+	if !isNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if o.Url != nil {
+	if !isNil(o.Url) {
 		toSerialize["url"] = o.Url
 	}
 	return json.Marshal(toSerialize)

@@ -35,8 +35,8 @@ func main() {
     since := int64(789) // int64 | Since (timestamp) most recent (timestamp) you know about [inclusive] (optional)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JournalsApi.JournalEntries(context.Background(), journal).FetchSize(fetchSize).IdsOnly(idsOnly).Last(last).Since(since).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JournalsApi.JournalEntries(context.Background(), journal).FetchSize(fetchSize).IdsOnly(idsOnly).Last(last).Since(since).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JournalsApi.JournalEntries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+No authorization required
 
 ### HTTP request headers
 
@@ -106,8 +106,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.JournalsApi.Journals(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JournalsApi.Journals(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JournalsApi.Journals``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -132,7 +132,7 @@ Other parameters are passed through a pointer to a apiJournalsRequest struct via
 
 ### Authorization
 
-[Authorization](../README.md#Authorization)
+No authorization required
 
 ### HTTP request headers
 

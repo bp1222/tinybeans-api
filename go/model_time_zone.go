@@ -40,7 +40,7 @@ func NewTimeZoneWithDefaults() *TimeZone {
 
 // GetLabel returns the Label field value if set, zero value otherwise.
 func (o *TimeZone) GetLabel() string {
-	if o == nil || o.Label == nil {
+	if o == nil || isNil(o.Label) {
 		var ret string
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *TimeZone) GetLabel() string {
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TimeZone) GetLabelOk() (*string, bool) {
-	if o == nil || o.Label == nil {
-		return nil, false
+	if o == nil || isNil(o.Label) {
+    return nil, false
 	}
 	return o.Label, true
 }
 
 // HasLabel returns a boolean if a field has been set.
 func (o *TimeZone) HasLabel() bool {
-	if o != nil && o.Label != nil {
+	if o != nil && !isNil(o.Label) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *TimeZone) SetLabel(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *TimeZone) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *TimeZone) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TimeZone) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *TimeZone) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *TimeZone) SetName(v string) {
 
 func (o TimeZone) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Label != nil {
+	if !isNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)

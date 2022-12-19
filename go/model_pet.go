@@ -50,7 +50,7 @@ func NewPetWithDefaults() *Pet {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Pet) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -60,15 +60,15 @@ func (o *Pet) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Pet) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +82,7 @@ func (o *Pet) SetId(v int64) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Pet) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -92,15 +92,15 @@ func (o *Pet) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Pet) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -114,7 +114,7 @@ func (o *Pet) SetName(v string) {
 
 // GetSpecies returns the Species field value if set, zero value otherwise.
 func (o *Pet) GetSpecies() string {
-	if o == nil || o.Species == nil {
+	if o == nil || isNil(o.Species) {
 		var ret string
 		return ret
 	}
@@ -124,15 +124,15 @@ func (o *Pet) GetSpecies() string {
 // GetSpeciesOk returns a tuple with the Species field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetSpeciesOk() (*string, bool) {
-	if o == nil || o.Species == nil {
-		return nil, false
+	if o == nil || isNil(o.Species) {
+    return nil, false
 	}
 	return o.Species, true
 }
 
 // HasSpecies returns a boolean if a field has been set.
 func (o *Pet) HasSpecies() bool {
-	if o != nil && o.Species != nil {
+	if o != nil && !isNil(o.Species) {
 		return true
 	}
 
@@ -146,7 +146,7 @@ func (o *Pet) SetSpecies(v string) {
 
 // GetBreed returns the Breed field value if set, zero value otherwise.
 func (o *Pet) GetBreed() string {
-	if o == nil || o.Breed == nil {
+	if o == nil || isNil(o.Breed) {
 		var ret string
 		return ret
 	}
@@ -156,15 +156,15 @@ func (o *Pet) GetBreed() string {
 // GetBreedOk returns a tuple with the Breed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetBreedOk() (*string, bool) {
-	if o == nil || o.Breed == nil {
-		return nil, false
+	if o == nil || isNil(o.Breed) {
+    return nil, false
 	}
 	return o.Breed, true
 }
 
 // HasBreed returns a boolean if a field has been set.
 func (o *Pet) HasBreed() bool {
-	if o != nil && o.Breed != nil {
+	if o != nil && !isNil(o.Breed) {
 		return true
 	}
 
@@ -178,7 +178,7 @@ func (o *Pet) SetBreed(v string) {
 
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *Pet) GetSize() string {
-	if o == nil || o.Size == nil {
+	if o == nil || isNil(o.Size) {
 		var ret string
 		return ret
 	}
@@ -188,15 +188,15 @@ func (o *Pet) GetSize() string {
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetSizeOk() (*string, bool) {
-	if o == nil || o.Size == nil {
-		return nil, false
+	if o == nil || isNil(o.Size) {
+    return nil, false
 	}
 	return o.Size, true
 }
 
 // HasSize returns a boolean if a field has been set.
 func (o *Pet) HasSize() bool {
-	if o != nil && o.Size != nil {
+	if o != nil && !isNil(o.Size) {
 		return true
 	}
 
@@ -210,7 +210,7 @@ func (o *Pet) SetSize(v string) {
 
 // GetSex returns the Sex field value if set, zero value otherwise.
 func (o *Pet) GetSex() string {
-	if o == nil || o.Sex == nil {
+	if o == nil || isNil(o.Sex) {
 		var ret string
 		return ret
 	}
@@ -220,15 +220,15 @@ func (o *Pet) GetSex() string {
 // GetSexOk returns a tuple with the Sex field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetSexOk() (*string, bool) {
-	if o == nil || o.Sex == nil {
-		return nil, false
+	if o == nil || isNil(o.Sex) {
+    return nil, false
 	}
 	return o.Sex, true
 }
 
 // HasSex returns a boolean if a field has been set.
 func (o *Pet) HasSex() bool {
-	if o != nil && o.Sex != nil {
+	if o != nil && !isNil(o.Sex) {
 		return true
 	}
 
@@ -242,7 +242,7 @@ func (o *Pet) SetSex(v string) {
 
 // GetDeleted returns the Deleted field value if set, zero value otherwise.
 func (o *Pet) GetDeleted() bool {
-	if o == nil || o.Deleted == nil {
+	if o == nil || isNil(o.Deleted) {
 		var ret bool
 		return ret
 	}
@@ -252,15 +252,15 @@ func (o *Pet) GetDeleted() bool {
 // GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetDeletedOk() (*bool, bool) {
-	if o == nil || o.Deleted == nil {
-		return nil, false
+	if o == nil || isNil(o.Deleted) {
+    return nil, false
 	}
 	return o.Deleted, true
 }
 
 // HasDeleted returns a boolean if a field has been set.
 func (o *Pet) HasDeleted() bool {
-	if o != nil && o.Deleted != nil {
+	if o != nil && !isNil(o.Deleted) {
 		return true
 	}
 
@@ -274,7 +274,7 @@ func (o *Pet) SetDeleted(v bool) {
 
 // GetDevelopmentOptOut returns the DevelopmentOptOut field value if set, zero value otherwise.
 func (o *Pet) GetDevelopmentOptOut() bool {
-	if o == nil || o.DevelopmentOptOut == nil {
+	if o == nil || isNil(o.DevelopmentOptOut) {
 		var ret bool
 		return ret
 	}
@@ -284,15 +284,15 @@ func (o *Pet) GetDevelopmentOptOut() bool {
 // GetDevelopmentOptOutOk returns a tuple with the DevelopmentOptOut field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetDevelopmentOptOutOk() (*bool, bool) {
-	if o == nil || o.DevelopmentOptOut == nil {
-		return nil, false
+	if o == nil || isNil(o.DevelopmentOptOut) {
+    return nil, false
 	}
 	return o.DevelopmentOptOut, true
 }
 
 // HasDevelopmentOptOut returns a boolean if a field has been set.
 func (o *Pet) HasDevelopmentOptOut() bool {
-	if o != nil && o.DevelopmentOptOut != nil {
+	if o != nil && !isNil(o.DevelopmentOptOut) {
 		return true
 	}
 
@@ -306,7 +306,7 @@ func (o *Pet) SetDevelopmentOptOut(v bool) {
 
 // GetBirthday returns the Birthday field value if set, zero value otherwise.
 func (o *Pet) GetBirthday() string {
-	if o == nil || o.Birthday == nil {
+	if o == nil || isNil(o.Birthday) {
 		var ret string
 		return ret
 	}
@@ -316,15 +316,15 @@ func (o *Pet) GetBirthday() string {
 // GetBirthdayOk returns a tuple with the Birthday field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetBirthdayOk() (*string, bool) {
-	if o == nil || o.Birthday == nil {
-		return nil, false
+	if o == nil || isNil(o.Birthday) {
+    return nil, false
 	}
 	return o.Birthday, true
 }
 
 // HasBirthday returns a boolean if a field has been set.
 func (o *Pet) HasBirthday() bool {
-	if o != nil && o.Birthday != nil {
+	if o != nil && !isNil(o.Birthday) {
 		return true
 	}
 
@@ -338,7 +338,7 @@ func (o *Pet) SetBirthday(v string) {
 
 // GetAdoptionDate returns the AdoptionDate field value if set, zero value otherwise.
 func (o *Pet) GetAdoptionDate() string {
-	if o == nil || o.AdoptionDate == nil {
+	if o == nil || isNil(o.AdoptionDate) {
 		var ret string
 		return ret
 	}
@@ -348,15 +348,15 @@ func (o *Pet) GetAdoptionDate() string {
 // GetAdoptionDateOk returns a tuple with the AdoptionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetAdoptionDateOk() (*string, bool) {
-	if o == nil || o.AdoptionDate == nil {
-		return nil, false
+	if o == nil || isNil(o.AdoptionDate) {
+    return nil, false
 	}
 	return o.AdoptionDate, true
 }
 
 // HasAdoptionDate returns a boolean if a field has been set.
 func (o *Pet) HasAdoptionDate() bool {
-	if o != nil && o.AdoptionDate != nil {
+	if o != nil && !isNil(o.AdoptionDate) {
 		return true
 	}
 
@@ -370,7 +370,7 @@ func (o *Pet) SetAdoptionDate(v string) {
 
 // GetAvatars returns the Avatars field value if set, zero value otherwise.
 func (o *Pet) GetAvatars() Avatars {
-	if o == nil || o.Avatars == nil {
+	if o == nil || isNil(o.Avatars) {
 		var ret Avatars
 		return ret
 	}
@@ -380,15 +380,15 @@ func (o *Pet) GetAvatars() Avatars {
 // GetAvatarsOk returns a tuple with the Avatars field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetAvatarsOk() (*Avatars, bool) {
-	if o == nil || o.Avatars == nil {
-		return nil, false
+	if o == nil || isNil(o.Avatars) {
+    return nil, false
 	}
 	return o.Avatars, true
 }
 
 // HasAvatars returns a boolean if a field has been set.
 func (o *Pet) HasAvatars() bool {
-	if o != nil && o.Avatars != nil {
+	if o != nil && !isNil(o.Avatars) {
 		return true
 	}
 
@@ -402,7 +402,7 @@ func (o *Pet) SetAvatars(v Avatars) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *Pet) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || isNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -412,15 +412,15 @@ func (o *Pet) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Pet) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || isNil(o.User) {
+    return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *Pet) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !isNil(o.User) {
 		return true
 	}
 
@@ -434,40 +434,40 @@ func (o *Pet) SetUser(v User) {
 
 func (o Pet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Species != nil {
+	if !isNil(o.Species) {
 		toSerialize["species"] = o.Species
 	}
-	if o.Breed != nil {
+	if !isNil(o.Breed) {
 		toSerialize["breed"] = o.Breed
 	}
-	if o.Size != nil {
+	if !isNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
-	if o.Sex != nil {
+	if !isNil(o.Sex) {
 		toSerialize["sex"] = o.Sex
 	}
-	if o.Deleted != nil {
+	if !isNil(o.Deleted) {
 		toSerialize["deleted"] = o.Deleted
 	}
-	if o.DevelopmentOptOut != nil {
+	if !isNil(o.DevelopmentOptOut) {
 		toSerialize["developmentOptOut"] = o.DevelopmentOptOut
 	}
-	if o.Birthday != nil {
+	if !isNil(o.Birthday) {
 		toSerialize["birthday"] = o.Birthday
 	}
-	if o.AdoptionDate != nil {
+	if !isNil(o.AdoptionDate) {
 		toSerialize["adoptionDate"] = o.AdoptionDate
 	}
-	if o.Avatars != nil {
+	if !isNil(o.Avatars) {
 		toSerialize["avatars"] = o.Avatars
 	}
-	if o.User != nil {
+	if !isNil(o.User) {
 		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)

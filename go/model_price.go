@@ -46,7 +46,7 @@ func NewPriceWithDefaults() *Price {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *Price) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *Price) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *Price) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *Price) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Price) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *Price) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Price) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *Price) SetId(v int64) {
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise.
 func (o *Price) GetDateCreated() string {
-	if o == nil || o.DateCreated == nil {
+	if o == nil || isNil(o.DateCreated) {
 		var ret string
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *Price) GetDateCreated() string {
 // GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetDateCreatedOk() (*string, bool) {
-	if o == nil || o.DateCreated == nil {
-		return nil, false
+	if o == nil || isNil(o.DateCreated) {
+    return nil, false
 	}
 	return o.DateCreated, true
 }
 
 // HasDateCreated returns a boolean if a field has been set.
 func (o *Price) HasDateCreated() bool {
-	if o != nil && o.DateCreated != nil {
+	if o != nil && !isNil(o.DateCreated) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *Price) SetDateCreated(v string) {
 
 // GetAmountInCents returns the AmountInCents field value if set, zero value otherwise.
 func (o *Price) GetAmountInCents() int64 {
-	if o == nil || o.AmountInCents == nil {
+	if o == nil || isNil(o.AmountInCents) {
 		var ret int64
 		return ret
 	}
@@ -152,15 +152,15 @@ func (o *Price) GetAmountInCents() int64 {
 // GetAmountInCentsOk returns a tuple with the AmountInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetAmountInCentsOk() (*int64, bool) {
-	if o == nil || o.AmountInCents == nil {
-		return nil, false
+	if o == nil || isNil(o.AmountInCents) {
+    return nil, false
 	}
 	return o.AmountInCents, true
 }
 
 // HasAmountInCents returns a boolean if a field has been set.
 func (o *Price) HasAmountInCents() bool {
-	if o != nil && o.AmountInCents != nil {
+	if o != nil && !isNil(o.AmountInCents) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *Price) SetAmountInCents(v int64) {
 
 // GetAmountInDollarsAndCents returns the AmountInDollarsAndCents field value if set, zero value otherwise.
 func (o *Price) GetAmountInDollarsAndCents() float32 {
-	if o == nil || o.AmountInDollarsAndCents == nil {
+	if o == nil || isNil(o.AmountInDollarsAndCents) {
 		var ret float32
 		return ret
 	}
@@ -184,15 +184,15 @@ func (o *Price) GetAmountInDollarsAndCents() float32 {
 // GetAmountInDollarsAndCentsOk returns a tuple with the AmountInDollarsAndCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetAmountInDollarsAndCentsOk() (*float32, bool) {
-	if o == nil || o.AmountInDollarsAndCents == nil {
-		return nil, false
+	if o == nil || isNil(o.AmountInDollarsAndCents) {
+    return nil, false
 	}
 	return o.AmountInDollarsAndCents, true
 }
 
 // HasAmountInDollarsAndCents returns a boolean if a field has been set.
 func (o *Price) HasAmountInDollarsAndCents() bool {
-	if o != nil && o.AmountInDollarsAndCents != nil {
+	if o != nil && !isNil(o.AmountInDollarsAndCents) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *Price) SetAmountInDollarsAndCents(v float32) {
 
 // GetTaxAsPercentage returns the TaxAsPercentage field value if set, zero value otherwise.
 func (o *Price) GetTaxAsPercentage() float32 {
-	if o == nil || o.TaxAsPercentage == nil {
+	if o == nil || isNil(o.TaxAsPercentage) {
 		var ret float32
 		return ret
 	}
@@ -216,15 +216,15 @@ func (o *Price) GetTaxAsPercentage() float32 {
 // GetTaxAsPercentageOk returns a tuple with the TaxAsPercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetTaxAsPercentageOk() (*float32, bool) {
-	if o == nil || o.TaxAsPercentage == nil {
-		return nil, false
+	if o == nil || isNil(o.TaxAsPercentage) {
+    return nil, false
 	}
 	return o.TaxAsPercentage, true
 }
 
 // HasTaxAsPercentage returns a boolean if a field has been set.
 func (o *Price) HasTaxAsPercentage() bool {
-	if o != nil && o.TaxAsPercentage != nil {
+	if o != nil && !isNil(o.TaxAsPercentage) {
 		return true
 	}
 
@@ -238,7 +238,7 @@ func (o *Price) SetTaxAsPercentage(v float32) {
 
 // GetTaxAmountInCents returns the TaxAmountInCents field value if set, zero value otherwise.
 func (o *Price) GetTaxAmountInCents() int64 {
-	if o == nil || o.TaxAmountInCents == nil {
+	if o == nil || isNil(o.TaxAmountInCents) {
 		var ret int64
 		return ret
 	}
@@ -248,15 +248,15 @@ func (o *Price) GetTaxAmountInCents() int64 {
 // GetTaxAmountInCentsOk returns a tuple with the TaxAmountInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetTaxAmountInCentsOk() (*int64, bool) {
-	if o == nil || o.TaxAmountInCents == nil {
-		return nil, false
+	if o == nil || isNil(o.TaxAmountInCents) {
+    return nil, false
 	}
 	return o.TaxAmountInCents, true
 }
 
 // HasTaxAmountInCents returns a boolean if a field has been set.
 func (o *Price) HasTaxAmountInCents() bool {
-	if o != nil && o.TaxAmountInCents != nil {
+	if o != nil && !isNil(o.TaxAmountInCents) {
 		return true
 	}
 
@@ -270,7 +270,7 @@ func (o *Price) SetTaxAmountInCents(v int64) {
 
 // GetLocaleTag returns the LocaleTag field value if set, zero value otherwise.
 func (o *Price) GetLocaleTag() string {
-	if o == nil || o.LocaleTag == nil {
+	if o == nil || isNil(o.LocaleTag) {
 		var ret string
 		return ret
 	}
@@ -280,15 +280,15 @@ func (o *Price) GetLocaleTag() string {
 // GetLocaleTagOk returns a tuple with the LocaleTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Price) GetLocaleTagOk() (*string, bool) {
-	if o == nil || o.LocaleTag == nil {
-		return nil, false
+	if o == nil || isNil(o.LocaleTag) {
+    return nil, false
 	}
 	return o.LocaleTag, true
 }
 
 // HasLocaleTag returns a boolean if a field has been set.
 func (o *Price) HasLocaleTag() bool {
-	if o != nil && o.LocaleTag != nil {
+	if o != nil && !isNil(o.LocaleTag) {
 		return true
 	}
 
@@ -302,28 +302,28 @@ func (o *Price) SetLocaleTag(v string) {
 
 func (o Price) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.DateCreated != nil {
+	if !isNil(o.DateCreated) {
 		toSerialize["dateCreated"] = o.DateCreated
 	}
-	if o.AmountInCents != nil {
+	if !isNil(o.AmountInCents) {
 		toSerialize["amountInCents"] = o.AmountInCents
 	}
-	if o.AmountInDollarsAndCents != nil {
+	if !isNil(o.AmountInDollarsAndCents) {
 		toSerialize["amountInDollarsAndCents"] = o.AmountInDollarsAndCents
 	}
-	if o.TaxAsPercentage != nil {
+	if !isNil(o.TaxAsPercentage) {
 		toSerialize["taxAsPercentage"] = o.TaxAsPercentage
 	}
-	if o.TaxAmountInCents != nil {
+	if !isNil(o.TaxAmountInCents) {
 		toSerialize["taxAmountInCents"] = o.TaxAmountInCents
 	}
-	if o.LocaleTag != nil {
+	if !isNil(o.LocaleTag) {
 		toSerialize["localeTag"] = o.LocaleTag
 	}
 	return json.Marshal(toSerialize)

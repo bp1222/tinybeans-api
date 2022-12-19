@@ -42,7 +42,7 @@ func NewCycleWithDefaults() *Cycle {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *Cycle) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || isNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *Cycle) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cycle) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
-		return nil, false
+	if o == nil || isNil(o.DisplayName) {
+    return nil, false
 	}
 	return o.DisplayName, true
 }
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *Cycle) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !isNil(o.DisplayName) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *Cycle) SetDisplayName(v string) {
 
 // GetCalendarInt returns the CalendarInt field value if set, zero value otherwise.
 func (o *Cycle) GetCalendarInt() float32 {
-	if o == nil || o.CalendarInt == nil {
+	if o == nil || isNil(o.CalendarInt) {
 		var ret float32
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *Cycle) GetCalendarInt() float32 {
 // GetCalendarIntOk returns a tuple with the CalendarInt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cycle) GetCalendarIntOk() (*float32, bool) {
-	if o == nil || o.CalendarInt == nil {
-		return nil, false
+	if o == nil || isNil(o.CalendarInt) {
+    return nil, false
 	}
 	return o.CalendarInt, true
 }
 
 // HasCalendarInt returns a boolean if a field has been set.
 func (o *Cycle) HasCalendarInt() bool {
-	if o != nil && o.CalendarInt != nil {
+	if o != nil && !isNil(o.CalendarInt) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *Cycle) SetCalendarInt(v float32) {
 
 // GetReminderInDays returns the ReminderInDays field value if set, zero value otherwise.
 func (o *Cycle) GetReminderInDays() float32 {
-	if o == nil || o.ReminderInDays == nil {
+	if o == nil || isNil(o.ReminderInDays) {
 		var ret float32
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *Cycle) GetReminderInDays() float32 {
 // GetReminderInDaysOk returns a tuple with the ReminderInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cycle) GetReminderInDaysOk() (*float32, bool) {
-	if o == nil || o.ReminderInDays == nil {
-		return nil, false
+	if o == nil || isNil(o.ReminderInDays) {
+    return nil, false
 	}
 	return o.ReminderInDays, true
 }
 
 // HasReminderInDays returns a boolean if a field has been set.
 func (o *Cycle) HasReminderInDays() bool {
-	if o != nil && o.ReminderInDays != nil {
+	if o != nil && !isNil(o.ReminderInDays) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *Cycle) SetReminderInDays(v float32) {
 
 // GetGracePeriodInDays returns the GracePeriodInDays field value if set, zero value otherwise.
 func (o *Cycle) GetGracePeriodInDays() float32 {
-	if o == nil || o.GracePeriodInDays == nil {
+	if o == nil || isNil(o.GracePeriodInDays) {
 		var ret float32
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *Cycle) GetGracePeriodInDays() float32 {
 // GetGracePeriodInDaysOk returns a tuple with the GracePeriodInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cycle) GetGracePeriodInDaysOk() (*float32, bool) {
-	if o == nil || o.GracePeriodInDays == nil {
-		return nil, false
+	if o == nil || isNil(o.GracePeriodInDays) {
+    return nil, false
 	}
 	return o.GracePeriodInDays, true
 }
 
 // HasGracePeriodInDays returns a boolean if a field has been set.
 func (o *Cycle) HasGracePeriodInDays() bool {
-	if o != nil && o.GracePeriodInDays != nil {
+	if o != nil && !isNil(o.GracePeriodInDays) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *Cycle) SetGracePeriodInDays(v float32) {
 
 func (o Cycle) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DisplayName != nil {
+	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
-	if o.CalendarInt != nil {
+	if !isNil(o.CalendarInt) {
 		toSerialize["calendarInt"] = o.CalendarInt
 	}
-	if o.ReminderInDays != nil {
+	if !isNil(o.ReminderInDays) {
 		toSerialize["reminderInDays"] = o.ReminderInDays
 	}
-	if o.GracePeriodInDays != nil {
+	if !isNil(o.GracePeriodInDays) {
 		toSerialize["gracePeriodInDays"] = o.GracePeriodInDays
 	}
 	return json.Marshal(toSerialize)

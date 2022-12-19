@@ -33,7 +33,7 @@ type SubscriptionProduct struct {
 	Tier *string `json:"tier,omitempty"`
 	CycleDuration *int64 `json:"cycleDuration,omitempty"`
 	Cycle *Cycle `json:"cycle,omitempty"`
-	Features *[]Features `json:"features,omitempty"`
+	Features []Features `json:"features,omitempty"`
 }
 
 // NewSubscriptionProduct instantiates a new SubscriptionProduct object
@@ -55,7 +55,7 @@ func NewSubscriptionProductWithDefaults() *SubscriptionProduct {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -65,15 +65,15 @@ func (o *SubscriptionProduct) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *SubscriptionProduct) SetId(v int64) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || isNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -97,15 +97,15 @@ func (o *SubscriptionProduct) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
-		return nil, false
+	if o == nil || isNil(o.Code) {
+    return nil, false
 	}
 	return o.Code, true
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !isNil(o.Code) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *SubscriptionProduct) SetCode(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -129,15 +129,15 @@ func (o *SubscriptionProduct) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
-		return nil, false
+	if o == nil || isNil(o.Name) {
+    return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *SubscriptionProduct) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -161,15 +161,15 @@ func (o *SubscriptionProduct) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *SubscriptionProduct) SetDescription(v string) {
 
 // GetDateCreated returns the DateCreated field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetDateCreated() string {
-	if o == nil || o.DateCreated == nil {
+	if o == nil || isNil(o.DateCreated) {
 		var ret string
 		return ret
 	}
@@ -193,15 +193,15 @@ func (o *SubscriptionProduct) GetDateCreated() string {
 // GetDateCreatedOk returns a tuple with the DateCreated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetDateCreatedOk() (*string, bool) {
-	if o == nil || o.DateCreated == nil {
-		return nil, false
+	if o == nil || isNil(o.DateCreated) {
+    return nil, false
 	}
 	return o.DateCreated, true
 }
 
 // HasDateCreated returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasDateCreated() bool {
-	if o != nil && o.DateCreated != nil {
+	if o != nil && !isNil(o.DateCreated) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *SubscriptionProduct) SetDateCreated(v string) {
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetLastUpdated() string {
-	if o == nil || o.LastUpdated == nil {
+	if o == nil || isNil(o.LastUpdated) {
 		var ret string
 		return ret
 	}
@@ -225,15 +225,15 @@ func (o *SubscriptionProduct) GetLastUpdated() string {
 // GetLastUpdatedOk returns a tuple with the LastUpdated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetLastUpdatedOk() (*string, bool) {
-	if o == nil || o.LastUpdated == nil {
-		return nil, false
+	if o == nil || isNil(o.LastUpdated) {
+    return nil, false
 	}
 	return o.LastUpdated, true
 }
 
 // HasLastUpdated returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasLastUpdated() bool {
-	if o != nil && o.LastUpdated != nil {
+	if o != nil && !isNil(o.LastUpdated) {
 		return true
 	}
 
@@ -247,7 +247,7 @@ func (o *SubscriptionProduct) SetLastUpdated(v string) {
 
 // GetProductStatus returns the ProductStatus field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetProductStatus() string {
-	if o == nil || o.ProductStatus == nil {
+	if o == nil || isNil(o.ProductStatus) {
 		var ret string
 		return ret
 	}
@@ -257,15 +257,15 @@ func (o *SubscriptionProduct) GetProductStatus() string {
 // GetProductStatusOk returns a tuple with the ProductStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetProductStatusOk() (*string, bool) {
-	if o == nil || o.ProductStatus == nil {
-		return nil, false
+	if o == nil || isNil(o.ProductStatus) {
+    return nil, false
 	}
 	return o.ProductStatus, true
 }
 
 // HasProductStatus returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasProductStatus() bool {
-	if o != nil && o.ProductStatus != nil {
+	if o != nil && !isNil(o.ProductStatus) {
 		return true
 	}
 
@@ -279,7 +279,7 @@ func (o *SubscriptionProduct) SetProductStatus(v string) {
 
 // GetCodeAppStore returns the CodeAppStore field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetCodeAppStore() string {
-	if o == nil || o.CodeAppStore == nil {
+	if o == nil || isNil(o.CodeAppStore) {
 		var ret string
 		return ret
 	}
@@ -289,15 +289,15 @@ func (o *SubscriptionProduct) GetCodeAppStore() string {
 // GetCodeAppStoreOk returns a tuple with the CodeAppStore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetCodeAppStoreOk() (*string, bool) {
-	if o == nil || o.CodeAppStore == nil {
-		return nil, false
+	if o == nil || isNil(o.CodeAppStore) {
+    return nil, false
 	}
 	return o.CodeAppStore, true
 }
 
 // HasCodeAppStore returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasCodeAppStore() bool {
-	if o != nil && o.CodeAppStore != nil {
+	if o != nil && !isNil(o.CodeAppStore) {
 		return true
 	}
 
@@ -311,7 +311,7 @@ func (o *SubscriptionProduct) SetCodeAppStore(v string) {
 
 // GetCodePlayStore returns the CodePlayStore field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetCodePlayStore() string {
-	if o == nil || o.CodePlayStore == nil {
+	if o == nil || isNil(o.CodePlayStore) {
 		var ret string
 		return ret
 	}
@@ -321,15 +321,15 @@ func (o *SubscriptionProduct) GetCodePlayStore() string {
 // GetCodePlayStoreOk returns a tuple with the CodePlayStore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetCodePlayStoreOk() (*string, bool) {
-	if o == nil || o.CodePlayStore == nil {
-		return nil, false
+	if o == nil || isNil(o.CodePlayStore) {
+    return nil, false
 	}
 	return o.CodePlayStore, true
 }
 
 // HasCodePlayStore returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasCodePlayStore() bool {
-	if o != nil && o.CodePlayStore != nil {
+	if o != nil && !isNil(o.CodePlayStore) {
 		return true
 	}
 
@@ -343,7 +343,7 @@ func (o *SubscriptionProduct) SetCodePlayStore(v string) {
 
 // GetAmountInCents returns the AmountInCents field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetAmountInCents() int64 {
-	if o == nil || o.AmountInCents == nil {
+	if o == nil || isNil(o.AmountInCents) {
 		var ret int64
 		return ret
 	}
@@ -353,15 +353,15 @@ func (o *SubscriptionProduct) GetAmountInCents() int64 {
 // GetAmountInCentsOk returns a tuple with the AmountInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetAmountInCentsOk() (*int64, bool) {
-	if o == nil || o.AmountInCents == nil {
-		return nil, false
+	if o == nil || isNil(o.AmountInCents) {
+    return nil, false
 	}
 	return o.AmountInCents, true
 }
 
 // HasAmountInCents returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasAmountInCents() bool {
-	if o != nil && o.AmountInCents != nil {
+	if o != nil && !isNil(o.AmountInCents) {
 		return true
 	}
 
@@ -375,7 +375,7 @@ func (o *SubscriptionProduct) SetAmountInCents(v int64) {
 
 // GetAmountInDollarsAndCents returns the AmountInDollarsAndCents field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetAmountInDollarsAndCents() float32 {
-	if o == nil || o.AmountInDollarsAndCents == nil {
+	if o == nil || isNil(o.AmountInDollarsAndCents) {
 		var ret float32
 		return ret
 	}
@@ -385,15 +385,15 @@ func (o *SubscriptionProduct) GetAmountInDollarsAndCents() float32 {
 // GetAmountInDollarsAndCentsOk returns a tuple with the AmountInDollarsAndCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetAmountInDollarsAndCentsOk() (*float32, bool) {
-	if o == nil || o.AmountInDollarsAndCents == nil {
-		return nil, false
+	if o == nil || isNil(o.AmountInDollarsAndCents) {
+    return nil, false
 	}
 	return o.AmountInDollarsAndCents, true
 }
 
 // HasAmountInDollarsAndCents returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasAmountInDollarsAndCents() bool {
-	if o != nil && o.AmountInDollarsAndCents != nil {
+	if o != nil && !isNil(o.AmountInDollarsAndCents) {
 		return true
 	}
 
@@ -407,7 +407,7 @@ func (o *SubscriptionProduct) SetAmountInDollarsAndCents(v float32) {
 
 // GetPrice returns the Price field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetPrice() Price {
-	if o == nil || o.Price == nil {
+	if o == nil || isNil(o.Price) {
 		var ret Price
 		return ret
 	}
@@ -417,15 +417,15 @@ func (o *SubscriptionProduct) GetPrice() Price {
 // GetPriceOk returns a tuple with the Price field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetPriceOk() (*Price, bool) {
-	if o == nil || o.Price == nil {
-		return nil, false
+	if o == nil || isNil(o.Price) {
+    return nil, false
 	}
 	return o.Price, true
 }
 
 // HasPrice returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasPrice() bool {
-	if o != nil && o.Price != nil {
+	if o != nil && !isNil(o.Price) {
 		return true
 	}
 
@@ -439,7 +439,7 @@ func (o *SubscriptionProduct) SetPrice(v Price) {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -449,15 +449,15 @@ func (o *SubscriptionProduct) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -471,7 +471,7 @@ func (o *SubscriptionProduct) SetURL(v string) {
 
 // GetTier returns the Tier field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetTier() string {
-	if o == nil || o.Tier == nil {
+	if o == nil || isNil(o.Tier) {
 		var ret string
 		return ret
 	}
@@ -481,15 +481,15 @@ func (o *SubscriptionProduct) GetTier() string {
 // GetTierOk returns a tuple with the Tier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetTierOk() (*string, bool) {
-	if o == nil || o.Tier == nil {
-		return nil, false
+	if o == nil || isNil(o.Tier) {
+    return nil, false
 	}
 	return o.Tier, true
 }
 
 // HasTier returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasTier() bool {
-	if o != nil && o.Tier != nil {
+	if o != nil && !isNil(o.Tier) {
 		return true
 	}
 
@@ -503,7 +503,7 @@ func (o *SubscriptionProduct) SetTier(v string) {
 
 // GetCycleDuration returns the CycleDuration field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetCycleDuration() int64 {
-	if o == nil || o.CycleDuration == nil {
+	if o == nil || isNil(o.CycleDuration) {
 		var ret int64
 		return ret
 	}
@@ -513,15 +513,15 @@ func (o *SubscriptionProduct) GetCycleDuration() int64 {
 // GetCycleDurationOk returns a tuple with the CycleDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetCycleDurationOk() (*int64, bool) {
-	if o == nil || o.CycleDuration == nil {
-		return nil, false
+	if o == nil || isNil(o.CycleDuration) {
+    return nil, false
 	}
 	return o.CycleDuration, true
 }
 
 // HasCycleDuration returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasCycleDuration() bool {
-	if o != nil && o.CycleDuration != nil {
+	if o != nil && !isNil(o.CycleDuration) {
 		return true
 	}
 
@@ -535,7 +535,7 @@ func (o *SubscriptionProduct) SetCycleDuration(v int64) {
 
 // GetCycle returns the Cycle field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetCycle() Cycle {
-	if o == nil || o.Cycle == nil {
+	if o == nil || isNil(o.Cycle) {
 		var ret Cycle
 		return ret
 	}
@@ -545,15 +545,15 @@ func (o *SubscriptionProduct) GetCycle() Cycle {
 // GetCycleOk returns a tuple with the Cycle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionProduct) GetCycleOk() (*Cycle, bool) {
-	if o == nil || o.Cycle == nil {
-		return nil, false
+	if o == nil || isNil(o.Cycle) {
+    return nil, false
 	}
 	return o.Cycle, true
 }
 
 // HasCycle returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasCycle() bool {
-	if o != nil && o.Cycle != nil {
+	if o != nil && !isNil(o.Cycle) {
 		return true
 	}
 
@@ -567,25 +567,25 @@ func (o *SubscriptionProduct) SetCycle(v Cycle) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *SubscriptionProduct) GetFeatures() []Features {
-	if o == nil || o.Features == nil {
+	if o == nil || isNil(o.Features) {
 		var ret []Features
 		return ret
 	}
-	return *o.Features
+	return o.Features
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionProduct) GetFeaturesOk() (*[]Features, bool) {
-	if o == nil || o.Features == nil {
-		return nil, false
+func (o *SubscriptionProduct) GetFeaturesOk() ([]Features, bool) {
+	if o == nil || isNil(o.Features) {
+    return nil, false
 	}
 	return o.Features, true
 }
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *SubscriptionProduct) HasFeatures() bool {
-	if o != nil && o.Features != nil {
+	if o != nil && !isNil(o.Features) {
 		return true
 	}
 
@@ -594,60 +594,60 @@ func (o *SubscriptionProduct) HasFeatures() bool {
 
 // SetFeatures gets a reference to the given []Features and assigns it to the Features field.
 func (o *SubscriptionProduct) SetFeatures(v []Features) {
-	o.Features = &v
+	o.Features = v
 }
 
 func (o SubscriptionProduct) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Code != nil {
+	if !isNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.DateCreated != nil {
+	if !isNil(o.DateCreated) {
 		toSerialize["dateCreated"] = o.DateCreated
 	}
-	if o.LastUpdated != nil {
+	if !isNil(o.LastUpdated) {
 		toSerialize["lastUpdated"] = o.LastUpdated
 	}
-	if o.ProductStatus != nil {
+	if !isNil(o.ProductStatus) {
 		toSerialize["productStatus"] = o.ProductStatus
 	}
-	if o.CodeAppStore != nil {
+	if !isNil(o.CodeAppStore) {
 		toSerialize["codeAppStore"] = o.CodeAppStore
 	}
-	if o.CodePlayStore != nil {
+	if !isNil(o.CodePlayStore) {
 		toSerialize["codePlayStore"] = o.CodePlayStore
 	}
-	if o.AmountInCents != nil {
+	if !isNil(o.AmountInCents) {
 		toSerialize["amountInCents"] = o.AmountInCents
 	}
-	if o.AmountInDollarsAndCents != nil {
+	if !isNil(o.AmountInDollarsAndCents) {
 		toSerialize["amountInDollarsAndCents"] = o.AmountInDollarsAndCents
 	}
-	if o.Price != nil {
+	if !isNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Tier != nil {
+	if !isNil(o.Tier) {
 		toSerialize["tier"] = o.Tier
 	}
-	if o.CycleDuration != nil {
+	if !isNil(o.CycleDuration) {
 		toSerialize["cycleDuration"] = o.CycleDuration
 	}
-	if o.Cycle != nil {
+	if !isNil(o.Cycle) {
 		toSerialize["cycle"] = o.Cycle
 	}
-	if o.Features != nil {
+	if !isNil(o.Features) {
 		toSerialize["features"] = o.Features
 	}
 	return json.Marshal(toSerialize)

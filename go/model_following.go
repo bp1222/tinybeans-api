@@ -53,7 +53,7 @@ func NewFollowingWithDefaults() *Following {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *Following) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -63,15 +63,15 @@ func (o *Following) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *Following) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -85,7 +85,7 @@ func (o *Following) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Following) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -95,15 +95,15 @@ func (o *Following) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Following) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -117,7 +117,7 @@ func (o *Following) SetId(v int64) {
 
 // GetViewEntries returns the ViewEntries field value if set, zero value otherwise.
 func (o *Following) GetViewEntries() bool {
-	if o == nil || o.ViewEntries == nil {
+	if o == nil || isNil(o.ViewEntries) {
 		var ret bool
 		return ret
 	}
@@ -127,15 +127,15 @@ func (o *Following) GetViewEntries() bool {
 // GetViewEntriesOk returns a tuple with the ViewEntries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetViewEntriesOk() (*bool, bool) {
-	if o == nil || o.ViewEntries == nil {
-		return nil, false
+	if o == nil || isNil(o.ViewEntries) {
+    return nil, false
 	}
 	return o.ViewEntries, true
 }
 
 // HasViewEntries returns a boolean if a field has been set.
 func (o *Following) HasViewEntries() bool {
-	if o != nil && o.ViewEntries != nil {
+	if o != nil && !isNil(o.ViewEntries) {
 		return true
 	}
 
@@ -149,7 +149,7 @@ func (o *Following) SetViewEntries(v bool) {
 
 // GetAddEntries returns the AddEntries field value if set, zero value otherwise.
 func (o *Following) GetAddEntries() bool {
-	if o == nil || o.AddEntries == nil {
+	if o == nil || isNil(o.AddEntries) {
 		var ret bool
 		return ret
 	}
@@ -159,15 +159,15 @@ func (o *Following) GetAddEntries() bool {
 // GetAddEntriesOk returns a tuple with the AddEntries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetAddEntriesOk() (*bool, bool) {
-	if o == nil || o.AddEntries == nil {
-		return nil, false
+	if o == nil || isNil(o.AddEntries) {
+    return nil, false
 	}
 	return o.AddEntries, true
 }
 
 // HasAddEntries returns a boolean if a field has been set.
 func (o *Following) HasAddEntries() bool {
-	if o != nil && o.AddEntries != nil {
+	if o != nil && !isNil(o.AddEntries) {
 		return true
 	}
 
@@ -181,7 +181,7 @@ func (o *Following) SetAddEntries(v bool) {
 
 // GetViewMilestones returns the ViewMilestones field value if set, zero value otherwise.
 func (o *Following) GetViewMilestones() bool {
-	if o == nil || o.ViewMilestones == nil {
+	if o == nil || isNil(o.ViewMilestones) {
 		var ret bool
 		return ret
 	}
@@ -191,15 +191,15 @@ func (o *Following) GetViewMilestones() bool {
 // GetViewMilestonesOk returns a tuple with the ViewMilestones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetViewMilestonesOk() (*bool, bool) {
-	if o == nil || o.ViewMilestones == nil {
-		return nil, false
+	if o == nil || isNil(o.ViewMilestones) {
+    return nil, false
 	}
 	return o.ViewMilestones, true
 }
 
 // HasViewMilestones returns a boolean if a field has been set.
 func (o *Following) HasViewMilestones() bool {
-	if o != nil && o.ViewMilestones != nil {
+	if o != nil && !isNil(o.ViewMilestones) {
 		return true
 	}
 
@@ -213,7 +213,7 @@ func (o *Following) SetViewMilestones(v bool) {
 
 // GetEditMilestones returns the EditMilestones field value if set, zero value otherwise.
 func (o *Following) GetEditMilestones() bool {
-	if o == nil || o.EditMilestones == nil {
+	if o == nil || isNil(o.EditMilestones) {
 		var ret bool
 		return ret
 	}
@@ -223,15 +223,15 @@ func (o *Following) GetEditMilestones() bool {
 // GetEditMilestonesOk returns a tuple with the EditMilestones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetEditMilestonesOk() (*bool, bool) {
-	if o == nil || o.EditMilestones == nil {
-		return nil, false
+	if o == nil || isNil(o.EditMilestones) {
+    return nil, false
 	}
 	return o.EditMilestones, true
 }
 
 // HasEditMilestones returns a boolean if a field has been set.
 func (o *Following) HasEditMilestones() bool {
-	if o != nil && o.EditMilestones != nil {
+	if o != nil && !isNil(o.EditMilestones) {
 		return true
 	}
 
@@ -245,7 +245,7 @@ func (o *Following) SetEditMilestones(v bool) {
 
 // GetCoOwner returns the CoOwner field value if set, zero value otherwise.
 func (o *Following) GetCoOwner() bool {
-	if o == nil || o.CoOwner == nil {
+	if o == nil || isNil(o.CoOwner) {
 		var ret bool
 		return ret
 	}
@@ -255,15 +255,15 @@ func (o *Following) GetCoOwner() bool {
 // GetCoOwnerOk returns a tuple with the CoOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetCoOwnerOk() (*bool, bool) {
-	if o == nil || o.CoOwner == nil {
-		return nil, false
+	if o == nil || isNil(o.CoOwner) {
+    return nil, false
 	}
 	return o.CoOwner, true
 }
 
 // HasCoOwner returns a boolean if a field has been set.
 func (o *Following) HasCoOwner() bool {
-	if o != nil && o.CoOwner != nil {
+	if o != nil && !isNil(o.CoOwner) {
 		return true
 	}
 
@@ -277,7 +277,7 @@ func (o *Following) SetCoOwner(v bool) {
 
 // GetSortOrder returns the SortOrder field value if set, zero value otherwise.
 func (o *Following) GetSortOrder() int64 {
-	if o == nil || o.SortOrder == nil {
+	if o == nil || isNil(o.SortOrder) {
 		var ret int64
 		return ret
 	}
@@ -287,15 +287,15 @@ func (o *Following) GetSortOrder() int64 {
 // GetSortOrderOk returns a tuple with the SortOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetSortOrderOk() (*int64, bool) {
-	if o == nil || o.SortOrder == nil {
-		return nil, false
+	if o == nil || isNil(o.SortOrder) {
+    return nil, false
 	}
 	return o.SortOrder, true
 }
 
 // HasSortOrder returns a boolean if a field has been set.
 func (o *Following) HasSortOrder() bool {
-	if o != nil && o.SortOrder != nil {
+	if o != nil && !isNil(o.SortOrder) {
 		return true
 	}
 
@@ -309,7 +309,7 @@ func (o *Following) SetSortOrder(v int64) {
 
 // GetSendFlashback returns the SendFlashback field value if set, zero value otherwise.
 func (o *Following) GetSendFlashback() bool {
-	if o == nil || o.SendFlashback == nil {
+	if o == nil || isNil(o.SendFlashback) {
 		var ret bool
 		return ret
 	}
@@ -319,15 +319,15 @@ func (o *Following) GetSendFlashback() bool {
 // GetSendFlashbackOk returns a tuple with the SendFlashback field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetSendFlashbackOk() (*bool, bool) {
-	if o == nil || o.SendFlashback == nil {
-		return nil, false
+	if o == nil || isNil(o.SendFlashback) {
+    return nil, false
 	}
 	return o.SendFlashback, true
 }
 
 // HasSendFlashback returns a boolean if a field has been set.
 func (o *Following) HasSendFlashback() bool {
-	if o != nil && o.SendFlashback != nil {
+	if o != nil && !isNil(o.SendFlashback) {
 		return true
 	}
 
@@ -341,7 +341,7 @@ func (o *Following) SetSendFlashback(v bool) {
 
 // GetRelationship returns the Relationship field value if set, zero value otherwise.
 func (o *Following) GetRelationship() Relationship {
-	if o == nil || o.Relationship == nil {
+	if o == nil || isNil(o.Relationship) {
 		var ret Relationship
 		return ret
 	}
@@ -351,15 +351,15 @@ func (o *Following) GetRelationship() Relationship {
 // GetRelationshipOk returns a tuple with the Relationship field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetRelationshipOk() (*Relationship, bool) {
-	if o == nil || o.Relationship == nil {
-		return nil, false
+	if o == nil || isNil(o.Relationship) {
+    return nil, false
 	}
 	return o.Relationship, true
 }
 
 // HasRelationship returns a boolean if a field has been set.
 func (o *Following) HasRelationship() bool {
-	if o != nil && o.Relationship != nil {
+	if o != nil && !isNil(o.Relationship) {
 		return true
 	}
 
@@ -373,7 +373,7 @@ func (o *Following) SetRelationship(v Relationship) {
 
 // GetEmailFrequencyOnNewEvent returns the EmailFrequencyOnNewEvent field value if set, zero value otherwise.
 func (o *Following) GetEmailFrequencyOnNewEvent() EmailFrequency {
-	if o == nil || o.EmailFrequencyOnNewEvent == nil {
+	if o == nil || isNil(o.EmailFrequencyOnNewEvent) {
 		var ret EmailFrequency
 		return ret
 	}
@@ -383,15 +383,15 @@ func (o *Following) GetEmailFrequencyOnNewEvent() EmailFrequency {
 // GetEmailFrequencyOnNewEventOk returns a tuple with the EmailFrequencyOnNewEvent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetEmailFrequencyOnNewEventOk() (*EmailFrequency, bool) {
-	if o == nil || o.EmailFrequencyOnNewEvent == nil {
-		return nil, false
+	if o == nil || isNil(o.EmailFrequencyOnNewEvent) {
+    return nil, false
 	}
 	return o.EmailFrequencyOnNewEvent, true
 }
 
 // HasEmailFrequencyOnNewEvent returns a boolean if a field has been set.
 func (o *Following) HasEmailFrequencyOnNewEvent() bool {
-	if o != nil && o.EmailFrequencyOnNewEvent != nil {
+	if o != nil && !isNil(o.EmailFrequencyOnNewEvent) {
 		return true
 	}
 
@@ -405,7 +405,7 @@ func (o *Following) SetEmailFrequencyOnNewEvent(v EmailFrequency) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *Following) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || isNil(o.Timestamp) {
 		var ret int64
 		return ret
 	}
@@ -415,15 +415,15 @@ func (o *Following) GetTimestamp() int64 {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.Timestamp) {
+    return nil, false
 	}
 	return o.Timestamp, true
 }
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *Following) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !isNil(o.Timestamp) {
 		return true
 	}
 
@@ -437,7 +437,7 @@ func (o *Following) SetTimestamp(v int64) {
 
 // GetJournalId returns the JournalId field value if set, zero value otherwise.
 func (o *Following) GetJournalId() int64 {
-	if o == nil || o.JournalId == nil {
+	if o == nil || isNil(o.JournalId) {
 		var ret int64
 		return ret
 	}
@@ -447,15 +447,15 @@ func (o *Following) GetJournalId() int64 {
 // GetJournalIdOk returns a tuple with the JournalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetJournalIdOk() (*int64, bool) {
-	if o == nil || o.JournalId == nil {
-		return nil, false
+	if o == nil || isNil(o.JournalId) {
+    return nil, false
 	}
 	return o.JournalId, true
 }
 
 // HasJournalId returns a boolean if a field has been set.
 func (o *Following) HasJournalId() bool {
-	if o != nil && o.JournalId != nil {
+	if o != nil && !isNil(o.JournalId) {
 		return true
 	}
 
@@ -469,7 +469,7 @@ func (o *Following) SetJournalId(v int64) {
 
 // GetJournal returns the Journal field value if set, zero value otherwise.
 func (o *Following) GetJournal() Journal {
-	if o == nil || o.Journal == nil {
+	if o == nil || isNil(o.Journal) {
 		var ret Journal
 		return ret
 	}
@@ -479,15 +479,15 @@ func (o *Following) GetJournal() Journal {
 // GetJournalOk returns a tuple with the Journal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetJournalOk() (*Journal, bool) {
-	if o == nil || o.Journal == nil {
-		return nil, false
+	if o == nil || isNil(o.Journal) {
+    return nil, false
 	}
 	return o.Journal, true
 }
 
 // HasJournal returns a boolean if a field has been set.
 func (o *Following) HasJournal() bool {
-	if o != nil && o.Journal != nil {
+	if o != nil && !isNil(o.Journal) {
 		return true
 	}
 
@@ -501,7 +501,7 @@ func (o *Following) SetJournal(v Journal) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *Following) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || isNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -511,15 +511,15 @@ func (o *Following) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Following) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || isNil(o.User) {
+    return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *Following) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !isNil(o.User) {
 		return true
 	}
 
@@ -533,49 +533,49 @@ func (o *Following) SetUser(v User) {
 
 func (o Following) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.ViewEntries != nil {
+	if !isNil(o.ViewEntries) {
 		toSerialize["viewEntries"] = o.ViewEntries
 	}
-	if o.AddEntries != nil {
+	if !isNil(o.AddEntries) {
 		toSerialize["addEntries"] = o.AddEntries
 	}
-	if o.ViewMilestones != nil {
+	if !isNil(o.ViewMilestones) {
 		toSerialize["viewMilestones"] = o.ViewMilestones
 	}
-	if o.EditMilestones != nil {
+	if !isNil(o.EditMilestones) {
 		toSerialize["editMilestones"] = o.EditMilestones
 	}
-	if o.CoOwner != nil {
+	if !isNil(o.CoOwner) {
 		toSerialize["coOwner"] = o.CoOwner
 	}
-	if o.SortOrder != nil {
+	if !isNil(o.SortOrder) {
 		toSerialize["sortOrder"] = o.SortOrder
 	}
-	if o.SendFlashback != nil {
+	if !isNil(o.SendFlashback) {
 		toSerialize["sendFlashback"] = o.SendFlashback
 	}
-	if o.Relationship != nil {
+	if !isNil(o.Relationship) {
 		toSerialize["relationship"] = o.Relationship
 	}
-	if o.EmailFrequencyOnNewEvent != nil {
+	if !isNil(o.EmailFrequencyOnNewEvent) {
 		toSerialize["emailFrequencyOnNewEvent"] = o.EmailFrequencyOnNewEvent
 	}
-	if o.Timestamp != nil {
+	if !isNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if o.JournalId != nil {
+	if !isNil(o.JournalId) {
 		toSerialize["journalId"] = o.JournalId
 	}
-	if o.Journal != nil {
+	if !isNil(o.Journal) {
 		toSerialize["journal"] = o.Journal
 	}
-	if o.User != nil {
+	if !isNil(o.User) {
 		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)

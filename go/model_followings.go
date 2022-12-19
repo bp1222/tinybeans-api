@@ -18,7 +18,7 @@ import (
 // Followings struct for Followings
 type Followings struct {
 	Status *string `json:"status,omitempty"`
-	Followings *[]Following `json:"followings,omitempty"`
+	Followings []Following `json:"followings,omitempty"`
 }
 
 // NewFollowings instantiates a new Followings object
@@ -40,7 +40,7 @@ func NewFollowingsWithDefaults() *Followings {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Followings) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *Followings) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Followings) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Followings) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -72,25 +72,25 @@ func (o *Followings) SetStatus(v string) {
 
 // GetFollowings returns the Followings field value if set, zero value otherwise.
 func (o *Followings) GetFollowings() []Following {
-	if o == nil || o.Followings == nil {
+	if o == nil || isNil(o.Followings) {
 		var ret []Following
 		return ret
 	}
-	return *o.Followings
+	return o.Followings
 }
 
 // GetFollowingsOk returns a tuple with the Followings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Followings) GetFollowingsOk() (*[]Following, bool) {
-	if o == nil || o.Followings == nil {
-		return nil, false
+func (o *Followings) GetFollowingsOk() ([]Following, bool) {
+	if o == nil || isNil(o.Followings) {
+    return nil, false
 	}
 	return o.Followings, true
 }
 
 // HasFollowings returns a boolean if a field has been set.
 func (o *Followings) HasFollowings() bool {
-	if o != nil && o.Followings != nil {
+	if o != nil && !isNil(o.Followings) {
 		return true
 	}
 
@@ -99,15 +99,15 @@ func (o *Followings) HasFollowings() bool {
 
 // SetFollowings gets a reference to the given []Following and assigns it to the Followings field.
 func (o *Followings) SetFollowings(v []Following) {
-	o.Followings = &v
+	o.Followings = v
 }
 
 func (o Followings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.Followings != nil {
+	if !isNil(o.Followings) {
 		toSerialize["followings"] = o.Followings
 	}
 	return json.Marshal(toSerialize)

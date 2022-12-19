@@ -40,6 +40,3 @@ components:
       type: apiKey
       in: header
       name: authorization
-
-security:
-  - Authorization: []

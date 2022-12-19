@@ -17,7 +17,7 @@ import (
 
 // Journals struct for Journals
 type Journals struct {
-	Journals *[]Journal `json:"journals,omitempty"`
+	Journals []Journal `json:"journals,omitempty"`
 	Status *string `json:"status,omitempty"`
 }
 
@@ -40,25 +40,25 @@ func NewJournalsWithDefaults() *Journals {
 
 // GetJournals returns the Journals field value if set, zero value otherwise.
 func (o *Journals) GetJournals() []Journal {
-	if o == nil || o.Journals == nil {
+	if o == nil || isNil(o.Journals) {
 		var ret []Journal
 		return ret
 	}
-	return *o.Journals
+	return o.Journals
 }
 
 // GetJournalsOk returns a tuple with the Journals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Journals) GetJournalsOk() (*[]Journal, bool) {
-	if o == nil || o.Journals == nil {
-		return nil, false
+func (o *Journals) GetJournalsOk() ([]Journal, bool) {
+	if o == nil || isNil(o.Journals) {
+    return nil, false
 	}
 	return o.Journals, true
 }
 
 // HasJournals returns a boolean if a field has been set.
 func (o *Journals) HasJournals() bool {
-	if o != nil && o.Journals != nil {
+	if o != nil && !isNil(o.Journals) {
 		return true
 	}
 
@@ -67,12 +67,12 @@ func (o *Journals) HasJournals() bool {
 
 // SetJournals gets a reference to the given []Journal and assigns it to the Journals field.
 func (o *Journals) SetJournals(v []Journal) {
-	o.Journals = &v
+	o.Journals = v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Journals) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *Journals) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Journals) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *Journals) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *Journals) SetStatus(v string) {
 
 func (o Journals) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Journals != nil {
+	if !isNil(o.Journals) {
 		toSerialize["journals"] = o.Journals
 	}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)

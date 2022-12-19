@@ -42,7 +42,7 @@ func NewAvatarsWithDefaults() *Avatars {
 
 // GetL returns the L field value if set, zero value otherwise.
 func (o *Avatars) GetL() string {
-	if o == nil || o.L == nil {
+	if o == nil || isNil(o.L) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *Avatars) GetL() string {
 // GetLOk returns a tuple with the L field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Avatars) GetLOk() (*string, bool) {
-	if o == nil || o.L == nil {
-		return nil, false
+	if o == nil || isNil(o.L) {
+    return nil, false
 	}
 	return o.L, true
 }
 
 // HasL returns a boolean if a field has been set.
 func (o *Avatars) HasL() bool {
-	if o != nil && o.L != nil {
+	if o != nil && !isNil(o.L) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *Avatars) SetL(v string) {
 
 // GetM returns the M field value if set, zero value otherwise.
 func (o *Avatars) GetM() string {
-	if o == nil || o.M == nil {
+	if o == nil || isNil(o.M) {
 		var ret string
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *Avatars) GetM() string {
 // GetMOk returns a tuple with the M field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Avatars) GetMOk() (*string, bool) {
-	if o == nil || o.M == nil {
-		return nil, false
+	if o == nil || isNil(o.M) {
+    return nil, false
 	}
 	return o.M, true
 }
 
 // HasM returns a boolean if a field has been set.
 func (o *Avatars) HasM() bool {
-	if o != nil && o.M != nil {
+	if o != nil && !isNil(o.M) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *Avatars) SetM(v string) {
 
 // GetO returns the O field value if set, zero value otherwise.
 func (o *Avatars) GetO() string {
-	if o == nil || o.O == nil {
+	if o == nil || isNil(o.O) {
 		var ret string
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *Avatars) GetO() string {
 // GetOOk returns a tuple with the O field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Avatars) GetOOk() (*string, bool) {
-	if o == nil || o.O == nil {
-		return nil, false
+	if o == nil || isNil(o.O) {
+    return nil, false
 	}
 	return o.O, true
 }
 
 // HasO returns a boolean if a field has been set.
 func (o *Avatars) HasO() bool {
-	if o != nil && o.O != nil {
+	if o != nil && !isNil(o.O) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *Avatars) SetO(v string) {
 
 // GetS returns the S field value if set, zero value otherwise.
 func (o *Avatars) GetS() string {
-	if o == nil || o.S == nil {
+	if o == nil || isNil(o.S) {
 		var ret string
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *Avatars) GetS() string {
 // GetSOk returns a tuple with the S field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Avatars) GetSOk() (*string, bool) {
-	if o == nil || o.S == nil {
-		return nil, false
+	if o == nil || isNil(o.S) {
+    return nil, false
 	}
 	return o.S, true
 }
 
 // HasS returns a boolean if a field has been set.
 func (o *Avatars) HasS() bool {
-	if o != nil && o.S != nil {
+	if o != nil && !isNil(o.S) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *Avatars) SetS(v string) {
 
 func (o Avatars) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.L != nil {
+	if !isNil(o.L) {
 		toSerialize["l"] = o.L
 	}
-	if o.M != nil {
+	if !isNil(o.M) {
 		toSerialize["m"] = o.M
 	}
-	if o.O != nil {
+	if !isNil(o.O) {
 		toSerialize["o"] = o.O
 	}
-	if o.S != nil {
+	if !isNil(o.S) {
 		toSerialize["s"] = o.S
 	}
 	return json.Marshal(toSerialize)

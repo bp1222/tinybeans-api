@@ -42,7 +42,7 @@ func NewAuthenticateResponseWithDefaults() *AuthenticateResponse {
 
 // GetAccessToken returns the AccessToken field value if set, zero value otherwise.
 func (o *AuthenticateResponse) GetAccessToken() string {
-	if o == nil || o.AccessToken == nil {
+	if o == nil || isNil(o.AccessToken) {
 		var ret string
 		return ret
 	}
@@ -52,15 +52,15 @@ func (o *AuthenticateResponse) GetAccessToken() string {
 // GetAccessTokenOk returns a tuple with the AccessToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateResponse) GetAccessTokenOk() (*string, bool) {
-	if o == nil || o.AccessToken == nil {
-		return nil, false
+	if o == nil || isNil(o.AccessToken) {
+    return nil, false
 	}
 	return o.AccessToken, true
 }
 
 // HasAccessToken returns a boolean if a field has been set.
 func (o *AuthenticateResponse) HasAccessToken() bool {
-	if o != nil && o.AccessToken != nil {
+	if o != nil && !isNil(o.AccessToken) {
 		return true
 	}
 
@@ -74,7 +74,7 @@ func (o *AuthenticateResponse) SetAccessToken(v string) {
 
 // GetDidCreateUser returns the DidCreateUser field value if set, zero value otherwise.
 func (o *AuthenticateResponse) GetDidCreateUser() bool {
-	if o == nil || o.DidCreateUser == nil {
+	if o == nil || isNil(o.DidCreateUser) {
 		var ret bool
 		return ret
 	}
@@ -84,15 +84,15 @@ func (o *AuthenticateResponse) GetDidCreateUser() bool {
 // GetDidCreateUserOk returns a tuple with the DidCreateUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateResponse) GetDidCreateUserOk() (*bool, bool) {
-	if o == nil || o.DidCreateUser == nil {
-		return nil, false
+	if o == nil || isNil(o.DidCreateUser) {
+    return nil, false
 	}
 	return o.DidCreateUser, true
 }
 
 // HasDidCreateUser returns a boolean if a field has been set.
 func (o *AuthenticateResponse) HasDidCreateUser() bool {
-	if o != nil && o.DidCreateUser != nil {
+	if o != nil && !isNil(o.DidCreateUser) {
 		return true
 	}
 
@@ -106,7 +106,7 @@ func (o *AuthenticateResponse) SetDidCreateUser(v bool) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AuthenticateResponse) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || isNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -116,15 +116,15 @@ func (o *AuthenticateResponse) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateResponse) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
-		return nil, false
+	if o == nil || isNil(o.Status) {
+    return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *AuthenticateResponse) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !isNil(o.Status) {
 		return true
 	}
 
@@ -138,7 +138,7 @@ func (o *AuthenticateResponse) SetStatus(v string) {
 
 // GetUser returns the User field value if set, zero value otherwise.
 func (o *AuthenticateResponse) GetUser() User {
-	if o == nil || o.User == nil {
+	if o == nil || isNil(o.User) {
 		var ret User
 		return ret
 	}
@@ -148,15 +148,15 @@ func (o *AuthenticateResponse) GetUser() User {
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthenticateResponse) GetUserOk() (*User, bool) {
-	if o == nil || o.User == nil {
-		return nil, false
+	if o == nil || isNil(o.User) {
+    return nil, false
 	}
 	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *AuthenticateResponse) HasUser() bool {
-	if o != nil && o.User != nil {
+	if o != nil && !isNil(o.User) {
 		return true
 	}
 
@@ -170,16 +170,16 @@ func (o *AuthenticateResponse) SetUser(v User) {
 
 func (o AuthenticateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccessToken != nil {
+	if !isNil(o.AccessToken) {
 		toSerialize["accessToken"] = o.AccessToken
 	}
-	if o.DidCreateUser != nil {
+	if !isNil(o.DidCreateUser) {
 		toSerialize["didCreateUser"] = o.DidCreateUser
 	}
-	if o.Status != nil {
+	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.User != nil {
+	if !isNil(o.User) {
 		toSerialize["user"] = o.User
 	}
 	return json.Marshal(toSerialize)

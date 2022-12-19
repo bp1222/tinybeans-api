@@ -33,7 +33,7 @@ type Entry struct {
 	Blobs *Blob `json:"blobs,omitempty"`
 	JournalId *int64 `json:"journalId,omitempty"`
 	UserId *int64 `json:"userId,omitempty"`
-	Emotions *[]Emotion `json:"emotions,omitempty"`
+	Emotions []Emotion `json:"emotions,omitempty"`
 }
 
 // NewEntry instantiates a new Entry object
@@ -55,7 +55,7 @@ func NewEntryWithDefaults() *Entry {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *Entry) GetURL() string {
-	if o == nil || o.URL == nil {
+	if o == nil || isNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -65,15 +65,15 @@ func (o *Entry) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetURLOk() (*string, bool) {
-	if o == nil || o.URL == nil {
-		return nil, false
+	if o == nil || isNil(o.URL) {
+    return nil, false
 	}
 	return o.URL, true
 }
 
 // HasURL returns a boolean if a field has been set.
 func (o *Entry) HasURL() bool {
-	if o != nil && o.URL != nil {
+	if o != nil && !isNil(o.URL) {
 		return true
 	}
 
@@ -87,7 +87,7 @@ func (o *Entry) SetURL(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Entry) GetId() int64 {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret int64
 		return ret
 	}
@@ -97,15 +97,15 @@ func (o *Entry) GetId() int64 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetIdOk() (*int64, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Entry) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *Entry) SetId(v int64) {
 
 // GetDeleted returns the Deleted field value if set, zero value otherwise.
 func (o *Entry) GetDeleted() bool {
-	if o == nil || o.Deleted == nil {
+	if o == nil || isNil(o.Deleted) {
 		var ret bool
 		return ret
 	}
@@ -129,15 +129,15 @@ func (o *Entry) GetDeleted() bool {
 // GetDeletedOk returns a tuple with the Deleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetDeletedOk() (*bool, bool) {
-	if o == nil || o.Deleted == nil {
-		return nil, false
+	if o == nil || isNil(o.Deleted) {
+    return nil, false
 	}
 	return o.Deleted, true
 }
 
 // HasDeleted returns a boolean if a field has been set.
 func (o *Entry) HasDeleted() bool {
-	if o != nil && o.Deleted != nil {
+	if o != nil && !isNil(o.Deleted) {
 		return true
 	}
 
@@ -151,7 +151,7 @@ func (o *Entry) SetDeleted(v bool) {
 
 // GetPrivateMode returns the PrivateMode field value if set, zero value otherwise.
 func (o *Entry) GetPrivateMode() bool {
-	if o == nil || o.PrivateMode == nil {
+	if o == nil || isNil(o.PrivateMode) {
 		var ret bool
 		return ret
 	}
@@ -161,15 +161,15 @@ func (o *Entry) GetPrivateMode() bool {
 // GetPrivateModeOk returns a tuple with the PrivateMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetPrivateModeOk() (*bool, bool) {
-	if o == nil || o.PrivateMode == nil {
-		return nil, false
+	if o == nil || isNil(o.PrivateMode) {
+    return nil, false
 	}
 	return o.PrivateMode, true
 }
 
 // HasPrivateMode returns a boolean if a field has been set.
 func (o *Entry) HasPrivateMode() bool {
-	if o != nil && o.PrivateMode != nil {
+	if o != nil && !isNil(o.PrivateMode) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *Entry) SetPrivateMode(v bool) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *Entry) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || isNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -193,15 +193,15 @@ func (o *Entry) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
-		return nil, false
+	if o == nil || isNil(o.Uuid) {
+    return nil, false
 	}
 	return o.Uuid, true
 }
 
 // HasUuid returns a boolean if a field has been set.
 func (o *Entry) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !isNil(o.Uuid) {
 		return true
 	}
 
@@ -215,7 +215,7 @@ func (o *Entry) SetUuid(v string) {
 
 // GetClientRef returns the ClientRef field value if set, zero value otherwise.
 func (o *Entry) GetClientRef() string {
-	if o == nil || o.ClientRef == nil {
+	if o == nil || isNil(o.ClientRef) {
 		var ret string
 		return ret
 	}
@@ -225,15 +225,15 @@ func (o *Entry) GetClientRef() string {
 // GetClientRefOk returns a tuple with the ClientRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetClientRefOk() (*string, bool) {
-	if o == nil || o.ClientRef == nil {
-		return nil, false
+	if o == nil || isNil(o.ClientRef) {
+    return nil, false
 	}
 	return o.ClientRef, true
 }
 
 // HasClientRef returns a boolean if a field has been set.
 func (o *Entry) HasClientRef() bool {
-	if o != nil && o.ClientRef != nil {
+	if o != nil && !isNil(o.ClientRef) {
 		return true
 	}
 
@@ -247,7 +247,7 @@ func (o *Entry) SetClientRef(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Entry) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -257,15 +257,15 @@ func (o *Entry) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Entry) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -279,7 +279,7 @@ func (o *Entry) SetType(v string) {
 
 // GetYear returns the Year field value if set, zero value otherwise.
 func (o *Entry) GetYear() int64 {
-	if o == nil || o.Year == nil {
+	if o == nil || isNil(o.Year) {
 		var ret int64
 		return ret
 	}
@@ -289,15 +289,15 @@ func (o *Entry) GetYear() int64 {
 // GetYearOk returns a tuple with the Year field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetYearOk() (*int64, bool) {
-	if o == nil || o.Year == nil {
-		return nil, false
+	if o == nil || isNil(o.Year) {
+    return nil, false
 	}
 	return o.Year, true
 }
 
 // HasYear returns a boolean if a field has been set.
 func (o *Entry) HasYear() bool {
-	if o != nil && o.Year != nil {
+	if o != nil && !isNil(o.Year) {
 		return true
 	}
 
@@ -311,7 +311,7 @@ func (o *Entry) SetYear(v int64) {
 
 // GetMonth returns the Month field value if set, zero value otherwise.
 func (o *Entry) GetMonth() int64 {
-	if o == nil || o.Month == nil {
+	if o == nil || isNil(o.Month) {
 		var ret int64
 		return ret
 	}
@@ -321,15 +321,15 @@ func (o *Entry) GetMonth() int64 {
 // GetMonthOk returns a tuple with the Month field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetMonthOk() (*int64, bool) {
-	if o == nil || o.Month == nil {
-		return nil, false
+	if o == nil || isNil(o.Month) {
+    return nil, false
 	}
 	return o.Month, true
 }
 
 // HasMonth returns a boolean if a field has been set.
 func (o *Entry) HasMonth() bool {
-	if o != nil && o.Month != nil {
+	if o != nil && !isNil(o.Month) {
 		return true
 	}
 
@@ -343,7 +343,7 @@ func (o *Entry) SetMonth(v int64) {
 
 // GetDay returns the Day field value if set, zero value otherwise.
 func (o *Entry) GetDay() int64 {
-	if o == nil || o.Day == nil {
+	if o == nil || isNil(o.Day) {
 		var ret int64
 		return ret
 	}
@@ -353,15 +353,15 @@ func (o *Entry) GetDay() int64 {
 // GetDayOk returns a tuple with the Day field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetDayOk() (*int64, bool) {
-	if o == nil || o.Day == nil {
-		return nil, false
+	if o == nil || isNil(o.Day) {
+    return nil, false
 	}
 	return o.Day, true
 }
 
 // HasDay returns a boolean if a field has been set.
 func (o *Entry) HasDay() bool {
-	if o != nil && o.Day != nil {
+	if o != nil && !isNil(o.Day) {
 		return true
 	}
 
@@ -375,7 +375,7 @@ func (o *Entry) SetDay(v int64) {
 
 // GetCaption returns the Caption field value if set, zero value otherwise.
 func (o *Entry) GetCaption() string {
-	if o == nil || o.Caption == nil {
+	if o == nil || isNil(o.Caption) {
 		var ret string
 		return ret
 	}
@@ -385,15 +385,15 @@ func (o *Entry) GetCaption() string {
 // GetCaptionOk returns a tuple with the Caption field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetCaptionOk() (*string, bool) {
-	if o == nil || o.Caption == nil {
-		return nil, false
+	if o == nil || isNil(o.Caption) {
+    return nil, false
 	}
 	return o.Caption, true
 }
 
 // HasCaption returns a boolean if a field has been set.
 func (o *Entry) HasCaption() bool {
-	if o != nil && o.Caption != nil {
+	if o != nil && !isNil(o.Caption) {
 		return true
 	}
 
@@ -407,7 +407,7 @@ func (o *Entry) SetCaption(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *Entry) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || isNil(o.Timestamp) {
 		var ret int64
 		return ret
 	}
@@ -417,15 +417,15 @@ func (o *Entry) GetTimestamp() int64 {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.Timestamp) {
+    return nil, false
 	}
 	return o.Timestamp, true
 }
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *Entry) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !isNil(o.Timestamp) {
 		return true
 	}
 
@@ -439,7 +439,7 @@ func (o *Entry) SetTimestamp(v int64) {
 
 // GetLastUpdatedTimestamp returns the LastUpdatedTimestamp field value if set, zero value otherwise.
 func (o *Entry) GetLastUpdatedTimestamp() int64 {
-	if o == nil || o.LastUpdatedTimestamp == nil {
+	if o == nil || isNil(o.LastUpdatedTimestamp) {
 		var ret int64
 		return ret
 	}
@@ -449,15 +449,15 @@ func (o *Entry) GetLastUpdatedTimestamp() int64 {
 // GetLastUpdatedTimestampOk returns a tuple with the LastUpdatedTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetLastUpdatedTimestampOk() (*int64, bool) {
-	if o == nil || o.LastUpdatedTimestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.LastUpdatedTimestamp) {
+    return nil, false
 	}
 	return o.LastUpdatedTimestamp, true
 }
 
 // HasLastUpdatedTimestamp returns a boolean if a field has been set.
 func (o *Entry) HasLastUpdatedTimestamp() bool {
-	if o != nil && o.LastUpdatedTimestamp != nil {
+	if o != nil && !isNil(o.LastUpdatedTimestamp) {
 		return true
 	}
 
@@ -471,7 +471,7 @@ func (o *Entry) SetLastUpdatedTimestamp(v int64) {
 
 // GetBlobs returns the Blobs field value if set, zero value otherwise.
 func (o *Entry) GetBlobs() Blob {
-	if o == nil || o.Blobs == nil {
+	if o == nil || isNil(o.Blobs) {
 		var ret Blob
 		return ret
 	}
@@ -481,15 +481,15 @@ func (o *Entry) GetBlobs() Blob {
 // GetBlobsOk returns a tuple with the Blobs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetBlobsOk() (*Blob, bool) {
-	if o == nil || o.Blobs == nil {
-		return nil, false
+	if o == nil || isNil(o.Blobs) {
+    return nil, false
 	}
 	return o.Blobs, true
 }
 
 // HasBlobs returns a boolean if a field has been set.
 func (o *Entry) HasBlobs() bool {
-	if o != nil && o.Blobs != nil {
+	if o != nil && !isNil(o.Blobs) {
 		return true
 	}
 
@@ -503,7 +503,7 @@ func (o *Entry) SetBlobs(v Blob) {
 
 // GetJournalId returns the JournalId field value if set, zero value otherwise.
 func (o *Entry) GetJournalId() int64 {
-	if o == nil || o.JournalId == nil {
+	if o == nil || isNil(o.JournalId) {
 		var ret int64
 		return ret
 	}
@@ -513,15 +513,15 @@ func (o *Entry) GetJournalId() int64 {
 // GetJournalIdOk returns a tuple with the JournalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetJournalIdOk() (*int64, bool) {
-	if o == nil || o.JournalId == nil {
-		return nil, false
+	if o == nil || isNil(o.JournalId) {
+    return nil, false
 	}
 	return o.JournalId, true
 }
 
 // HasJournalId returns a boolean if a field has been set.
 func (o *Entry) HasJournalId() bool {
-	if o != nil && o.JournalId != nil {
+	if o != nil && !isNil(o.JournalId) {
 		return true
 	}
 
@@ -535,7 +535,7 @@ func (o *Entry) SetJournalId(v int64) {
 
 // GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *Entry) GetUserId() int64 {
-	if o == nil || o.UserId == nil {
+	if o == nil || isNil(o.UserId) {
 		var ret int64
 		return ret
 	}
@@ -545,15 +545,15 @@ func (o *Entry) GetUserId() int64 {
 // GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Entry) GetUserIdOk() (*int64, bool) {
-	if o == nil || o.UserId == nil {
-		return nil, false
+	if o == nil || isNil(o.UserId) {
+    return nil, false
 	}
 	return o.UserId, true
 }
 
 // HasUserId returns a boolean if a field has been set.
 func (o *Entry) HasUserId() bool {
-	if o != nil && o.UserId != nil {
+	if o != nil && !isNil(o.UserId) {
 		return true
 	}
 
@@ -567,25 +567,25 @@ func (o *Entry) SetUserId(v int64) {
 
 // GetEmotions returns the Emotions field value if set, zero value otherwise.
 func (o *Entry) GetEmotions() []Emotion {
-	if o == nil || o.Emotions == nil {
+	if o == nil || isNil(o.Emotions) {
 		var ret []Emotion
 		return ret
 	}
-	return *o.Emotions
+	return o.Emotions
 }
 
 // GetEmotionsOk returns a tuple with the Emotions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entry) GetEmotionsOk() (*[]Emotion, bool) {
-	if o == nil || o.Emotions == nil {
-		return nil, false
+func (o *Entry) GetEmotionsOk() ([]Emotion, bool) {
+	if o == nil || isNil(o.Emotions) {
+    return nil, false
 	}
 	return o.Emotions, true
 }
 
 // HasEmotions returns a boolean if a field has been set.
 func (o *Entry) HasEmotions() bool {
-	if o != nil && o.Emotions != nil {
+	if o != nil && !isNil(o.Emotions) {
 		return true
 	}
 
@@ -594,60 +594,60 @@ func (o *Entry) HasEmotions() bool {
 
 // SetEmotions gets a reference to the given []Emotion and assigns it to the Emotions field.
 func (o *Entry) SetEmotions(v []Emotion) {
-	o.Emotions = &v
+	o.Emotions = v
 }
 
 func (o Entry) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.URL != nil {
+	if !isNil(o.URL) {
 		toSerialize["URL"] = o.URL
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Deleted != nil {
+	if !isNil(o.Deleted) {
 		toSerialize["deleted"] = o.Deleted
 	}
-	if o.PrivateMode != nil {
+	if !isNil(o.PrivateMode) {
 		toSerialize["privateMode"] = o.PrivateMode
 	}
-	if o.Uuid != nil {
+	if !isNil(o.Uuid) {
 		toSerialize["uuid"] = o.Uuid
 	}
-	if o.ClientRef != nil {
+	if !isNil(o.ClientRef) {
 		toSerialize["clientRef"] = o.ClientRef
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Year != nil {
+	if !isNil(o.Year) {
 		toSerialize["year"] = o.Year
 	}
-	if o.Month != nil {
+	if !isNil(o.Month) {
 		toSerialize["month"] = o.Month
 	}
-	if o.Day != nil {
+	if !isNil(o.Day) {
 		toSerialize["day"] = o.Day
 	}
-	if o.Caption != nil {
+	if !isNil(o.Caption) {
 		toSerialize["caption"] = o.Caption
 	}
-	if o.Timestamp != nil {
+	if !isNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
-	if o.LastUpdatedTimestamp != nil {
+	if !isNil(o.LastUpdatedTimestamp) {
 		toSerialize["lastUpdatedTimestamp"] = o.LastUpdatedTimestamp
 	}
-	if o.Blobs != nil {
+	if !isNil(o.Blobs) {
 		toSerialize["blobs"] = o.Blobs
 	}
-	if o.JournalId != nil {
+	if !isNil(o.JournalId) {
 		toSerialize["journalId"] = o.JournalId
 	}
-	if o.UserId != nil {
+	if !isNil(o.UserId) {
 		toSerialize["userId"] = o.UserId
 	}
-	if o.Emotions != nil {
+	if !isNil(o.Emotions) {
 		toSerialize["emotions"] = o.Emotions
 	}
 	return json.Marshal(toSerialize)

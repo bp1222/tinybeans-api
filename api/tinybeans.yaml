@@ -36,7 +36,7 @@ components:
   schemas:
     $ref: './schema/_index.yaml'
   securitySchemes:
-    Authorization:
+    ApiKeyAuth:
       type: apiKey
       in: header
       name: authorization

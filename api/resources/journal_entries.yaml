@@ -3,6 +3,8 @@ get:
   - journals
   summary: Tinybeans Journal Entries
   operationId: journal_entries
+  security:
+    - ApiKeyAuth: []
   parameters:
   - name: journal
     in: path

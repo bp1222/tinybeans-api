@@ -3,7 +3,7 @@ Tinybeans API - Unofficial
 
 Reverse Engineered API for Tinybeans.  This is horribly incomplete, and not supported
 
-API version: 0.0.1
+API version: 0.1.1
 Contact: dave@mudsite.com
 */
 
@@ -42,7 +42,7 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the Tinybeans API - Unofficial API v0.0.1
+// APIClient manages communication with the Tinybeans API - Unofficial API v0.1.1
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

@@ -3,6 +3,8 @@ get:
     - followings
   summary: Tinybeans Followings
   operationId: followings 
+  security:
+    - ApiKeyAuth: []
   responses:
     200:
       description: Success

@@ -8,7 +8,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   title: Tinybeans API - Unofficial
-  version: 0.0.1
+  version: 0.1.1
 servers:
 - url: https://tinybeans.com/api/1
 tags:
@@ -48,6 +48,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Journals'
           description: Success
+      security:
+      - ApiKeyAuth: []
       summary: Tinybeans Journals
       tags:
       - journals
@@ -107,6 +109,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Entries'
           description: Success
+      security:
+      - ApiKeyAuth: []
       summary: Tinybeans Journal Entries
       tags:
       - journals
@@ -120,6 +124,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Followings'
           description: Success
+      security:
+      - ApiKeyAuth: []
       summary: Tinybeans Followings
       tags:
       - followings
@@ -133,6 +139,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/UsersMe'
           description: Success
+      security:
+      - ApiKeyAuth: []
       summary: Check to Tinybeans
       tags:
       - auth
@@ -5036,7 +5044,7 @@ components:
           $ref: '#/components/schemas/User'
       type: object
   securitySchemes:
-    Authorization:
+    ApiKeyAuth:
       in: header
       name: authorization
       type: apiKey

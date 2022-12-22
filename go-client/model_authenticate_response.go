@@ -3,7 +3,7 @@ Tinybeans API - Unofficial
 
 Reverse Engineered API for Tinybeans.  This is horribly incomplete, and not supported
 
-API version: 0.0.1
+API version: 0.1.1
 Contact: dave@mudsite.com
 */
 

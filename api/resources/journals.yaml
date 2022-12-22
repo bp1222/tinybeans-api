@@ -3,6 +3,8 @@ get:
     - journals
   summary: Tinybeans Journals
   operationId: journals
+  security:
+    - ApiKeyAuth: []
   responses:
     200:
       description: Success

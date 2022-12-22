@@ -120,7 +120,7 @@ Other parameters are passed through a pointer to a apiUsersMeRequest struct via 
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

@@ -2,7 +2,9 @@ get:
   tags:
     - auth
   summary: Check to Tinybeans
-  operationId: users_me 
+  operationId: users_me
+  security:
+    - ApiKeyAuth: []
   responses:
     200:
       description: Success
